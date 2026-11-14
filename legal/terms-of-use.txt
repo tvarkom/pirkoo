@@ -1,48 +1,54 @@
 TERMS OF USE
 Pirkoo
 
-The terms for using the audit service of the Pirkoo plugin (On-board Diagnostics Scanner for WooCommerce), by tvarkom.
+The terms for using Pirkoo (On-board Diagnostics Scanner for WooCommerce): the app at app.pirkoo.com and the WooCommerce plugin that connects stores to it, by tvarkom.
 
-Last updated: 10 November 2026 (version 0.2.2)
+Last updated: 14 November 2026 (version 0.3)
 
 Who we are
 ----------
 
-The service is provided by MB TVARKOM SOFTWARE ("tvarkom", "we", "us"), a small partnership (mažoji bendrija) registered in Lithuania under company code 308171668, registered office Gedimino g. 22A-14, 44319 Kaunas, Lithuania. Contact: contact@pirkoo.com; for help with the plugin or its results, support@pirkoo.com.
+Pirkoo is provided by MB TVARKOM SOFTWARE ("tvarkom", "we", "us"), a small partnership (mažoji bendrija) registered in Lithuania under company code 308171668, registered office Gedimino g. 22A-14, 44319 Kaunas, Lithuania. Contact: contact@pirkoo.com; for help with Pirkoo, support@pirkoo.com.
 
-By connecting your store with the Pirkoo plugin ("the plugin"), you agree to these terms. If you use the service for a company, you confirm you may accept them on its behalf.
+By creating an account on app.pirkoo.com, or by connecting a store with the Pirkoo plugin, you agree to these terms. If you use Pirkoo for a business, you confirm you may accept them on its behalf; the business is then the customer.
 
-What the service does
----------------------
+What Pirkoo does
+----------------
 
-When you click "Connect and scan", and later each time you click "Scan now", we scan your store, and the plugin shows the results on its page in your store's admin: a score, the checks that cost points, the measurements and how the score changes over time. Our scanner loads your store's public pages like a visitor would and measures response times, page weight and caching, and the scan also uses data the plugin reads from your store, including your store's business context and a profile of one checkout page load on your store's server, as described in our Privacy Policy (privacy-policy.txt, shipped with the plugin). Neither the scanner nor the plugin changes anything on your store, apart from a small table of daily shop totals the plugin keeps. Nothing is emailed.
+Pirkoo scans the WooCommerce stores your company connects, when someone in the company asks and once a day, and shows the results on app.pirkoo.com: a health score, the checks that cost points, the measurements, the store's profile and how the score changes over time. Our scanner loads your store's public pages like a visitor would, and the plugin sends data it reads on your store's server, including your store's business context and a profile of one checkout page load, as described in our Privacy Policy (https://pirkoo.com/privacy/, also shipped with the plugin). Neither the scanner nor the plugin changes anything on your store, apart from a small table of daily shop totals the plugin keeps.
 
-Results describe your store at the moment of each scan. Results can vary between audits with traffic, hosting and caching.
+Results describe your store at the moment of each scan, and can vary between scans with traffic, hosting and caching.
 
-Your store and your key
------------------------
+Accounts and companies
+----------------------
 
-* You may only audit stores you own or are authorized to manage.
+* You log in with your email address; keep access to it private, because it's how you get in.
 
-* The plugin registers your store by confirming that the request comes from its domain, and issues an API key for that domain only. Keep the key private; it lets anyone use your store's audits.
+* A company holds stores and has people with roles: Owners manage everything, including billing and deleting the company; Admins manage stores and people (except Owners); Members see dashboards and run scans; Viewers see dashboards. The company's Owners are responsible for who they invite and the roles they give.
 
-* If your store's address changes, the plugin registers it again.
+* You may connect only stores you own or are authorized to manage, and you're responsible for having the right to send us the store's data described in the Privacy Policy.
 
-Free service and its limits
----------------------------
+Free trial and plans
+--------------------
 
-The scans, the results and the plugin are free. To keep the service sustainable and protect the stores whose addresses are submitted, audits have these limits:
+* A company's first 14 days are a free trial, with up to 20 stores. One free trial per person: further companies you create start without one.
 
-* Each store can be scanned once a week; until then, the plugin shows the date of the next scan and its button is disabled. A scan that failed doesn't count.
+* After the trial, scans need a paid plan. Without one, the company is read-only: its dashboards and history stay available, but no scans run and no stores can be added. Nothing is deleted because a trial ended.
 
-* Each store can run at most 3 new scans in 24 hours, failed ones included, and 3 requests an hour from the store's server.
+* Plans are monthly subscriptions for a number of stores (up to 20, up to 50, or a custom plan agreed with us). Prices, taxes and the billing period are shown on the payment page before you pay. Plans are paid in advance through our payment provider, Stripe, and renew automatically each period until cancelled.
 
-* We may change these limits or features. We'll update these terms when we do.
+* An Owner can change or cancel the plan at any time from the app's Billing page. A cancellation takes effect at the end of the paid period, unless it says otherwise; we don't refund partial periods, except where the law requires it. If a payment fails, the plan stays active while the payment provider tries again; if it can't be taken, the company becomes read-only.
 
-Acceptable use
---------------
+* We may change prices or plans for future periods; we'll tell the company's Owners by email at least 30 days before a change to their plan takes effect, and they can cancel before it does.
 
-Don't use the service to audit stores you don't control, to get around its limits (for example with multiple keys or email addresses for the same store), to overload our systems or other websites, or to resell audits without our written agreement. We may suspend a key or block audits that break these terms.
+* If you're a consumer in the EU, you have 14 days to withdraw from a contract made at a distance. By starting a paid plan, you ask us to provide the service right away and accept that, once it's fully provided for a period, you lose that right for it; if you withdraw earlier, we refund the part not yet provided.
+
+Limits and acceptable use
+-------------------------
+
+* A store can't be scanned while a scan of it is running, nor within 10 minutes after one finishes, and at most 30 times a day.
+
+* Don't use Pirkoo to scan stores you don't control, to get around its limits or trial (for example with several accounts or companies for the same stores), to overload our systems or other websites, or to resell Pirkoo without our written agreement. We may suspend scans, a store or an account that breaks these terms.
 
 Results
 -------
@@ -52,27 +58,27 @@ Results are information to help you decide what to improve. They aren't a guaran
 Availability and changes
 ------------------------
 
-We work to keep the service available, but we don't promise it will be uninterrupted or error-free. We may change or discontinue features.
+We work to keep Pirkoo available, but we don't promise it will be uninterrupted or error-free. We may change or discontinue features; if we discontinue Pirkoo, we'll tell paying companies at least 30 days before and refund any period paid in advance that we can't provide.
 
 Liability
 ---------
 
-To the extent the law allows, our total liability to you for the service is limited to the amount you paid us in the 12 months before the claim, and we aren't liable for indirect or consequential losses such as lost profit or lost data. Nothing in these terms limits liability that can't be limited by law, or rights you have as a consumer.
+To the extent the law allows, our total liability to you for Pirkoo is limited to the amount your company paid us in the 12 months before the claim, and we aren't liable for indirect or consequential losses such as lost profit or lost data. Nothing in these terms limits liability that can't be limited by law, or rights you have as a consumer.
 
 Your data
 ---------
 
-How we handle personal data is described in our Privacy Policy (privacy-policy.txt, shipped with the plugin).
+How we handle personal data is described in our Privacy Policy (https://pirkoo.com/privacy/).
 
 Ending
 ------
 
-You can stop using the service at any time by deactivating or deleting the plugin. We may suspend or end your access if you break these terms.
+You can stop using Pirkoo at any time: disconnect or remove your stores, cancel the plan, delete the company (Owners) or delete your account. We may suspend or end access if you break these terms; for a reason other than a breach, we'll give 30 days' notice and refund any period paid in advance that we can't provide.
 
 Changes to these terms
 ----------------------
 
-We may update these terms. We'll change the date at the top of this file and ship the new version with the plugin.
+We may update these terms. We'll change the date at the top, publish the new version and, for changes that affect paying companies, tell their Owners by email at least 30 days before they take effect.
 
 Governing law
 -------------

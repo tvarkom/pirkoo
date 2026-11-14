@@ -68,40 +68,13 @@ Build the zip from a tagged commit, its folder named after the slug
 (`pirkoo/`), with only the shipped files: `pirkoo.php`, `uninstall.php`,
 `readme.txt`, `includes/`, `legal/`.
 
-`legal/privacy-policy.txt` is Pirkoo's privacy policy (the plugin, the service at
-`api.pirkoo.com` and pirkoo.com; since 10 Nov 2026), published at https://pirkoo.com/privacy/: the
-pirkoo-website repo (`../../website`) generates that page from a copy of this file (its
-`content/privacy-policy.txt`, `go run ./cmd/legalpage`), and its test fails when they differ. tvarkom.com
-keeps only a short notice for its own site. `legal/terms-of-use.txt` is this plugin's own. Pirkoo's
-addresses: support@pirkoo.com (help), privacy@pirkoo.com (privacy requests), contact@pirkoo.com.
+`legal/privacy-policy.txt` is Pirkoo's privacy policy (the app at app.pirkoo.com, this plugin and
+pirkoo.com), published at https://pirkoo.com/privacy/: the pirkoo-website repo (`../../website`)
+generates that page from a copy of this file (its `content/privacy-policy.txt`,
+`go run ./cmd/legalpage`), and its test fails when they differ. `legal/terms-of-use.txt` is Pirkoo's
+Terms of Use, published at https://pirkoo.com/terms/ the same way. tvarkom.com keeps only a short
+notice for its own site. Both texts change only with the owner's approval. Pirkoo's addresses:
+support@pirkoo.com (help), privacy@pirkoo.com (privacy requests), contact@pirkoo.com.
 
-## Paid version (not in the free plugin)
-
-Founder decisions of 9 Nov 2026. Kept out of the free plugin, for a future paid version (tracked in
-tvarkom's `BACKLOG.md`, item 11):
-
-- The analysis's **Technical findings**, **Diagnostic details**, **How this scan works** and
-  **Developer reference** sections. The scanner marks them `"tier": "paid"`, the gateway keeps them
-  and never sends them (`audit.FreeAnalysis`), and `includes/analysis.php` skips them by tier and by
-  id (`PIRKOO_PAID_SECTIONS`) anyway.
-- The fix plan, next steps and priorities (never in the dashboard file).
-- Automatic weekly scans: the free plugin scans only on a click.
-
-The page, top to bottom (founder decisions of 10 Nov 2026): the store summary; the store health
-score, needs attention and store health trends; the store profile in detail; traffic and
-marketing, full width; then the pipeline. The free sections are drawn as charts from the
-analysis's `figures` (`includes/charts.php`, `includes/overview.php`); traffic and marketing stay
-as text. There is no money estimate: the modelled revenue at risk was removed on 10 Nov 2026, and
-a stored scan that still carries one doesn't show it.
-
-Scores come from the scanner's score model 2 (audit-tool `scanner/src/analyzers/score.ts`): every
-problem lowers the score by a share of what's left, by its check's tier and severity. The analysis's
-`scoring` says how many of the 44 checks ran and have a result; the score card says so. Every
-history point carries its `score_model` (gateway migration 0021; 1 when the gateway doesn't say):
-the trends compare and chart only scores of the latest score's model, and count the others.
-Last, the store pipeline (left as designed; the overview only links to its panels) (`includes/pipeline.php`, built by the scanner's
-`reporters/pipeline.ts`): red is a critical problem, orange a warning, yellow a minor (upkeep)
-issue, green passes, grey not measured or not applicable (a staging site's blocked search engines). A job's panel shows
-what was measured against which reference and the points lost, never the cause (plugin, hook,
-query, option, task) or the fix: those are the paid version's.
-
+The dashboard, the scores and the scan schedule live in app.pirkoo.com (repo `pirkoo-app`) since
+0.3.0: this plugin only connects the store and answers its scans.

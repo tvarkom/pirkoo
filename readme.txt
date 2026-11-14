@@ -4,7 +4,7 @@ Tags: woocommerce, performance, speed, health, dashboard
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,7 +31,7 @@ Pirkoo's scanner measures your store from outside, the way a shopper's browser l
 1. Install and activate the plugin. Nothing is sent yet.
 2. On the Plugins screen, click **Connect to Pirkoo** under Pirkoo's name (administrators and shop managers).
 3. On app.pirkoo.com, log in with your email (a link is emailed to you, no password) and confirm the connection, right under the list of what is collected.
-4. Scan the store from app.pirkoo.com whenever you want fresh results; the dashboard shows the latest results and the score history.
+4. Pirkoo scans the store once a day on its own, and whenever you click **Scan now** in the app; the dashboard shows the latest results and the score history.
 5. To stop, click **Disconnect from Pirkoo** on the Plugins screen, or disconnect the store in the app.
 
 == External services ==
@@ -40,7 +40,7 @@ This plugin uses Pirkoo (https://app.pirkoo.com), run by MB TVARKOM SOFTWARE (Li
 
 **Connecting**: the click sends your browser to `https://app.pirkoo.com/connect` with your store's address, the plugin's REST address on it, and a one-time code (valid 10 minutes). After you confirm there, app.pirkoo.com calls `https://<your store>/wp-json/pirkoo/v1/connect` with that code, and the plugin answers with a new connection secret. From then on the plugin answers only requests signed with that secret.
 
-**Each scan**, when someone in your Pirkoo account starts one: app.pirkoo.com calls `https://<your store>/wp-json/pirkoo/v1/collect` (signed), and the plugin answers with your store's home URL, cart and checkout URLs, the site's admin email, the store's name, timezone, date and time formats and language, the titles your store gives its enabled payment and shipping methods (never their settings), and:
+**Each scan**, when someone in your Pirkoo account starts one, and once a day on its own (between 02:00 and 05:00 in your store's timezone): app.pirkoo.com calls `https://<your store>/wp-json/pirkoo/v1/collect` (signed), and the plugin answers with your store's home URL, cart and checkout URLs, the site's admin email, the store's name, timezone, date and time formats and language, the titles your store gives its enabled payment and shipping methods (never their settings), and:
 
 * PHP, WordPress and WooCommerce versions
 * Database and options table sizes, autoloaded options size, and the names and sizes of the 20 largest autoloaded options (never their contents)
@@ -66,25 +66,29 @@ The plugin never reads customers' names, emails or addresses or order contents f
 Uninstalling the plugin deletes its settings, connection secret and table of daily totals from your store; records on our side follow the periods above. To have them deleted sooner, email privacy@pirkoo.com.
 
 * Privacy Policy: https://pirkoo.com/privacy/ (also shipped with the plugin, `legal/privacy-policy.txt`)
-* Terms of Use: shipped with the plugin, `legal/terms-of-use.txt`
+* Terms of Use: https://pirkoo.com/terms/ (also shipped with the plugin, `legal/terms-of-use.txt`)
 
 == Frequently Asked Questions ==
 
 = Does it slow down my store? =
 
-No. Apart from adding one to a daily total when a shopper adds to cart, opens the checkout or orders, the plugin runs only when Pirkoo scans the store: it collects its figures and loads your checkout once to profile it. Nothing runs in the background. The scanner runs on Pirkoo's servers and loads your public pages like one visitor would.
+No. Apart from adding one to a daily total when a shopper adds to cart, opens the checkout or orders, the plugin runs only when Pirkoo scans the store (once a day, at night in your store's timezone, and when you ask): it collects its figures and loads your checkout once to profile it. Nothing runs in the background. The scanner runs on Pirkoo's servers and loads your public pages like one visitor would.
 
 = Why does my store need to be public? =
 
 Pirkoo's scanner measures your store from the internet, like a shopper. Stores on localhost, behind a password or in maintenance mode can't be scanned, and app.pirkoo.com needs to reach the WordPress REST API at `/wp-json/pirkoo/` (allow it in a security plugin or firewall that blocks it).
 
-= How often can I scan my store? =
+= How often is my store scanned? =
 
-From app.pirkoo.com, when you click **Scan now**, within the limits shown there.
+Once a day on its own, between 02:00 and 05:00 in your store's timezone (skipped if a scan ran in the 12 hours before). You can also click **Scan now** in the app, from 10 minutes after the previous scan finishes, up to 30 times a day.
+
+= Is Pirkoo free? =
+
+The plugin is free. The Pirkoo service at app.pirkoo.com is free for a company's first 14 days; after that, scans need a paid monthly plan (by number of stores), bought through Stripe on the app's Billing page, where prices are shown. Without a plan, dashboards and history stay available, and scans pause.
 
 = Does it send anything on its own? =
 
-No. Nothing is sent before the store is connected, and after that only when app.pirkoo.com asks the plugin for a scan's data. To stop, disconnect the store; to remove its settings, delete the plugin.
+No. Nothing is sent before the store is connected, and after that only when app.pirkoo.com asks the plugin for a scan's data: once a day, and when someone starts a scan. To stop, disconnect the store; to remove its settings, delete the plugin.
 
 = What if my wp-admin has another address? =
 
@@ -95,6 +99,10 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.3.2 =
+* The readme and the suggested privacy policy text describe Pirkoo's daily scans and its plans, and link the Terms of Use at https://pirkoo.com/terms/.
+* The Privacy Policy and Terms of Use shipped with the plugin cover app.pirkoo.com: accounts, companies, daily scans and billing.
 
 = 0.3.1 =
 * Stores with plain permalinks or WordPress in a subfolder can connect: the plugin tells Pirkoo its REST address.
