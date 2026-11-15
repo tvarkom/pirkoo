@@ -280,11 +280,18 @@ class Pirkoo_Connect_Test extends Pirkoo_Test_Case {
 
 	public function test_the_plugin_is_in_brazilian_portuguese() {
 		$this->assertSame( 10, has_action( 'init', 'pirkoo_load_textdomain' ) );
-		switch_to_locale( 'pt_BR' );
+		// The test site has only English installed, so the language is set directly.
+		$portuguese = function () {
+			return 'pt_BR';
+		};
+		add_filter( 'pre_determine_locale', $portuguese );
+		unload_textdomain( 'pirkoo', true );
 		pirkoo_load_textdomain();
 		$connect = __( 'Connect to Pirkoo', 'pirkoo' );
 		$notice  = __( 'This store is disconnected from Pirkoo. Its history stays in the app; connect it again from here at any time.', 'pirkoo' );
-		restore_previous_locale();
+		remove_filter( 'pre_determine_locale', $portuguese );
+		unload_textdomain( 'pirkoo', true );
+
 		$this->assertSame( 'Conectar ao Pirkoo', $connect );
 		$this->assertStringContainsString( 'desconectada do Pirkoo', $notice );
 		$this->assertSame( 'Connect to Pirkoo', __( 'Connect to Pirkoo', 'pirkoo' ) );
