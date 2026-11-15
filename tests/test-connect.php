@@ -260,4 +260,21 @@ class Pirkoo_Connect_Test extends Pirkoo_Test_Case {
 		remove_filter( 'rest_url_prefix', $prefix );
 		$this->assertSame( 200, $response->get_status() );
 	}
+	public function test_own_routes_pass_a_site_that_blocks_the_rest_api_for_visitors() {
+		global $wp;
+		$blocked = new WP_Error( 'rest_not_logged_in', 'Blocked.', array( 'status' => 401 ) );
+		$before  = $wp->query_vars;
+
+		$wp->query_vars['rest_route'] = '/pirkoo/v1/collect';
+		$this->assertNull( pirkoo_rest_allow_own_routes( $blocked ) );
+		$this->assertTrue( pirkoo_rest_allow_own_routes( true ) );
+
+		// Other routes stay blocked, lookalikes included.
+		foreach ( array( '/wp/v2/users', '/pirkoo/v10/x', '/x/pirkoo/v1/collect' ) as $route ) {
+			$wp->query_vars['rest_route'] = $route;
+			$this->assertSame( $blocked, pirkoo_rest_allow_own_routes( $blocked ) );
+		}
+		$wp->query_vars = $before;
+		$this->assertSame( PHP_INT_MAX, has_filter( 'rest_authentication_errors', 'pirkoo_rest_allow_own_routes' ) );
+	}
 }

@@ -242,6 +242,24 @@ function pirkoo_register_routes() {
 }
 
 /**
+ * Lets requests to this plugin's own routes through when the site blocks the REST API for visitors
+ * who aren't logged in (a common security setting, which would otherwise stop app.pirkoo.com). Only
+ * /pirkoo/v1/ is affected, and each of its routes still checks the one-time code or the signature
+ * itself.
+ *
+ * @param WP_Error|null|true $result The authentication result so far.
+ * @return WP_Error|null|true
+ */
+function pirkoo_rest_allow_own_routes( $result ) {
+	global $wp;
+	if ( ! is_wp_error( $result ) || ! isset( $wp->query_vars['rest_route'] ) ) {
+		return $result;
+	}
+	$route = '/' . ltrim( (string) $wp->query_vars['rest_route'], '/' );
+	return 0 === strpos( $route, '/pirkoo/v1/' ) ? null : $result;
+}
+
+/**
  * POST /pirkoo/v1/connect {"code"}: exchanges a valid one-time code for a new connection secret.
  *
  * @param WP_REST_Request $request The request.

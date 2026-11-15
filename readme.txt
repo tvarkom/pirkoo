@@ -107,6 +107,7 @@ Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnos
 == Changelog ==
 
 = 0.4.0 =
+* Works behind more firewalls: the plugin's own signed routes pass a site that blocks the REST API for visitors who aren't logged in, and app.pirkoo.com reaches the plugin through `?rest_route=` when `/wp-json/` is blocked.
 * Plugins, themes and WordPress core in app.pirkoo.com, with their updates, an Update button for Owners and Admins, known vulnerabilities and the store's PHP errors of the last 7 days.
 * Each scan sends the installed plugins' folder names and whether each is active, so app.pirkoo.com can tick the recommended plugins your store already has.
 * app.pirkoo.com shows your store's orders, refunds, customers, products, variations, categories, top sellers, products bought together, stock velocity, variation attributes and coupons: the plugin answers its signed requests for them (the last 12 months when you connect, then what changed, once a day).

@@ -61,6 +61,7 @@ add_action( 'admin_notices', 'pirkoo_admin_notices' );
 add_action( 'admin_init', 'pirkoo_privacy_policy_content' );
 add_action( 'admin_init', 'pirkoo_upgrade' );
 add_action( 'rest_api_init', 'pirkoo_register_routes' );
+add_filter( 'rest_authentication_errors', 'pirkoo_rest_allow_own_routes', PHP_INT_MAX );
 
 // Shop activity counters (includes/funnel.php): the table on activation, or on the first admin page
 // after an update; daily totals of add-to-cart, checkout loads and orders, kept 35 days.
