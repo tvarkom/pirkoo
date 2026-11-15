@@ -40,3 +40,9 @@ msgstr "Política de Privacidade do Pirkoo"
 msgid "On-board Diagnostics Scanner for WooCommerce"
 msgstr "Scanner de Diagnóstico de Bordo para WooCommerce"
 
+msgid "That connection link has expired. Click Connect to Pirkoo again."
+msgstr "Esse link de conexão expirou. Clique de novo em Conectar ao Pirkoo."
+
+msgid "This store could not reach app.pirkoo.com to finish the connection. Check that its server can make outgoing HTTPS requests, then click Connect to Pirkoo again."
+msgstr "Esta loja não conseguiu acessar app.pirkoo.com para concluir a conexão. Confira se o servidor dela pode fazer requisições HTTPS de saída e clique de novo em Conectar ao Pirkoo."
+

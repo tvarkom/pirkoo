@@ -17,8 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * - connected_at: when the store was connected (Unix seconds), 0 when not.
  * - code_hash:    sha256 of the one-time connection code while a connection is being made, "".
  * - code_expires: when that code stops working (Unix seconds).
+ * - relay:        whether the store is connected in relay mode (includes/relay.php): it collects
+ *                 the app's requests itself, because its firewall blocks them.
  *
- * @return array{secret: string, connected_at: int, code_hash: string, code_expires: int}
+ * @return array{secret: string, connected_at: int, code_hash: string, code_expires: int, relay: bool}
  */
 function pirkoo_settings() {
 	$saved    = get_option( PIRKOO_OPTION, array() );
@@ -29,6 +31,7 @@ function pirkoo_settings() {
 			'connected_at' => 0,
 			'code_hash'    => '',
 			'code_expires' => 0,
+			'relay'        => false,
 		)
 	);
 	return array(
@@ -36,6 +39,7 @@ function pirkoo_settings() {
 		'connected_at' => (int) $settings['connected_at'],
 		'code_hash'    => (string) $settings['code_hash'],
 		'code_expires' => (int) $settings['code_expires'],
+		'relay'        => (bool) $settings['relay'],
 	);
 }
 

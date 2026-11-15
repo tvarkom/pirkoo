@@ -13,6 +13,8 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 delete_option( 'pirkoo' );
 delete_option( 'pirkoo_scan_lock' );
+delete_transient( 'pirkoo_relay_running' );
+wp_clear_scheduled_hook( 'pirkoo_relay_collect' );
 delete_transient( 'pirkoo_verify_token' );
 delete_option( 'pirkoo_funnel_since' );
 delete_transient( 'pirkoo_profile_token' );

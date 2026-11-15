@@ -33,6 +33,7 @@ if ( ! defined( 'PIRKOO_APP_URL' ) ) {
 
 require_once __DIR__ . '/includes/settings.php';
 require_once __DIR__ . '/includes/connect.php';
+require_once __DIR__ . '/includes/relay.php';
 require_once __DIR__ . '/includes/sync.php';
 require_once __DIR__ . '/includes/manage.php';
 require_once __DIR__ . '/includes/business.php';
@@ -58,6 +59,16 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'pirkoo_plugin
 add_filter( 'allowed_redirect_hosts', 'pirkoo_allowed_redirect_hosts' );
 add_action( 'admin_post_pirkoo_connect', 'pirkoo_handle_connect' );
 add_action( 'admin_post_pirkoo_disconnect', 'pirkoo_handle_disconnect' );
+
+// Relay mode (includes/relay.php), for a store whose firewall blocks the app's requests: the app's
+// proof and poke on the home page, finishing the connection, and collecting every 5 minutes.
+add_action( 'init', 'pirkoo_relay_front', 0 );
+add_action( 'admin_post_pirkoo_relay', 'pirkoo_handle_relay' );
+add_filter( 'cron_schedules', 'pirkoo_relay_schedules' ); // phpcs:ignore WordPress.WP.CronInterval.CronSchedulesInterval -- Only scheduled for a store in relay mode.
+add_action( PIRKOO_RELAY_HOOK, 'pirkoo_relay_collect' );
+add_action( 'admin_init', 'pirkoo_relay_schedule' );
+register_deactivation_hook( __FILE__, 'pirkoo_relay_deactivate' );
+
 add_action( 'admin_notices', 'pirkoo_admin_notices' );
 add_action( 'admin_init', 'pirkoo_privacy_policy_content' );
 add_action( 'admin_init', 'pirkoo_upgrade' );

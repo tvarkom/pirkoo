@@ -53,6 +53,8 @@ Your store's profile. We keep the latest business context of each store (not the
 
 Who sees a store. Only the people in the company holding the store, on app.pirkoo.com. If two companies hold the same store (for example an agency and the shop owner), each sees the store's results and history.
 
+Relay mode. When a store's firewall blocks our requests to the plugin, an administrator can connect it in relay mode: the plugin then calls app.pirkoo.com itself to fetch our requests and send their answers (every 5 minutes, and when we ask through the store's home page). The data, its purposes and its retention are the same.
+
 Disconnecting and removing. Disconnecting a store (in the app or from its Plugins screen) stops its scans; its results and history stay in the company, and the company's Owners and Admins get an email when the store disconnects itself. Removing a store from a company deletes it from that company; when no other company holds it, its results, history, analyses and profile are deleted from our systems too.
 
 Store records

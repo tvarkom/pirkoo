@@ -116,11 +116,14 @@ function pirkoo_handle_connect() {
 	);
 	$url = PIRKOO_APP_URL . '/connect?' . http_build_query(
 		array(
-			'store' => pirkoo_store_origin(),
+			'store'  => pirkoo_store_origin(),
 			// This plugin's REST address: not <origin>/wp-json/ with plain permalinks or WordPress in a
 			// subfolder (0.3.1). The app accepts it only on the store's own host.
-			'api'   => untrailingslashit( rest_url( 'pirkoo/v1' ) ),
-			'code'  => $code,
+			'api'    => untrailingslashit( rest_url( 'pirkoo/v1' ) ),
+			'code'   => $code,
+			// Where the app sends the administrator back when a firewall blocks its requests here
+			// (relay mode, includes/relay.php).
+			'return' => admin_url( 'admin-post.php?action=pirkoo_relay' ),
 		),
 		'',
 		'&',
@@ -171,8 +174,10 @@ function pirkoo_forget_connection() {
 			'connected_at' => 0,
 			'code_hash'    => '',
 			'code_expires' => 0,
+			'relay'        => false,
 		)
 	);
+	wp_clear_scheduled_hook( PIRKOO_RELAY_HOOK );
 }
 
 /**
@@ -183,10 +188,18 @@ function pirkoo_forget_connection() {
 function pirkoo_admin_notices() {
 	$screen = get_current_screen();
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only chooses a fixed notice to show.
-	if ( ! $screen || 'plugins' !== $screen->id || ! isset( $_GET['pirkoo'] ) || 'disconnected' !== $_GET['pirkoo'] ) {
+	if ( ! $screen || 'plugins' !== $screen->id || ! isset( $_GET['pirkoo'] ) ) {
 		return;
 	}
-	echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'This store is disconnected from Pirkoo. Its history stays in the app; connect it again from here at any time.', 'pirkoo' ) . '</p></div>';
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only chooses a fixed notice to show.
+	$which = sanitize_key( wp_unslash( $_GET['pirkoo'] ) );
+	if ( 'disconnected' === $which ) {
+		echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'This store is disconnected from Pirkoo. Its history stays in the app; connect it again from here at any time.', 'pirkoo' ) . '</p></div>';
+	} elseif ( 'relay_expired' === $which ) {
+		echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'That connection link has expired. Click Connect to Pirkoo again.', 'pirkoo' ) . '</p></div>';
+	} elseif ( 'relay_failed' === $which ) {
+		echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'This store could not reach app.pirkoo.com to finish the connection. Check that its server can make outgoing HTTPS requests, then click Connect to Pirkoo again.', 'pirkoo' ) . '</p></div>';
+	}
 }
 
 /**
@@ -293,8 +306,10 @@ function pirkoo_rest_connect( WP_REST_Request $request ) {
 			'connected_at' => time(),
 			'code_hash'    => '',
 			'code_expires' => 0,
+			'relay'        => false,
 		)
 	);
+	wp_clear_scheduled_hook( PIRKOO_RELAY_HOOK );
 	return array( 'secret' => $secret );
 }
 
