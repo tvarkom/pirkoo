@@ -60,22 +60,8 @@ function pirkoo_paused( $type ) {
  * @return int|null
  */
 function pirkoo_fatal_errors_7d() {
-	// WP_DEBUG_LOG is true (wp-content/debug.log) or a log path; else PHP's own log.
-	$setting = defined( 'WP_DEBUG_LOG' ) ? constant( 'WP_DEBUG_LOG' ) : false;
-	if ( is_string( $setting ) && '' !== $setting ) {
-		$log = $setting;
-	} elseif ( true === $setting ) {
-		$log = WP_CONTENT_DIR . '/debug.log';
-	} else {
-		$log = (string) ini_get( 'error_log' );
-	}
-	if ( '' === $log || ! @is_readable( $log ) || ! is_file( $log ) ) { // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- open_basedir warns; null says "not measured".
-		return null;
-	}
-	$size = (int) filesize( $log );
-	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- a local log file, its last 1 MB only.
-	$tail = file_get_contents( $log, false, null, max( 0, $size - 1048576 ) );
-	if ( ! is_string( $tail ) ) {
+	$tail = pirkoo_php_log_tail();
+	if ( null === $tail ) {
 		return null;
 	}
 	$since = time() - 7 * DAY_IN_SECONDS;
@@ -235,4 +221,29 @@ function pirkoo_wp_config_mode() {
 		}
 	}
 	return null;
+}
+
+/**
+ * The end (1 MB) of the PHP error log WordPress writes to (WP_DEBUG_LOG) or PHP's own; null when
+ * there is no readable log.
+ *
+ * @return string|null
+ */
+function pirkoo_php_log_tail() {
+	// WP_DEBUG_LOG is true (wp-content/debug.log) or a log path; else PHP's own log.
+	$setting = defined( 'WP_DEBUG_LOG' ) ? constant( 'WP_DEBUG_LOG' ) : false;
+	if ( is_string( $setting ) && '' !== $setting ) {
+		$log = $setting;
+	} elseif ( true === $setting ) {
+		$log = WP_CONTENT_DIR . '/debug.log';
+	} else {
+		$log = (string) ini_get( 'error_log' );
+	}
+	if ( '' === $log || ! @is_readable( $log ) || ! is_file( $log ) ) { // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- open_basedir warns; null says "not measured".
+		return null;
+	}
+	$size = (int) filesize( $log );
+	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- a local log file, its last 1 MB only.
+	$tail = file_get_contents( $log, false, null, max( 0, $size - 1048576 ) );
+	return is_string( $tail ) ? $tail : null;
 }

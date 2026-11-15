@@ -33,6 +33,7 @@ if ( ! defined( 'PIRKOO_APP_URL' ) ) {
 require_once __DIR__ . '/includes/settings.php';
 require_once __DIR__ . '/includes/connect.php';
 require_once __DIR__ . '/includes/sync.php';
+require_once __DIR__ . '/includes/manage.php';
 require_once __DIR__ . '/includes/business.php';
 require_once __DIR__ . '/includes/funnel.php';
 require_once __DIR__ . '/includes/metrics.php';

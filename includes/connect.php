@@ -226,6 +226,8 @@ function pirkoo_register_routes() {
 		'/collect'    => 'pirkoo_rest_collect',
 		'/disconnect' => 'pirkoo_rest_disconnect',
 		'/sync'       => 'pirkoo_rest_sync',
+		'/inventory'  => 'pirkoo_rest_inventory',
+		'/update'     => 'pirkoo_rest_update',
 	) as $route => $callback ) {
 		register_rest_route(
 			'pirkoo/v1',
