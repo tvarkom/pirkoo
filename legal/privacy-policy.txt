@@ -72,6 +72,23 @@ For the shoppers' data in these records, the store is the data controller and we
 
 We keep orders and their refunds for 12 months after the order was placed; customers, products and coupons for as long as the store is connected and they exist on the store. Removing the store from its last company, or deleting the company, deletes them all.
 
+WordPress management and monitoring
+-----------------------------------
+
+From Pirkoo 0.4, app.pirkoo.com shows each connected store's WordPress, plugins, themes and PHP errors, its known vulnerabilities, uptime, performance and broken links.
+
+* Inventory: once a day and when someone opens these pages, the plugin sends WordPress's version and the newest one offered, each installed plugin's and theme's name, folder, version, author, whether it's active, the update offered and whether it updates on its own, and the PHP errors of the last 7 days in the store's PHP log, grouped (level, message, file and line, count, last time), with email addresses, IP addresses, links and long numbers removed on the store before they're sent. We keep the latest inventory, and a log of the updates started from the app (who, what, from and to which version, the outcome), while the store is in a company.
+
+* Updates: when an Owner or Admin clicks Update in the app, the plugin updates that plugin, theme or WordPress as Dashboard → Updates does. Nothing is activated, deactivated or deleted from the app.
+
+* Vulnerabilities: we download Wordfence Intelligence's public vulnerability list once a day and compare it with the inventory on our servers. Nothing about your store is sent to Wordfence.
+
+* Uptime: every 5 minutes our servers in Amsterdam request your store's home page, as a visitor would, and record whether it answered, its HTTP status, response time and HTTPS certificate's expiry date. After 2 failed checks in a row, the company's Owners and Admins get an email, and another when the store is back.
+
+* Performance: once a day we send your store's home page address (and nothing else) to Google PageSpeed Insights, which loads the page from Google's servers and returns its performance score and loading measurements, on mobile and desktop.
+
+* Broken links: once a week our servers read up to 200 of your store's public pages, starting from the home page, and check every link and image on them; we keep the broken ones, with the page they're on. They never request cart, checkout, account, admin or add-to-cart addresses.
+
 Billing
 -------
 
@@ -107,7 +124,7 @@ Who processes data for us
 
 * Stripe: payments, subscriptions and invoices.
 
-* Google: Google Workspace hosts our mailboxes.
+* Google: Google Workspace hosts our mailboxes; Google PageSpeed Insights tests your store's public home page (it receives only its address).
 
 Some of these providers are based in the United States. Where data leaves the EU, they process it under an EU adequacy decision, such as the EU-US Data Privacy Framework, or Standard Contractual Clauses. We don't sell your data or use it for advertising.
 
@@ -125,6 +142,8 @@ These periods are applied automatically by our software:
 * Stores in a company, with their connection secret and latest details: until they're removed or the company is deleted.
 
 * Store records: orders and refunds, 12 months after the order was placed; customers, products and coupons, while the store is connected and they exist on it. All of them are deleted when the store is removed or its company deleted.
+
+* WordPress inventory and update log: while the store is in a company. Uptime checks: 30 days; uptime incidents: 12 months after they ended. Performance tests: 12 months. Broken links: the store's last 5 weekly checks.
 
 * Scan requests (store, page addresses and time): 24 months. The admin email in them is erased after 90 days. Failed scans, with any store data sent with them: 15 days after they failed.
 
