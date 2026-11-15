@@ -13,7 +13,7 @@ The data controller is MB TVARKOM SOFTWARE ("tvarkom", "we", "us"), a small part
 Your Pirkoo account
 -------------------
 
-* Logging in: you log in to app.pirkoo.com with your email address. We email you a one-time login link and keep the address, the time and your IP address with the request, to limit how many links can be asked for. When you use the link, we create your account (your email address and when you joined and last logged in) and a session, kept in one cookie (below).
+* Logging in: you log in to app.pirkoo.com with your email address. We email you a one-time login link and keep the address, the time and your IP address with the request, to limit how many links can be asked for. When you use the link, we create your account (your email address, when you joined and last logged in, and the language you use the app in: English or Brazilian Portuguese, taken from your browser at your first login and changed in the account menu) and a session, kept in one cookie (below). The app and its emails to you are in that language.
 
 * Companies: an account belongs to companies, and a company holds stores. We keep each company's name, its people and their roles (Owner, Admin, Member or Viewer), and whether you've used your free trial.
 
