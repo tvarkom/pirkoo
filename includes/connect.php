@@ -339,8 +339,37 @@ function pirkoo_collect() {
 			'locale'           => get_locale(),
 			'payment_methods'  => pirkoo_payment_method_titles(),
 			'shipping_methods' => pirkoo_shipping_method_titles(),
+			'plugins'          => pirkoo_installed_plugins(),
 		),
 	);
+}
+
+/**
+ * The installed plugins' folder names (their WordPress.org slugs) and whether each is active, so the
+ * app can tell which of the plugins it recommends the store already has (0.4). Names only, at most
+ * 300; a single-file plugin counts by its file name.
+ *
+ * @return array<int, array{slug: string, active: bool}>
+ */
+function pirkoo_installed_plugins() {
+	if ( ! function_exists( 'get_plugins' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+	$out = array();
+	foreach ( array_keys( get_plugins() ) as $file ) {
+		$slug = dirname( $file );
+		if ( '.' === $slug ) {
+			$slug = basename( $file, '.php' );
+		}
+		$out[] = array(
+			'slug'   => sanitize_key( $slug ),
+			'active' => is_plugin_active( $file ),
+		);
+		if ( count( $out ) >= 300 ) {
+			break;
+		}
+	}
+	return $out;
 }
 
 /**

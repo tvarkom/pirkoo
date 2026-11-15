@@ -126,6 +126,11 @@ class Pirkoo_Connect_Test extends Pirkoo_Test_Case {
 		$this->assertSame( 200, $response->get_status() );
 		$data = $response->get_data();
 		$this->assertSame( array( 'website', 'email', 'pages', 'metrics', 'detailed', 'store' ), array_keys( $data ) );
+		$slugs = wp_list_pluck( $data['store']['plugins'], 'slug' );
+		$this->assertContains( 'woocommerce', $slugs, 'Installed plugins are listed by slug (0.4).' );
+		foreach ( $data['store']['plugins'] as $plugin ) {
+			$this->assertSame( array( 'slug', 'active' ), array_keys( $plugin ) );
+		}
 		$this->assertSame( home_url( '/' ), $data['website'] );
 		$this->assertSame( get_option( 'admin_email' ), $data['email'] );
 		$this->assertSame( 3, $data['metrics']['schema'] );

@@ -40,7 +40,7 @@ This plugin uses Pirkoo (https://app.pirkoo.com), run by MB TVARKOM SOFTWARE (Li
 
 **Connecting**: the click sends your browser to `https://app.pirkoo.com/connect` with your store's address, the plugin's REST address on it, and a one-time code (valid 10 minutes). After you confirm there, app.pirkoo.com calls `https://<your store>/wp-json/pirkoo/v1/connect` with that code, and the plugin answers with a new connection secret. From then on the plugin answers only requests signed with that secret.
 
-**Each scan**, when someone in your Pirkoo account starts one, and once a day on its own (between 02:00 and 05:00 in your store's timezone): app.pirkoo.com calls `https://<your store>/wp-json/pirkoo/v1/collect` (signed), and the plugin answers with your store's home URL, cart and checkout URLs, the site's admin email, the store's name, timezone, date and time formats and language, the titles your store gives its enabled payment and shipping methods (never their settings), and:
+**Each scan**, when someone in your Pirkoo account starts one, and once a day on its own (between 02:00 and 05:00 in your store's timezone): app.pirkoo.com calls `https://<your store>/wp-json/pirkoo/v1/collect` (signed), and the plugin answers with your store's home URL, cart and checkout URLs, the site's admin email, the store's name, timezone, date and time formats and language, the titles your store gives its enabled payment and shipping methods (never their settings), the folder names of the installed plugins and whether each is active (so the app can tell which recommended plugins you already have), and:
 
 * PHP, WordPress and WooCommerce versions
 * Database and options table sizes, autoloaded options size, and the names and sizes of the 20 largest autoloaded options (never their contents)
@@ -103,6 +103,7 @@ Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnos
 == Changelog ==
 
 = 0.4.0 =
+* Each scan sends the installed plugins' folder names and whether each is active, so app.pirkoo.com can tick the recommended plugins your store already has.
 * app.pirkoo.com shows your store's orders, refunds, customers, products, variations, categories, top sellers, products bought together, stock velocity, variation attributes and coupons: the plugin answers its signed requests for them (the last 12 months when you connect, then what changed, once a day).
 
 = 0.3.2 =
