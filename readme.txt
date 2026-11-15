@@ -84,7 +84,7 @@ Once a day on its own, between 02:00 and 05:00 in your store's timezone (skipped
 
 = Is Pirkoo free? =
 
-The plugin is free. The Pirkoo service at app.pirkoo.com is free for a company's first 14 days; after that, scans need a paid monthly plan (by number of stores), bought through Stripe on the app's Billing page, where prices are shown. Without a plan, dashboards and history stay available, and scans pause.
+The plugin is free. The Pirkoo service at app.pirkoo.com is free for a company's first 14 days; after that, scans need a paid plan (10, 30 or 50 stores, monthly or yearly with 3 months free), bought through Stripe on the app's Billing page, where prices are shown. Without a plan, dashboards and history stay available, and scans pause.
 
 = Does it send anything on its own? =
 

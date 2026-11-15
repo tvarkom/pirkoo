@@ -31,11 +31,11 @@ Accounts and companies
 Free trial and plans
 --------------------
 
-* A company's first 14 days are a free trial, with up to 20 stores. One free trial per person: further companies you create start without one.
+* A company's first 14 days are a free trial, with up to 10 stores. One free trial per person: further companies you create start without one.
 
 * After the trial, scans need a paid plan. Without one, the company is read-only: its dashboards and history stay available, but no scans run and no stores can be added. Nothing is deleted because a trial ended.
 
-* Plans are monthly subscriptions for a number of stores (up to 20, up to 50, or a custom plan agreed with us). Prices, taxes and the billing period are shown on the payment page before you pay. Plans are paid in advance through our payment provider, Stripe, and renew automatically each period until cancelled.
+* Plans are subscriptions for a number of stores (up to 10, up to 30, up to 50, or a custom plan agreed with us), paid monthly or yearly; a yearly plan costs 9 months' price. Prices, taxes and the billing period are shown on the payment page before you pay. Plans are paid in advance through our payment provider, Stripe, and renew automatically each period until cancelled.
 
 * An Owner can change or cancel the plan at any time from the app's Billing page. A cancellation takes effect at the end of the paid period, unless it says otherwise; we don't refund partial periods, except where the law requires it. If a payment fails, the plan stays active while the payment provider tries again; if it can't be taken, the company becomes read-only.
 
