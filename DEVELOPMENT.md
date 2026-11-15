@@ -66,7 +66,11 @@ worker (`parallel.maximumNumberOfProcesses: 1` in a local config).
 
 Build the zip from a tagged commit, its folder named after the slug
 (`pirkoo/`), with only the shipped files: `pirkoo.php`, `uninstall.php`,
-`readme.txt`, `includes/`, `legal/`.
+`readme.txt`, `includes/`, `languages/`, `legal/`.
+
+`languages/pirkoo-pt_BR.po` is the Brazilian Portuguese translation (owner decision of 15 Nov 2026) and
+`pirkoo-pt_BR.mo` its compiled form: change both together (`msgfmt -o languages/pirkoo-pt_BR.mo
+languages/pirkoo-pt_BR.po`), and add every new translatable text to them in the same commit.
 
 `legal/privacy-policy.txt` is Pirkoo's privacy policy (the app at app.pirkoo.com, this plugin and
 pirkoo.com), published at https://pirkoo.com/privacy/: the pirkoo-website repo (`../../website`)

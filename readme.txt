@@ -107,6 +107,7 @@ Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnos
 == Changelog ==
 
 = 0.4.0 =
+* In Brazilian Portuguese too, as is app.pirkoo.com (choose the language in its account menu).
 * Works behind more firewalls: the plugin's own signed routes pass a site that blocks the REST API for visitors who aren't logged in, and app.pirkoo.com reaches the plugin through `?rest_route=` when `/wp-json/` is blocked.
 * Plugins, themes and WordPress core in app.pirkoo.com, with their updates, an Update button for Owners and Admins, known vulnerabilities and the store's PHP errors of the last 7 days.
 * Each scan sends the installed plugins' folder names and whether each is active, so app.pirkoo.com can tick the recommended plugins your store already has.

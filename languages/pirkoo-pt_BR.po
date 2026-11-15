@@ -1,0 +1,42 @@
+# Brazilian Portuguese translation of Pirkoo.
+# Copyright (C) 2026 MB TVARKOM SOFTWARE
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pirkoo 0.4.0\n"
+"Report-Msgid-Bugs-To: support@pirkoo.com\n"
+"Language-Team: tvarkom <support@pirkoo.com>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: pirkoo\n"
+
+msgid "Open Pirkoo"
+msgstr "Abrir o Pirkoo"
+
+msgid "Disconnect from Pirkoo"
+msgstr "Desconectar do Pirkoo"
+
+msgid "Connect to Pirkoo"
+msgstr "Conectar ao Pirkoo"
+
+msgid "Sorry, you are not allowed to connect this store."
+msgstr "Você não tem permissão para conectar esta loja."
+
+msgid "Sorry, you are not allowed to disconnect this store."
+msgstr "Você não tem permissão para desconectar esta loja."
+
+msgid "This store is disconnected from Pirkoo. Its history stays in the app; connect it again from here at any time."
+msgstr "Esta loja está desconectada do Pirkoo. O histórico dela continua no app; conecte-a de novo por aqui quando quiser."
+
+msgid "This site uses the Pirkoo plugin (On-board Diagnostics Scanner for WooCommerce), by tvarkom (MB TVARKOM SOFTWARE, Lithuania). After an administrator connects the store to Pirkoo, each time Pirkoo scans the store (once a day, and when the store's team asks) its address, its cart and checkout page addresses and the site's admin email are sent to tvarkom, with aggregate store data, such as software versions, database sizes, background task counts, order counts, the 30-day gross sales and average order value, new and returning customer counts, daily shop activity totals and order source counts, a profile of one checkout page load, the store's name, timezone and date format, and the titles of its payment and shipping methods. From Pirkoo 0.4, the store's orders of the last 12 months (with the billing customer's name, email, phone, company, city, state, postcode and country), its registered customers, products and coupons are also sent, once a day, so the store's team can see them at app.pirkoo.com; tvarkom processes them on this site's behalf and keeps orders for 12 months. Street addresses, shipping details, order notes and payment details are not sent. tvarkom keeps each scan's results and analysis linked to the store and shows them to the store's team at app.pirkoo.com."
+msgstr "Este site usa o plugin Pirkoo (Scanner de Diagnóstico de Bordo para WooCommerce), da tvarkom (MB TVARKOM SOFTWARE, Lituânia). Depois que um administrador conecta a loja ao Pirkoo, a cada análise da loja feita pelo Pirkoo (uma vez por dia, e quando a equipe da loja pede) o endereço dela, os endereços das páginas de carrinho e de checkout e o email de administração do site são enviados à tvarkom, com dados agregados da loja, como versões de software, tamanhos do banco de dados, contagens de tarefas em segundo plano, contagens de pedidos, as vendas brutas e o valor médio do pedido dos últimos 30 dias, contagens de clientes novos e recorrentes, totais diários de atividade da loja e contagens de origem dos pedidos, um perfil de um carregamento da página de checkout, o nome, o fuso horário e o formato de data da loja, e os títulos de suas formas de pagamento e de entrega. A partir do Pirkoo 0.4, os pedidos da loja dos últimos 12 meses (com o nome, email, telefone, empresa, cidade, estado, CEP e país do cliente de cobrança), seus clientes cadastrados, produtos e cupons também são enviados, uma vez por dia, para que a equipe da loja possa vê-los em app.pirkoo.com; a tvarkom os trata em nome deste site e guarda os pedidos por 12 meses. Endereços de rua, dados de entrega, notas de pedidos e dados de pagamento não são enviados. A tvarkom guarda os resultados e a análise de cada verificação vinculados à loja e os mostra à equipe da loja em app.pirkoo.com."
+
+msgid "Pirkoo Privacy Policy"
+msgstr "Política de Privacidade do Pirkoo"
+
+msgid "On-board Diagnostics Scanner for WooCommerce"
+msgstr "Scanner de Diagnóstico de Bordo para WooCommerce"
+

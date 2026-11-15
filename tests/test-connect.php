@@ -277,4 +277,16 @@ class Pirkoo_Connect_Test extends Pirkoo_Test_Case {
 		$wp->query_vars = $before;
 		$this->assertSame( PHP_INT_MAX, has_filter( 'rest_authentication_errors', 'pirkoo_rest_allow_own_routes' ) );
 	}
+
+	public function test_the_plugin_is_in_brazilian_portuguese() {
+		$this->assertSame( 10, has_action( 'init', 'pirkoo_load_textdomain' ) );
+		switch_to_locale( 'pt_BR' );
+		pirkoo_load_textdomain();
+		$connect = __( 'Connect to Pirkoo', 'pirkoo' );
+		$notice  = __( 'This store is disconnected from Pirkoo. Its history stays in the app; connect it again from here at any time.', 'pirkoo' );
+		restore_previous_locale();
+		$this->assertSame( 'Conectar ao Pirkoo', $connect );
+		$this->assertStringContainsString( 'desconectada do Pirkoo', $notice );
+		$this->assertSame( 'Connect to Pirkoo', __( 'Connect to Pirkoo', 'pirkoo' ) );
+	}
 }

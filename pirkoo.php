@@ -12,6 +12,7 @@
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       pirkoo
+ * Domain Path:       /languages
  *
  * @package Pirkoo
  */
@@ -60,6 +61,7 @@ add_action( 'admin_post_pirkoo_disconnect', 'pirkoo_handle_disconnect' );
 add_action( 'admin_notices', 'pirkoo_admin_notices' );
 add_action( 'admin_init', 'pirkoo_privacy_policy_content' );
 add_action( 'admin_init', 'pirkoo_upgrade' );
+add_action( 'init', 'pirkoo_load_textdomain' );
 add_action( 'rest_api_init', 'pirkoo_register_routes' );
 add_filter( 'rest_authentication_errors', 'pirkoo_rest_allow_own_routes', PHP_INT_MAX );
 

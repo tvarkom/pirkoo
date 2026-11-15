@@ -46,6 +46,17 @@ function pirkoo_random_token() {
 }
 
 /**
+ * Loads the translations shipped with the plugin (languages/: Brazilian Portuguese). A language
+ * pack from translate.wordpress.org, once one exists, is found first and wins.
+ *
+ * @return void
+ */
+function pirkoo_load_textdomain() {
+	// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- The plugin ships its own translations until WordPress.org has language packs for it.
+	load_plugin_textdomain( 'pirkoo', false, dirname( plugin_basename( PIRKOO_FILE ) ) . '/languages' );
+}
+
+/**
  * The plugin's links on the Plugins screen: Connect to Pirkoo, or Open Pirkoo and Disconnect from
  * Pirkoo, for users who can manage WooCommerce.
  *
