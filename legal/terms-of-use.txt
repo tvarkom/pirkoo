@@ -8,7 +8,7 @@ Last updated: 15 November 2026 (version 0.4)
 Who we are
 ----------
 
-Pirkoo is provided by MB TVARKOM SOFTWARE ("tvarkom", "we", "us"), a small partnership (mažoji bendrija) registered in Lithuania under company code 308171668, registered office Gedimino g. 22A-14, 44319 Kaunas, Lithuania. Contact: contact@pirkoo.com; for help with Pirkoo, support@pirkoo.com; for privacy questions, privacy@pirkoo.com.
+Pirkoo is provided by MB TVARKOM SOFTWARE ("tvarkom", "we", "us"), a small partnership (mažoji bendrija) registered in Lithuania under company code 308171668, registered office Gedimino g. 22A-14, 44319 Kaunas, Lithuania. Contact and help: support@pirkoo.com; for privacy questions, privacy@pirkoo.com.
 
 By creating an account on app.pirkoo.com, or by connecting a store with the Pirkoo plugin, you agree to these terms. If you use Pirkoo for a business, you confirm you may accept them on its behalf; the business is then the customer.
 
@@ -36,35 +36,27 @@ Accounts and companies
 
 * You log in with your email address; keep access to it private, because it's how you get in.
 
-* A company holds stores and has people with roles: Owners manage everything, including billing and deleting the company; Admins manage stores and people (except Owners) and start updates; Members see the company's pages and run scans; Viewers see the company's pages. The company's Owners are responsible for who they invite and the roles they give: everyone in the company sees its stores' data, including the shoppers' data in the store records.
+* A company holds stores and has people with roles: Owners manage everything, including deleting the company; Admins manage stores and people (except Owners) and start updates; Members see the company's pages and run scans; Viewers see the company's pages. The company's Owners are responsible for who they invite and the roles they give: everyone in the company sees its stores' data, including the shoppers' data in the store records.
 
 * A store is connected to one company at a time. Connecting it to another company ends the first connection; the first company keeps what it had, and keeps seeing the store's scan results, until it removes the store.
 
 * You may connect only stores you own or are authorized to manage, and you're responsible for having the right to send us the store's data described in the Privacy Policy. For the shoppers' data in the store records, the store is the data controller and we act on its behalf, as the Privacy Policy describes; ask privacy@pirkoo.com for a data processing agreement.
 
-Free trial and plans
---------------------
+Price and access
+----------------
 
-* The first company a person creates has a 14-day free trial, starting when the company is created, with up to 10 stores. One free trial per person: further companies you create start without one, read-only until a plan is paid.
+* Pirkoo is free of charge for now, and offered to a limited number of companies while we finish it. We don't sell plans yet and take no payment.
 
-* After the trial, Pirkoo needs a paid plan. Without one, the company is read-only: its pages and history stay available, but for its stores no scans run, the daily copies and the uptime, performance and broken-link checks stop, updates can't be started from the app, and no stores can be added. Nothing is deleted because a trial ended; the retention periods in the Privacy Policy keep running. Everything resumes when a plan is paid.
+* The first company a person creates can use everything for 14 days, starting when the company is created, with up to 10 stores. After that, unless we've agreed with you to go on (write to support@pirkoo.com), the company is read-only: its pages and history stay available, but for its stores no scans run, the daily copies and the uptime, performance and broken-link checks stop, updates can't be started from the app, and no stores can be added. Further companies the same person creates start read-only. Nothing is deleted because of it; the retention periods in the Privacy Policy keep running.
 
-* Plans are subscriptions for a number of stores (up to 10, up to 30, up to 50, or a custom plan agreed with us by email), paid monthly or yearly. A store counts while the company holds it, connected or not. The price, any taxes and the billing period are shown on the payment page of our payment provider, Stripe, before you pay; the app itself shows no prices. A plan starts when Stripe confirms the payment, is paid in advance and renews automatically for the same period until cancelled.
-
-* An Owner can change or cancel the plan at any time from the app's Billing page, which opens Stripe's billing page for the company. A cancellation takes effect at the end of the paid period, and the company is read-only from then; we don't refund partial periods, except where the law requires it or these terms say so.
-
-* If a payment fails, the plan stays active while the payment provider tries again; if the payment can't be taken, the company becomes read-only. It's active again as soon as a payment succeeds.
-
-* We may change prices or plans for future periods; we'll tell the company's Owners by email at least 30 days before a change to their plan takes effect, and they can cancel before it does.
-
-* If you're a consumer in the EU, you have 14 days from the day a paid plan starts to withdraw from it without giving a reason, by telling us at contact@pirkoo.com. By starting a paid plan you ask us to begin the service at once. If you withdraw within the 14 days, we refund what you paid, less an amount in proportion to the days the plan was in use until you told us. This doesn't affect the other rights the law gives you.
+* We plan to offer paid plans later. Before anything is charged, we'll publish new terms with the prices and conditions and tell each company's Owners by email at least 30 days ahead. Nothing will be charged to you without your agreement to those terms.
 
 Limits and acceptable use
 -------------------------
 
 * A store can't be scanned while a scan of it is running, nor within 10 minutes after one finishes, and at most 30 times a day. A person can send at most 5 invitations a day, and a company 30.
 
-* Don't use Pirkoo to scan or monitor stores you don't control, to get around its limits or trial (for example with several accounts or companies for the same stores), to overload our systems or other websites, or to resell Pirkoo without our written agreement.
+* Don't use Pirkoo to scan or monitor stores you don't control, to get around its limits (for example with several accounts or companies for the same stores), to overload our systems or other websites, or to resell Pirkoo without our written agreement.
 
 Results and updates
 -------------------
@@ -78,23 +70,23 @@ Availability and changes
 
 We work to keep Pirkoo available, but we don't promise it will be uninterrupted or error-free; uptime alerts and other notices can be late or missed, so don't rely on Pirkoo as your only monitoring.
 
-We may change or discontinue features. If a change would materially reduce what a paid plan includes, we'll tell the company's Owners by email at least 30 days before it takes effect, and they can cancel before it does. If we discontinue Pirkoo, we'll tell paying companies at least 30 days before and refund any period paid in advance that we can't provide.
+We may change or discontinue features. If we discontinue Pirkoo, we'll tell the companies' Owners by email at least 30 days before.
 
 Suspension and ending
 ---------------------
 
-* You can stop using Pirkoo at any time: disconnect or remove your stores, cancel the plan, delete the company (Owners) or delete your account. Deleting a company cancels its subscription at once and deletes its data, as the next section describes.
+* You can stop using Pirkoo at any time: disconnect or remove your stores, delete the company (Owners) or delete your account. Deleting a company deletes its data, as the next section describes.
 
-* If a company, a store or an account breaks these terms, we may suspend scans, the store or the account, or end access. We'll tell the company's Owners by email what we did and why, before or as soon as we do it, unless the law or the security of the service prevents it; they can answer at contact@pirkoo.com, and we'll look at it again.
+* If a company, a store or an account breaks these terms, we may suspend scans, the store or the account, or end access. We'll tell the company's Owners by email what we did and why, before or as soon as we do it, unless the law or the security of the service prevents it; they can answer at support@pirkoo.com, and we'll look at it again.
 
-* For a reason other than a breach, we'll give the company's Owners at least 30 days' notice before ending its access, and refund any period paid in advance that we can't provide.
+* For a reason other than a breach, we'll give the company's Owners at least 30 days' notice before ending its access.
 
-Your data when a plan or company ends
--------------------------------------
+Your data when access is paused or a company ends
+-------------------------------------------------
 
 How we handle personal data is described in our Privacy Policy (https://pirkoo.com/privacy/). In short:
 
-* After a trial or plan ends, the company is read-only and keeps its pages and history; nothing is deleted for that reason. The usual retention periods keep running (for example, orders leave our copy 12 months after they were placed, and scan results 12 months after each scan).
+* A read-only company keeps its pages and history; nothing is deleted for that reason. The usual retention periods keep running (for example, orders leave our copy 12 months after they were placed, and scan results 12 months after each scan).
 
 * Removing a store deletes its data from the company; deleting the company deletes all of them. What was deleted can remain in our provider's database snapshots for up to 5 days.
 
@@ -103,12 +95,12 @@ How we handle personal data is described in our Privacy Policy (https://pirkoo.c
 Liability
 ---------
 
-To the extent the law allows, our total liability to you for Pirkoo is limited to the amount your company paid us in the 12 months before the claim, and we aren't liable for indirect or consequential losses such as lost profit or lost data. During a free trial, and for a company that pays nothing, Pirkoo is provided free of charge and as it is. Nothing in these terms limits liability that can't be limited by law, or rights you have as a consumer.
+Pirkoo is provided free of charge and as it is. To the extent the law allows, we aren't liable for indirect or consequential losses such as lost profit or lost data. Nothing in these terms limits liability that can't be limited by law, or rights you have as a consumer.
 
 Changes to these terms
 ----------------------
 
-We may update these terms. We'll change the date at the top, publish the new version and, for changes that affect paying companies, tell their Owners by email at least 30 days before they take effect; they can cancel before then.
+We may update these terms. We'll change the date at the top, publish the new version and, for changes that affect how you use Pirkoo, tell the companies' Owners by email at least 30 days before they take effect.
 
 Governing law
 -------------
@@ -118,4 +110,4 @@ These terms are governed by the law of the Republic of Lithuania. Disputes go to
 Contact
 -------
 
-Questions about these terms: contact@pirkoo.com.
+Questions about these terms: support@pirkoo.com.

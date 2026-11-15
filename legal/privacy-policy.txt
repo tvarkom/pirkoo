@@ -17,13 +17,13 @@ Your Pirkoo account
 
 * Logging in: you log in to app.pirkoo.com with your email address. We email you a one-time login link, which works for 15 minutes, and keep the address, the time and your IP address with the request, to limit how many links can be asked for. When you use the link, we create your account (your email address, when you joined and last logged in, and the language you use the app in: English or Brazilian Portuguese, taken from your browser at your first login and changed in the account menu) and a session, kept in one cookie (below). The app and its emails to you are in that language.
 
-* Companies: an account belongs to companies, and a company holds stores. We keep each company's name, its people and their roles (Owner, Admin, Member or Viewer), and, for each person, when they used their free trial (one per person, for the first company they create).
+* Companies: an account belongs to companies, and a company holds stores. We keep each company's name, its people and their roles (Owner, Admin, Member or Viewer), and, for each person, when the 14 free days of the first company they created started.
 
 * Invitations: when someone in a company invites you, we keep your email address, the role offered, who invited you and when, and email you the invitation. You don't need an account to receive one.
 
 * The session cookie: app.pirkoo.com sets one cookie, the session (HttpOnly, Secure, valid 30 days), and a short-lived one (30 minutes) that remembers the page you were opening before logging in. Both are strictly necessary to use the app. There are no analytics, advertising or third-party cookies.
 
-* Usage records: we record how you use the app (logins, stores connected, disconnected and removed, scans asked for, refused and finished, dashboards viewed, and a company's plan changes), linked to your account and company, to improve Pirkoo. They hold the app's own numbers for the account, company and store, the action and its time; never your IP address, browser, email address or store data. We keep them 13 months, then only monthly totals without any link to you. We use no analytics cookies or third-party analytics.
+* Usage records: we record how you use the app (logins, stores connected, disconnected and removed, scans asked for, refused and finished, dashboards viewed, and when a company's 14 days start and end), linked to your account and company, to improve Pirkoo. They hold the app's own numbers for the account, company and store, the action and its time; never your IP address, browser, email address or store data. We keep them 13 months, then only monthly totals without any link to you. We use no analytics cookies or third-party analytics.
 
 Connecting your store
 ---------------------
@@ -95,10 +95,10 @@ From Pirkoo 0.4, app.pirkoo.com shows each connected store's WordPress, plugins,
 
 * Broken links: once a week our servers read up to 200 of your store's public pages, starting from the home page, and request every link and image on them, on your store and on other sites, to see whether it answers; we keep the broken ones, with the page they're on. They never request your store's cart, checkout, account, admin or add-to-cart addresses.
 
-When a company has no trial or plan
------------------------------------
+When a company's access is paused
+---------------------------------
 
-A company whose free trial has ended without a paid plan, or whose plan has ended, is read-only: its people still see its dashboards, records and history, but for its stores we stop the scans, the daily copy of records and of the inventory, updates from the app, and the uptime, performance and broken-link checks (the inventory is still refreshed when someone opens the Plugins, Themes, Core, Vulnerabilities or PHP issues pages). Nothing is deleted because of it; the retention periods below keep running, so orders still leave our copy 12 months after they were placed, and scan results 12 months after each scan.
+Pirkoo is free of charge for now. The first company a person creates can use everything for 14 days; after that, unless we've agreed with it to go on, it is read-only: its people still see its dashboards, records and history, but for its stores we stop the scans, the daily copy of records and of the inventory, updates from the app, and the uptime, performance and broken-link checks (the inventory is still refreshed when someone opens the Plugins, Themes, Core, Vulnerabilities or PHP issues pages). Nothing is deleted because of it; the retention periods below keep running, so orders still leave our copy 12 months after they were placed, and scan results 12 months after each scan.
 
 Disconnecting, removing and deleting
 ------------------------------------
@@ -107,14 +107,9 @@ Disconnecting, removing and deleting
 
 * Removing a store from a company deletes it from that company with its records, inventory, update log and monitoring data. When no other company holds the store, its scan results, history, analyses and profile are deleted from our systems too; when another company holds it, they stay for that company.
 
-* Deleting a company (its Owners) cancels its subscription and removes all its stores as above, its invitations and its people's access. People keep their own accounts.
+* Deleting a company (its Owners) removes all its stores as above, its invitations and its people's access. People keep their own accounts.
 
 * Deleting your account (in the app's account menu) deletes your memberships, sessions and login links; usage records lose their link to you. You must first hand over or delete a company of which you're the only Owner.
-
-Billing
--------
-
-A person's first company has a 14-day free trial; after it, scans and the other functions above need a paid plan. Plans are bought and managed on pages of our payment provider, Stripe: you enter your card or other payment details there, and we never see or keep them. Stripe gives us, and we keep for the company: its Stripe customer and subscription identifiers, the plan and billing period, the subscription's status and when it renews. Stripe keeps the billing contact, payment details and invoices. Invoices are issued through Stripe. We keep billing records for as long as accounting and tax law requires.
 
 Emails we send
 --------------
@@ -126,7 +121,6 @@ Legal basis (Art. 6 GDPR), by purpose
 
 * Your account, companies, invitations, connecting stores, scanning them, copying their records and inventory, updating and monitoring them, the emails above, and showing all of it to the company's people: providing the service you request (Art. 6(1)(b)). For shoppers' data in store records, we act as the store's processor (Art. 28 GDPR); the store's own legal basis applies. An invited person's email address: the inviting company's and our legitimate interest in letting it add its people (Art. 6(1)(f)).
 * The audit history, the store profile and its statistics, the usage records, the login and scan limits, and IP addresses with login requests: our legitimate interests in supporting your store, showing its results over time, understanding how Pirkoo is used, improving it and preventing abuse (Art. 6(1)(f)).
-* Billing: performing the contract (Art. 6(1)(b)) and complying with accounting and tax law (Art. 6(1)(c)).
 
 You can object at any time to what rests on our legitimate interests: email privacy@pirkoo.com.
 
@@ -149,8 +143,6 @@ Who processes data for us
 
 * Resend: sends the app's emails (login links, invitations, and the notices about a store disconnected, down and back up).
 
-* Stripe: payments, subscriptions and invoices.
-
 * Google: Google Workspace hosts our mailboxes; Google PageSpeed Insights tests your store's public home page (it receives only its address).
 
 Wordfence isn't one of them: we download its public vulnerability list and send it nothing about you or your store.
@@ -166,7 +158,7 @@ These periods are applied automatically by our software:
 
 * Invitations: 30 days after they're accepted or expire (an invitation expires after 7 days).
 
-* Your account, with its language: until you delete it (in the app's account menu), with your memberships and sessions. A company: until an Owner deletes it, with its stores, invitations and people's access; deleting a company also cancels its subscription.
+* Your account, with its language: until you delete it (in the app's account menu), with your memberships and sessions. A company: until an Owner deletes it, with its stores, invitations and people's access.
 
 * Stores in a company, with their connection secret and latest details: until they're removed or the company is deleted. A request waiting for a store in relay mode is held in memory only, for at most a few minutes.
 
@@ -183,8 +175,6 @@ These periods are applied automatically by our software:
 * Store profiles: replaced by each scan, and deleted with the store's record at our API.
 
 * Usage records: 13 months, then monthly totals only.
-
-* Billing records: as long as accounting and tax law requires.
 
 * On your store's server: the plugin's daily shop totals, 35 days; its settings and those totals, until you uninstall the plugin.
 

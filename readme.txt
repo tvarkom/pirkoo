@@ -92,7 +92,7 @@ Once a day on its own, between 02:00 and 05:00 in your store's timezone (skipped
 
 = Is Pirkoo free? =
 
-The plugin is free. The Pirkoo service at app.pirkoo.com is free for a company's first 14 days; after that, scans need a paid plan (10, 30 or 50 stores, monthly or yearly with 3 months free), bought through Stripe on the app's Billing page, where prices are shown. Without a plan, dashboards and history stay available, and scans pause.
+Yes: the plugin is free, and so is the Pirkoo service at app.pirkoo.com for now. It's offered to a limited number of companies while we finish it: a company can use everything for its first 14 days; after that it's read-only (dashboards and history stay available; scans, the daily copies, updates and monitoring pause) unless we've agreed with it to go on. Write to support@pirkoo.com. We plan to offer paid plans later, with new terms published first.
 
 = Does it send anything on its own? =
 
@@ -117,8 +117,8 @@ Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnos
 * app.pirkoo.com shows your store's orders, refunds, customers, products, variations, categories, top sellers, products bought together, stock velocity, variation attributes and coupons: the plugin answers its signed requests for them (the last 12 months when you connect, then what changed, once a day).
 
 = 0.3.2 =
-* The readme and the suggested privacy policy text describe Pirkoo's daily scans and its plans, and link the Terms of Use at https://pirkoo.com/terms/.
-* The Privacy Policy and Terms of Use shipped with the plugin cover app.pirkoo.com: accounts, companies, daily scans and billing.
+* The readme and the suggested privacy policy text describe Pirkoo's daily scans, and link the Terms of Use at https://pirkoo.com/terms/.
+* The Privacy Policy and Terms of Use shipped with the plugin cover app.pirkoo.com: accounts, companies and daily scans.
 
 = 0.3.1 =
 * Stores with plain permalinks or WordPress in a subfolder can connect: the plugin tells Pirkoo its REST address.
