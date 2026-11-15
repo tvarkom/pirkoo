@@ -84,7 +84,7 @@ function pirkoo_sync_orders( $since, $page, $per_page ) {
 			'paginate'      => true,
 		)
 	);
-	$items = array();
+	$items  = array();
 	foreach ( $result->orders as $order ) {
 		if ( $order instanceof WC_Order ) {
 			$items[] = pirkoo_sync_order( $order );
@@ -259,7 +259,7 @@ function pirkoo_sync_products( $since, $page, $per_page ) {
 			'paginate'      => true,
 		)
 	);
-	$items = array();
+	$items  = array();
 	foreach ( $result->products as $product ) {
 		if ( ! $product instanceof WC_Product ) {
 			continue;
@@ -343,8 +343,8 @@ function pirkoo_sync_coupons( $since, $page, $per_page ) {
 			'fields'         => 'ids',
 			'date_query'     => $since > 0 ? array(
 				array(
-					'column' => 'post_modified_gmt',
-					'after'  => gmdate( 'Y-m-d H:i:s', $since ),
+					'column'    => 'post_modified_gmt',
+					'after'     => gmdate( 'Y-m-d H:i:s', $since ),
 					'inclusive' => true,
 				),
 			) : array(),
@@ -354,14 +354,14 @@ function pirkoo_sync_coupons( $since, $page, $per_page ) {
 	foreach ( $query->posts as $id ) {
 		$coupon  = new WC_Coupon( (int) $id );
 		$items[] = array(
-			'id'            => $coupon->get_id(),
-			'code'          => $coupon->get_code(),
-			'type'          => $coupon->get_discount_type(),
-			'amount'        => pirkoo_sync_money( $coupon->get_amount() ),
-			'created'       => pirkoo_sync_time( $coupon->get_date_created() ),
-			'modified'      => pirkoo_sync_time( $coupon->get_date_modified() ),
-			'expires'       => pirkoo_sync_time( $coupon->get_date_expires() ),
-			'usage_count'   => (int) $coupon->get_usage_count(),
+			'id'          => $coupon->get_id(),
+			'code'        => $coupon->get_code(),
+			'type'        => $coupon->get_discount_type(),
+			'amount'      => pirkoo_sync_money( $coupon->get_amount() ),
+			'created'     => pirkoo_sync_time( $coupon->get_date_created() ),
+			'modified'    => pirkoo_sync_time( $coupon->get_date_modified() ),
+			'expires'     => pirkoo_sync_time( $coupon->get_date_expires() ),
+			'usage_count' => (int) $coupon->get_usage_count(),
 		);
 	}
 	return array( $items, $page < (int) $query->max_num_pages );

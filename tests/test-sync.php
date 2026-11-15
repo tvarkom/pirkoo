@@ -58,7 +58,12 @@ class Test_Pirkoo_Sync extends Pirkoo_Test_Case {
 			)
 		);
 
-		$page = $this->sync( array( 'kind' => 'orders', 'since' => 0 ) );
+		$page = $this->sync(
+			array(
+				'kind'  => 'orders',
+				'since' => 0,
+			)
+		);
 		$this->assertFalse( $page['more'] );
 		$this->assertCount( 1, $page['items'] );
 		$o = $page['items'][0];
@@ -76,7 +81,12 @@ class Test_Pirkoo_Sync extends Pirkoo_Test_Case {
 		$this->assertSame( '49.00', $o['refunds'][0]['amount'] );
 		$this->assertGreaterThan( 0, $o['created'] );
 
-		$later = $this->sync( array( 'kind' => 'orders', 'since' => time() + 3600 ) );
+		$later = $this->sync(
+			array(
+				'kind'  => 'orders',
+				'since' => time() + 3600,
+			)
+		);
 		$this->assertSame( array(), $later['items'], 'Nothing changed since then.' );
 	}
 
@@ -85,10 +95,23 @@ class Test_Pirkoo_Sync extends Pirkoo_Test_Case {
 		for ( $i = 0; $i < 3; $i++ ) {
 			wc_create_order()->save();
 		}
-		$first = $this->sync( array( 'kind' => 'orders', 'since' => 0, 'per_page' => 2 ) );
+		$first = $this->sync(
+			array(
+				'kind'     => 'orders',
+				'since'    => 0,
+				'per_page' => 2,
+			)
+		);
 		$this->assertCount( 2, $first['items'] );
 		$this->assertTrue( $first['more'] );
-		$second = $this->sync( array( 'kind' => 'orders', 'since' => 0, 'per_page' => 2, 'page' => 2 ) );
+		$second = $this->sync(
+			array(
+				'kind'     => 'orders',
+				'since'    => 0,
+				'per_page' => 2,
+				'page'     => 2,
+			)
+		);
 		$this->assertCount( 1, $second['items'] );
 		$this->assertFalse( $second['more'] );
 	}
@@ -114,10 +137,20 @@ class Test_Pirkoo_Sync extends Pirkoo_Test_Case {
 		$variation->set_stock_quantity( 7 );
 		$variation->save();
 
-		$page = $this->sync( array( 'kind' => 'products', 'since' => 0 ) );
-		$items = array_values( array_filter( $page['items'], function ( $p ) use ( $product ) {
-			return $p['id'] === $product->get_id();
-		} ) );
+		$page  = $this->sync(
+			array(
+				'kind'  => 'products',
+				'since' => 0,
+			)
+		);
+		$items = array_values(
+			array_filter(
+				$page['items'],
+				function ( $p ) use ( $product ) {
+					return $p['id'] === $product->get_id();
+				}
+			)
+		);
 		$this->assertCount( 1, $items );
 		$this->assertSame( 'variable', $items[0]['type'] );
 		$this->assertSame( 'Lighting', $items[0]['categories'][0]['name'] );
@@ -139,11 +172,21 @@ class Test_Pirkoo_Sync extends Pirkoo_Test_Case {
 		$coupon->set_amount( '10' );
 		$coupon->save();
 
-		$customers = $this->sync( array( 'kind' => 'customers', 'since' => 0 ) );
+		$customers = $this->sync(
+			array(
+				'kind'  => 'customers',
+				'since' => 0,
+			)
+		);
 		$emails    = wp_list_pluck( $customers['items'], 'email' );
 		$this->assertContains( 'jonas@example.com', $emails );
 
-		$coupons = $this->sync( array( 'kind' => 'coupons', 'since' => 0 ) );
+		$coupons = $this->sync(
+			array(
+				'kind'  => 'coupons',
+				'since' => 0,
+			)
+		);
 		$this->assertSame( 'spring10', $coupons['items'][0]['code'] );
 		$this->assertSame( '10.00', $coupons['items'][0]['amount'] );
 	}
