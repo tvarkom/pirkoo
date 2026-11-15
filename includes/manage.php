@@ -17,10 +17,7 @@ defined( 'ABSPATH' ) || exit;
  */
 function pirkoo_rest_inventory() {
 	pirkoo_load_admin_files();
-	// WordPress's own update checks, which ask WordPress.org at most twice a day.
-	wp_version_check();
-	wp_update_plugins();
-	wp_update_themes();
+	pirkoo_refresh_updates();
 
 	return array(
 		'core'       => pirkoo_inventory_core(),
@@ -42,6 +39,29 @@ function pirkoo_load_admin_files() {
 	require_once ABSPATH . 'wp-admin/includes/file.php';
 	require_once ABSPATH . 'wp-admin/includes/misc.php';
 	require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+}
+
+/**
+ * WordPress's own update checks, which ask WordPress.org at most twice a day. When WordPress.org
+ * can't be reached, WordPress raises a warning; it's ignored here, and the last known updates are
+ * used.
+ *
+ * @return void
+ */
+function pirkoo_refresh_updates() {
+	// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_set_error_handler -- only around WordPress's own update checks.
+	set_error_handler(
+		function ( $level ) {
+			return E_USER_WARNING === $level;
+		}
+	);
+	try {
+		wp_version_check();
+		wp_update_plugins();
+		wp_update_themes();
+	} finally {
+		restore_error_handler();
+	}
 }
 
 /**
@@ -200,9 +220,7 @@ function pirkoo_rest_update( WP_REST_Request $request ) {
 	}
 	try {
 		pirkoo_load_admin_files();
-		wp_version_check();
-		wp_update_plugins();
-		wp_update_themes();
+		pirkoo_refresh_updates();
 		$skin = new Automatic_Upgrader_Skin();
 		switch ( $type ) {
 			case 'plugin':
