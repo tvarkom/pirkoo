@@ -46,14 +46,18 @@ function pirkoo_random_token() {
 }
 
 /**
- * Loads the translations shipped with the plugin (languages/: Brazilian Portuguese). A language
- * pack from translate.wordpress.org, once one exists, is found first and wins.
+ * Loads the translation shipped with the plugin for the current language (languages/: Brazilian
+ * Portuguese), unless WordPress has a language pack for it from translate.wordpress.org, which it
+ * then loads on its own.
  *
  * @return void
  */
 function pirkoo_load_textdomain() {
-	// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- The plugin ships its own translations until WordPress.org has language packs for it.
-	load_plugin_textdomain( 'pirkoo', false, dirname( plugin_basename( PIRKOO_FILE ) ) . '/languages' );
+	$locale  = determine_locale();
+	$bundled = dirname( PIRKOO_FILE ) . '/languages/pirkoo-' . $locale . '.mo';
+	if ( is_readable( $bundled ) && ! is_readable( WP_LANG_DIR . '/plugins/pirkoo-' . $locale . '.mo' ) ) {
+		load_textdomain( 'pirkoo', $bundled, $locale );
+	}
 }
 
 /**
