@@ -41,7 +41,7 @@ A scan runs when someone in the store's company starts one in the app, and once 
 
 * Site checks: whether a WordPress or theme update is waiting, whether debug output is shown, whether search engines are asked not to index the store, the site's WordPress environment type, how many database tables use the MyISAM engine or a character set other than utf8mb4, how many expired transients are stored, how many administrator accounts exist (a count, no user details) and whether the dashboard file editor is on; the upload limit, missing PHP extensions, free and total disk space, the server's load, CPU core count and memory; how many plugins and themes WordPress paused, how many fatal errors the store's PHP error log shows for the last 7 days (only the count, never log lines), the automatic update settings and whether permalinks are plain; the database's response time and how many spam comments, auto-drafts and old revisions it holds; how many core files differ from WordPress.org's official checksums, which the plugin fetches from api.wordpress.org sending only the WordPress version and language; wp-config.php's file permissions, whether a user named "admin" exists (yes or no), and whether registration is open and the role new accounts get.
 
-The plugin doesn't read customers' names, email addresses or postal addresses, order contents, option contents or task arguments, and sends sales only as the two 30-day totals above. We keep the store's latest name, timezone, formats, language and method titles in the app to show its pages in the store's own way.
+For a scan, the plugin doesn't read customers' names, email addresses or postal addresses, order contents, option contents or task arguments, and sends sales only as the two 30-day totals above. The store's orders and customers reach us only through the store records below. We keep the store's latest name, timezone, formats, language and method titles in the app to show its pages in the store's own way.
 
 What the scan reads. Our scanner loads your store's public homepage, cart and checkout pages the way a visitor would, without running their JavaScript: it measures response times, page size and caching, and reads response headers and public platform markers. It also checks your HTTPS certificate and your domain's public SPF and DMARC records, and requests 18 well-known addresses on your store (such as configuration backups, .env files, the debug log, a .git folder, database dumps, site archives and phpinfo pages) to see whether anyone could download them; it reads at most 4 KB of each answer, follows no redirect and keeps only how many were found, never their contents. It doesn't log in, submit forms, place orders or read anything that isn't public.
 
@@ -55,6 +55,23 @@ Who sees a store. Only the people in the company holding the store, on app.pirko
 
 Disconnecting and removing. Disconnecting a store (in the app or from its Plugins screen) stops its scans; its results and history stay in the company, and the company's Owners and Admins get an email when the store disconnects itself. Removing a store from a company deletes it from that company; when no other company holds it, its results, history, analyses and profile are deleted from our systems too.
 
+Store records
+-------------
+
+From Pirkoo 0.4, so the people in a store's company can see its orders, refunds, customers, products and coupons on app.pirkoo.com, app.pirkoo.com asks the plugin for the store's records: the last 12 months when the store is connected, then what changed, once a day.
+
+* Orders: number, status, dates (created, paid, completed), currency, totals (subtotal, discounts, shipping, tax, total), the payment method's title, the products and variations ordered with their quantities, prices and chosen attributes, the coupons used, and refunds with their amounts, items and reasons.
+
+* The shopper on each order (the billing details): first and last name, email address, phone number, company, city, state, postcode and country. We don't receive the street address, shipping details, order notes, IP addresses or payment details.
+
+* Registered customers: name, email address, phone number, city, state, postcode, country and when they registered.
+
+* Products and variations: name, SKU, type, status, regular price and price, stock settings and quantity, categories, attributes, and when they were created and changed. Coupons: code, type, amount, dates and how many times used.
+
+For the shoppers' data in these records, the store is the data controller and we process it on the store's behalf, under the store's instructions, only to show it to the people in the store's company on app.pirkoo.com: we don't contact shoppers, combine their data across stores, use it for our statistics or share it with anyone but the providers below. Stores that need a data processing agreement can ask for one at privacy@pirkoo.com. Shoppers with a request about their data should contact the store; we help the store answer it.
+
+We keep orders and their refunds for 12 months after the order was placed; customers, products and coupons for as long as the store is connected and they exist on the store. Removing the store from its last company, or deleting the company, deletes them all.
+
 Billing
 -------
 
@@ -63,7 +80,7 @@ A company's first 14 days are free; after that, scans need a paid plan. Plans ar
 Legal basis (Art. 6 GDPR), by purpose
 -------------------------------------
 
-* Your account, companies, invitations, connecting stores, scanning them and showing their results and analysis to the company's people: providing the service you request (Art. 6(1)(b)). An invited person's email address: the inviting company's and our legitimate interest in letting it add its people (Art. 6(1)(f)).
+* Your account, companies, invitations, connecting stores, scanning them and showing their results, analysis and records to the company's people: providing the service you request (Art. 6(1)(b)). For shoppers' data in store records, we act as the store's processor (Art. 28 GDPR); the store's own legal basis applies. An invited person's email address: the inviting company's and our legitimate interest in letting it add its people (Art. 6(1)(f)).
 * The audit history, the store profile and its statistics, the usage records, the login and scan limits, and IP addresses with login requests: our legitimate interests in supporting your store, showing its results over time, understanding how Pirkoo is used, improving it and preventing abuse (Art. 6(1)(f)).
 * Billing: performing the contract (Art. 6(1)(b)) and complying with accounting and tax law (Art. 6(1)(c)).
 
@@ -106,6 +123,8 @@ These periods are applied automatically by our software:
 * Your account: until you delete it (in the app's account menu), with your memberships and sessions. A company: until an Owner deletes it, with its stores, invitations and people's access; deleting a company also cancels its subscription.
 
 * Stores in a company, with their connection secret and latest details: until they're removed or the company is deleted.
+
+* Store records: orders and refunds, 12 months after the order was placed; customers, products and coupons, while the store is connected and they exist on it. All of them are deleted when the store is removed or its company deleted.
 
 * Scan requests (store, page addresses and time): 24 months. The admin email in them is erased after 90 days. Failed scans, with any store data sent with them: 15 days after they failed.
 
