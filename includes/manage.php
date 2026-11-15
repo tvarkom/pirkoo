@@ -184,7 +184,7 @@ function pirkoo_php_errors_7d() {
 			return $b['last'] - $a['last'];
 		}
 	);
-	return array_slice( array_values( $groups ), 0, 100 );
+	return array_slice( $groups, 0, 100 );
 }
 
 /**
@@ -262,8 +262,8 @@ function pirkoo_rest_update( WP_REST_Request $request ) {
 			return new WP_Error( 'pirkoo_update_failed', $result->get_error_message(), array( 'status' => 502 ) );
 		}
 		if ( true !== $result && null !== $result ) {
-			$errors = $skin->get_errors();
-			return new WP_Error( 'pirkoo_update_failed', $errors->has_errors() ? $errors->get_error_message() : 'The update didn\'t complete.', array( 'status' => 502 ) );
+			$messages = array_filter( array_map( 'wp_strip_all_tags', (array) $skin->get_upgrade_messages() ) );
+			return new WP_Error( 'pirkoo_update_failed', $messages ? implode( ' ', $messages ) : 'The update didn\'t complete.', array( 'status' => 502 ) );
 		}
 		return array(
 			'type'    => $type,
