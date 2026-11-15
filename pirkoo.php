@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Pirkoo
  * Description:       On-board Diagnostics Scanner for WooCommerce
- * Version:           0.3.2
+ * Version:           0.4.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  woocommerce
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PIRKOO_VERSION', '0.3.2' );
+define( 'PIRKOO_VERSION', '0.4.0' );
 define( 'PIRKOO_FILE', __FILE__ );
 define( 'PIRKOO_OPTION', 'pirkoo' );
 define( 'PIRKOO_LOCK', 'pirkoo_scan_lock' );
@@ -32,6 +32,7 @@ if ( ! defined( 'PIRKOO_APP_URL' ) ) {
 
 require_once __DIR__ . '/includes/settings.php';
 require_once __DIR__ . '/includes/connect.php';
+require_once __DIR__ . '/includes/sync.php';
 require_once __DIR__ . '/includes/business.php';
 require_once __DIR__ . '/includes/funnel.php';
 require_once __DIR__ . '/includes/metrics.php';

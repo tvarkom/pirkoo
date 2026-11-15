@@ -4,7 +4,7 @@ Tags: woocommerce, performance, speed, health, dashboard
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.3.2
+Stable tag: 0.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,6 +99,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.4.0 =
+* app.pirkoo.com shows your store's orders, refunds, customers, products, variations, categories, top sellers, products bought together, stock velocity, variation attributes and coupons: the plugin answers its signed requests for them (the last 12 months when you connect, then what changed, once a day).
 
 = 0.3.2 =
 * The readme and the suggested privacy policy text describe Pirkoo's daily scans and its plans, and link the Terms of Use at https://pirkoo.com/terms/.

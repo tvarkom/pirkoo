@@ -225,6 +225,7 @@ function pirkoo_register_routes() {
 	foreach ( array(
 		'/collect'    => 'pirkoo_rest_collect',
 		'/disconnect' => 'pirkoo_rest_disconnect',
+		'/sync'       => 'pirkoo_rest_sync',
 	) as $route => $callback ) {
 		register_rest_route(
 			'pirkoo/v1',
