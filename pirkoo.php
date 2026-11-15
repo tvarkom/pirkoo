@@ -64,7 +64,8 @@ add_action( 'admin_post_pirkoo_disconnect', 'pirkoo_handle_disconnect' );
 // proof and poke on the home page, finishing the connection, and collecting every 5 minutes.
 add_action( 'init', 'pirkoo_relay_front', 0 );
 add_action( 'admin_post_pirkoo_relay', 'pirkoo_handle_relay' );
-add_filter( 'cron_schedules', 'pirkoo_relay_schedules' ); // phpcs:ignore WordPress.WP.CronInterval.CronSchedulesInterval -- Only scheduled for a store in relay mode.
+// phpcs:ignore WordPress.WP.CronInterval.ChangeDetected -- A 5-minute schedule, used only by a store in relay mode.
+add_filter( 'cron_schedules', 'pirkoo_relay_schedules' );
 add_action( PIRKOO_RELAY_HOOK, 'pirkoo_relay_collect' );
 add_action( 'admin_init', 'pirkoo_relay_schedule' );
 register_deactivation_hook( __FILE__, 'pirkoo_relay_deactivate' );
