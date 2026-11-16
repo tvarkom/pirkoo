@@ -65,6 +65,8 @@ LEGAL REVIEW REQUIRED: the allocation of roles where two companies hold one stor
 
 5.3 We don't use personal data, or store-linked information that is only pseudonymised, for analysis across stores.
 
+IMPLEMENTATION REQUIRED: the minimum group of 5 stores in 5.2 is built but not deployed (api-gateway branch anonymous-stats); until it is, the statistics command shows every group.
+
 LEGAL REVIEW REQUIRED: whether the act of anonymising needs its own legal basis or instruction from each controller, and whether a minimum group of 5 stores is enough for the statistics to count as anonymous.
 
 6. Confidentiality and who has access
@@ -101,7 +103,7 @@ FOUNDER CONFIRMATION REQUIRED: the 30-day notice period, and that the emails wil
 
 9.1 Data subjects' requests: if a shopper or another person writes to us about data we process on your behalf, we'll pass the request to you without undue delay and won't answer it ourselves, except to say so. We'll help you answer by finding, correcting, giving a copy of or deleting that person's data in Pirkoo when you ask us at privacy@pirkoo.com. In the app, removing a store deletes all its data.
 
-IMPLEMENTATION REQUIRED: the app has no function to find, export or delete one shopper's data; today it's done by hand on request. A customer, product or coupon deleted on the store is not removed from our copy by the daily copy either.
+IMPLEMENTATION REQUIRED: finding, giving a copy of (JSON) and erasing one shopper's data in one store is built as an operator command, not deployed (`admin shopper`, app PR #20); there is no function for the merchant to do it in the app. Still open: a customer, product or coupon deleted on the store is not removed from our copy by the daily copy (needs a plugin change), and an order changed on the store after we erased it is copied again as the store has it.
 
 9.2 Security, impact assessments and consultations: we'll give you the information about our processing that you reasonably need for your own security obligations, for a data protection impact assessment, or for a prior consultation with a supervisory authority.
 
