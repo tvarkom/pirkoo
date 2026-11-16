@@ -1,0 +1,69 @@
+SUB-PROCESSOR REGISTER
+Pirkoo
+
+DRAFT for the founder's review, version 0.5 of 16 November 2026. Not published and not reviewed by a lawyer. Each provider's legal entity, location and transfer mechanism below comes from that provider's own public pages as read on 16 November 2026; none was checked against a contract Tvarkom has signed. Lines marked FOUNDER CONFIRMATION REQUIRED or LEGAL REVIEW REQUIRED are open points.
+
+The providers MB TVARKOM SOFTWARE uses to run Pirkoo, what each does, which personal data it handles and where. Part A lists the sub-processors for the data we process on our customers' behalf (the Data Processing Agreement, section 8). Part B lists the other providers, which handle only data we are controller of, or no personal data from stores. Changes to Part A are announced to each company's Owners by email at least 30 days ahead.
+
+Part A: Sub-processors for customers' store data
+------------------------------------------------
+
+1. Fly.io
+
+* Legal entity: Fly.io, Inc., United States.
+* What it does: hosts app.pirkoo.com, Pirkoo's API and the scanner, with their databases, database snapshots and logs.
+* Personal data: everything Pirkoo holds on customers' behalf (Data Processing Agreement, Annex 1): shoppers' data in store records, admin email addresses, store figures.
+* Where: servers in Amsterdam, the Netherlands (the only region Pirkoo's applications and volumes run in).
+* Transfers outside the EEA: the data is stored in the EU. The provider is a United States company, so access from the United States (for example for support) can't be excluded. Fly.io publishes a Data Privacy Framework policy covering the EU-U.S. framework.
+* FOUNDER CONFIRMATION REQUIRED: that Tvarkom has a data processing agreement with Fly.io, Inc.; that Fly.io, Inc. is the contracting entity on Tvarkom's account; its current Data Privacy Framework status; and whether its agreement includes the Standard Contractual Clauses.
+* FOUNDER CONFIRMATION REQUIRED: that the volumes holding the databases are encrypted at rest.
+
+2. Google PageSpeed Insights
+
+* Legal entity: FOUNDER CONFIRMATION REQUIRED. The API is offered under the Google APIs Terms of Service; whether the contracting entity for a Lithuanian company is Google Ireland Limited or Google LLC was not verified.
+* What it does: once a day, tests the performance of a connected store's home page from Google's servers.
+* Personal data: none is sent on purpose. Google receives the store's public home page address and the address of the server that asks (Pirkoo's, not a person's). A store's address can relate to a person where the merchant is a sole trader trading under their own name.
+* Where: Google's infrastructure; the location isn't chosen by Pirkoo.
+* Transfers outside the EEA: not verified.
+* LEGAL REVIEW REQUIRED: whether sending a store's public address makes Google a sub-processor at all, and if so on which terms; it is listed here so that nothing is left out.
+
+Part B: Other providers
+-----------------------
+
+These handle personal data we are the controller of (account holders, website visitors, people who email us). They are in the Privacy Policy, and here for completeness.
+
+3. Resend
+
+* Legal entity: Plus Five Five, Inc. (trading as Resend), United States.
+* What it does: sends the app's emails: login links, invitations, and the notices to a company's Owners and Admins that a store was disconnected, stopped answering or is back.
+* Personal data: the recipient's email address and the email's content. The notices name a store's address and the company's name; none contains shoppers' data.
+* Where: the United States. Resend states that it stores customer data, including message content and delivery logs, in the United States, whatever sending region is chosen.
+* Transfers outside the EEA: yes. Resend states that it is certified under the EU-U.S. Data Privacy Framework and that its data processing addendum includes the Standard Contractual Clauses.
+* FOUNDER CONFIRMATION REQUIRED: that Tvarkom has accepted Resend's data processing addendum, and Resend's current Data Privacy Framework status.
+* LEGAL REVIEW REQUIRED: whether Resend belongs in Part A, because the notices about a store are sent as part of the service to the customer.
+
+4. Google Workspace
+
+* Legal entity: for customers in the European Economic Area, Google's Workspace agreements name Google Ireland Limited. FOUNDER CONFIRMATION REQUIRED: the entity on Tvarkom's own Workspace agreement.
+* What it does: hosts the mailboxes at pirkoo.com and tvarkom.com (support@, privacy@ and the others).
+* Personal data: the messages people send us and our answers, with their names and addresses. A customer may include data about a store or a shopper in a message.
+* Where: FOUNDER CONFIRMATION REQUIRED (the data region set on the Workspace account, if any).
+* Transfers outside the EEA: FOUNDER CONFIRMATION REQUIRED (Google's Cloud Data Processing Addendum and its transfer terms, as accepted on the account).
+
+5. Cloudflare
+
+* Legal entity: Cloudflare, Inc., United States (the entity named in Cloudflare's customer data processing addendum).
+* What it does: DNS for pirkoo.com, and network protection in front of the website pirkoo.com. Not in front of app.pirkoo.com or Pirkoo's API, which are reached through Fly.io directly.
+* Personal data: website visitors' IP addresses and the pages they request; one security cookie (cf_clearance) when its bot protection checks a browser. No data from stores.
+* Where: Cloudflare's global network; requests are handled at the location nearest the visitor.
+* Transfers outside the EEA: yes. Cloudflare's addendum relies on the Data Privacy Framework for transfers to the United States, with the Standard Contractual Clauses for other cases.
+* FOUNDER CONFIRMATION REQUIRED: that Tvarkom has accepted Cloudflare's data processing addendum, and Cloudflare's current Data Privacy Framework status.
+
+Not sub-processors
+------------------
+
+* Wordfence (Defiant, Inc.): Pirkoo downloads its public vulnerability list once a day. Nothing about a customer or a store is sent to it.
+* WordPress.org: a store's own plugin asks api.wordpress.org for core file checksums and for available updates, sending the WordPress version, language and what WordPress's own update checks send. That is the store's WordPress talking to WordPress.org, as it already does; Pirkoo's servers aren't involved.
+* Stripe: not used. Pirkoo takes no payments today. It will be added here, with notice, before plans are sold.
+* GitHub: hosts Pirkoo's source code and runs its tests. No customer data is stored there; test data is made up.
+  FOUNDER CONFIRMATION REQUIRED: that no export or copy of production data has been put in a repository or an issue.

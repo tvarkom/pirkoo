@@ -1,0 +1,211 @@
+DATA PROCESSING AGREEMENT
+Pirkoo
+
+DRAFT for the founder's review, version 0.5 of 16 November 2026. Not published, not in force, and not reviewed by a lawyer. Lines marked FOUNDER CONFIRMATION REQUIRED, LEGAL REVIEW REQUIRED or IMPLEMENTATION REQUIRED are open points, not part of the agreement.
+
+The terms on which MB TVARKOM SOFTWARE processes personal data on behalf of the businesses whose WooCommerce stores are connected to Pirkoo, as Article 28 of the General Data Protection Regulation (EU) 2016/679 ("GDPR") requires.
+
+1. Parties and how this agreement applies
+-----------------------------------------
+
+1.1 "Tvarkom", "we": MB TVARKOM SOFTWARE, company code 308171668, Gedimino g. 22A-14, 44319 Kaunas, Lithuania; privacy@pirkoo.com.
+
+1.2 "Customer", "you": the business that holds the company on app.pirkoo.com to which a store is connected.
+
+1.3 This agreement is part of the Pirkoo Terms of Use (https://pirkoo.com/terms/) and applies to every store connected to Pirkoo, from the moment it is connected and for as long as we hold personal data from it. Connecting a store accepts it. Where this agreement and the Terms of Use differ about personal data we process on your behalf, this agreement prevails.
+
+LEGAL REVIEW REQUIRED: whether acceptance by connecting a store, without a signature, is a sufficient written form under Art. 28(9) GDPR for these customers.
+IMPLEMENTATION REQUIRED: the app's Connect page and the plugin's readme must link this agreement where they now link the Terms of Use and the Privacy Policy, and it must be published at a stable address, before it can be relied on.
+
+1.4 It covers only the personal data we process on your behalf (section 3 and Annex 1). Our processing of account holders' data as a controller is described in the Privacy Policy (https://pirkoo.com/privacy/), not here.
+
+2. Who is controller and who is processor
+-----------------------------------------
+
+The roles depend on whose store it is and on whose behalf it was connected. This agreement covers all three cases:
+
+2.1 A merchant connects its own store. The merchant is the controller of the personal data in the store. Tvarkom is its processor.
+
+2.2 An agency connects a merchant's store on the merchant's behalf. The merchant is the controller. The agency is the merchant's processor and the Customer under this agreement. Tvarkom is the agency's sub-processor. The agency confirms that the merchant has authorised it to use Tvarkom as a sub-processor on these terms, and passes the merchant's instructions on to us. The merchant's rights as controller under this agreement are exercised through the agency, unless the law gives the merchant a direct right.
+
+2.3 An agency connects a store that it runs itself. The agency is the controller and Tvarkom its processor, as in 2.1.
+
+2.4 You are responsible for knowing which of these applies to each store you connect, for having a lawful basis and any authorisation needed to send us the data in Annex 1, and for the information you owe your shoppers.
+
+2.5 Two companies on Pirkoo can hold the same store (for example the merchant and its agency). Each is a Customer under this agreement for what it holds. A store is connected to one company at a time; scan results are kept per store address and are visible to every company holding the store (Privacy Policy, "Who sees a store").
+
+LEGAL REVIEW REQUIRED: the allocation of roles where two companies hold one store, and whether the merchant's agreement is needed for a former holder to keep seeing new scan results.
+
+3. What we process, why and for how long
+----------------------------------------
+
+3.1 Subject matter and nature: receiving the data in Annex 1 from the Pirkoo plugin on your store and from your store's public pages, storing it, and showing it to the people in your company on app.pirkoo.com.
+
+3.2 Purpose: providing Pirkoo to you, as the Terms of Use describe it: scans and their history, the store's records, WordPress inventory and updates, monitoring, the emails about your stores, and support you ask for.
+
+3.3 Duration: from a store's connection until its data is deleted under section 11.
+
+3.4 The types of personal data, the categories of data subjects and the retention periods are in Annex 1.
+
+4. Your instructions
+--------------------
+
+4.1 We process the personal data only on your documented instructions. Your instructions are: this agreement, the Terms of Use, and what the people in your company do in the app (connecting, scanning, updating, disconnecting, removing, deleting) and through the plugin on your store.
+
+4.2 We don't use the personal data for our own purposes: we don't contact your shoppers, sell or share the data, use it for advertising, or combine it across stores. Section 5 is the only exception, and it concerns information that is no longer personal data.
+
+4.3 If we think an instruction breaks data protection law, we'll tell you. If the law of the European Union or of Lithuania requires us to process the data otherwise, we'll tell you first, unless that law forbids it.
+
+5. Anonymised and aggregated statistics
+---------------------------------------
+
+5.1 You authorise us to make statistics from information about stores that are irreversibly anonymised and aggregated, and to use those statistics as a controller to improve Pirkoo, its scanner and monitoring, to set health and reporting benchmarks and to understand broad usage.
+
+5.2 Today the only such statistics are counts of stores by a value of their store profile (for example how many stores per country, size or checkout type). They are shown only for groups of at least 5 stores; a value fewer stores share is not shown on its own, and nothing is shown while fewer than 5 stores have a profile. They never use shoppers' data, sales amounts, store addresses or email addresses.
+
+5.3 We don't use personal data, or store-linked information that is only pseudonymised, for analysis across stores.
+
+LEGAL REVIEW REQUIRED: whether the act of anonymising needs its own legal basis or instruction from each controller, and whether a minimum group of 5 stores is enough for the statistics to count as anonymous.
+
+6. Confidentiality and who has access
+-------------------------------------
+
+6.1 Only people who need the data to run and support Pirkoo have access to it at Tvarkom, and they are bound to confidentiality.
+
+FOUNDER CONFIRMATION REQUIRED: who has access to the production systems today (the founder only, or others), and that each is bound by a confidentiality obligation in writing.
+
+6.2 In your company, who sees what is decided by the roles your Owners give. Only Owners and Admins can see what identifies shoppers (names, email addresses, phone numbers, the Customers page); Members and Viewers get orders and reports without it. You are responsible for the roles you give.
+
+7. Security
+-----------
+
+7.1 We apply the technical and organisational measures in Annex 2, and keep them appropriate to the risk. We may change them as long as the level of protection doesn't go down.
+
+7.2 We hold no security certification, and this agreement promises none.
+
+8. Sub-processors
+-----------------
+
+8.1 You give us a general authorisation to use sub-processors. The ones we use are listed in the Sub-processor Register (legal/subprocessors.txt, shipped with the plugin and published with this agreement), with what each does and where.
+
+8.2 We bind each sub-processor to data protection obligations of the same kind as ours here, and we remain responsible to you for what they do.
+
+FOUNDER CONFIRMATION REQUIRED: that Tvarkom has accepted each listed provider's data processing terms (see the register).
+
+8.3 Before adding or replacing a sub-processor we'll update the register and tell your company's Owners by email at least 30 days ahead. If you object on reasonable data protection grounds within those 30 days, we'll look for a solution with you; if there is none, you can end the processing by removing your stores or deleting your company before the change takes effect.
+
+FOUNDER CONFIRMATION REQUIRED: the 30-day notice period, and that the emails will be sent by hand (the app has no function for it).
+
+9. Helping you with your obligations
+------------------------------------
+
+9.1 Data subjects' requests: if a shopper or another person writes to us about data we process on your behalf, we'll pass the request to you without undue delay and won't answer it ourselves, except to say so. We'll help you answer by finding, correcting, giving a copy of or deleting that person's data in Pirkoo when you ask us at privacy@pirkoo.com. In the app, removing a store deletes all its data.
+
+IMPLEMENTATION REQUIRED: the app has no function to find, export or delete one shopper's data; today it's done by hand on request. A customer, product or coupon deleted on the store is not removed from our copy by the daily copy either.
+
+9.2 Security, impact assessments and consultations: we'll give you the information about our processing that you reasonably need for your own security obligations, for a data protection impact assessment, or for a prior consultation with a supervisory authority.
+
+10. Personal data breaches
+--------------------------
+
+10.1 If we become aware of a personal data breach affecting data we process on your behalf, we'll tell your company's Owners by email without undue delay, with what we know then: what happened, the kinds and approximate amounts of data and people concerned, the likely consequences, and what we have done and propose to do. We'll add to it as we learn more.
+
+10.2 We'll help you with your own notifications to the supervisory authority and to the people concerned.
+
+FOUNDER CONFIRMATION REQUIRED: whether to commit to a fixed number of hours (for example 48 or 72). This draft keeps the law's "without undue delay", because no on-call process exists that would guarantee a fixed time.
+
+11. Return and deletion
+-----------------------
+
+11.1 Disconnecting a store stops the collection; what was collected stays in your company. Removing a store from your company deletes its records, inventory, update log and monitoring data, and, when no other company holds the store, its scan results, history, analyses and profile. Deleting your company removes all its stores in the same way.
+
+11.2 Before deleting, you can ask us at privacy@pirkoo.com for a copy of the personal data we hold on your behalf, in a commonly used electronic format. The app has no export of its own.
+
+IMPLEMENTATION REQUIRED: there is no export in the app; a copy is produced by hand. FOUNDER CONFIRMATION REQUIRED: the format and the time within which a copy is given.
+
+11.3 What was deleted can remain in our hosting provider's database snapshots for up to 5 days, after which the snapshots are deleted. We use snapshots only to restore the service, and if we restore one we delete again what had been deleted.
+
+11.4 While a store stays in your company, the retention periods of Annex 1 apply. The original data stays on your store throughout: Pirkoo holds a copy.
+
+11.5 We keep personal data longer only where the law of the European Union or of Lithuania requires it, and then only for that purpose.
+
+12. Information and audits
+--------------------------
+
+12.1 We'll give you the information needed to show that we meet Article 28 GDPR: this agreement, the Privacy Policy, the Sub-processor Register, and written answers to reasonable questions about our processing, at privacy@pirkoo.com.
+
+12.2 Where that information isn't enough for a requirement the law puts on you, you (or an independent auditor bound to confidentiality) may carry out an audit of our processing of your data, on reasonable written notice, during working hours, not more than once a year unless a supervisory authority requires it or a breach occurred, without access to other customers' data, and at your cost.
+
+LEGAL REVIEW REQUIRED: whether these audit conditions are acceptable under Art. 28(3)(h) GDPR. FOUNDER CONFIRMATION REQUIRED: that such an audit could be accommodated in practice.
+
+13. International transfers
+---------------------------
+
+13.1 We store the personal data we process on your behalf in the European Union (Amsterdam, the Netherlands).
+
+13.2 Some sub-processors are established outside the European Economic Area or can access data from there. We transfer personal data outside the EEA only under a mechanism Chapter V GDPR allows: an adequacy decision, or the European Commission's Standard Contractual Clauses. The register says which applies to each sub-processor.
+
+13.3 If your store is outside the EEA, sending it the app's requests and receiving its data is part of the service you ask for.
+
+LEGAL REVIEW REQUIRED: the transfer mechanism for each sub-processor (see the register), and whether module 3 (processor to processor) of the Standard Contractual Clauses must be offered to customers outside the EEA.
+
+14. Liability, duration and law
+-------------------------------
+
+14.1 Each party's liability under this agreement is subject to the Terms of Use, to the extent the law allows; nothing limits a party's liability to data subjects or to supervisory authorities under the GDPR.
+
+14.2 This agreement lasts as long as we hold personal data on your behalf.
+
+14.3 It is governed by the law of the Republic of Lithuania, and disputes go to the courts of Lithuania, as the Terms of Use say.
+
+14.4 We may change this agreement where the law or a change to the service requires it. We'll tell your company's Owners by email at least 30 days before a change takes effect, unless the law requires it sooner.
+
+LEGAL REVIEW REQUIRED: the whole of section 14.
+
+Annex 1: The processing
+-----------------------
+
+Data subjects:
+
+* Shoppers of the connected store: people who placed an order in the last 12 months, and the store's registered customers.
+* People who run the store, where the store's data relates to them: the holder of the WordPress admin email address; a sole trader whose store figures relate to them as a person.
+
+Personal data, by function (the Privacy Policy lists every field):
+
+* Store records (copied once a day): orders with the shopper's first and last name, email address, phone number, company, city, state, postcode and country; registered customers with the same fields and their registration date. Never street addresses, shipping details, order notes, IP addresses or payment details.
+* Scans: the site's admin email address; the store's figures (order counts, gross sales and average order value of the last 30 days), which relate to a person only for a sole trader. No shopper's data.
+* WordPress inventory: PHP error messages of the last 7 days, from which the plugin removes email addresses, IP addresses, links and long numbers before sending them; they could still contain a name written in an error text.
+* Monitoring (uptime, performance, broken links): public pages of the store only; no personal data is sought.
+
+Special categories of data: none are sought. A store selling products that reveal such data would reveal it through the product names in its orders; you are responsible for deciding whether such a store may be connected.
+
+Who receives it: the people in your company, by role (section 6.2), and the sub-processors in the register.
+
+Retention:
+
+* Orders and their refunds: 12 months after the order was placed.
+* Customers, products and coupons: until the store is removed from the company or the company is deleted.
+* Scan requests: 24 months; the admin email in them is erased after 90 days. Failed scans: 15 days.
+* The store's contact email at our API: 12 months without a scan.
+* Scan results, analyses and history: 12 months after each scan.
+* WordPress inventory and update log: while the store is in the company.
+* Uptime checks: 30 days; uptime incidents: 12 months after they ended; performance tests: 12 months; broken links: the last 5 weekly checks.
+* Database snapshots: 5 days. Service logs (store addresses and technical identifiers, no personal data sought): about 7 days at our hosting provider.
+
+Annex 2: Technical and organisational measures
+----------------------------------------------
+
+What is in place today, as built:
+
+* Less data at the source: the plugin sends no street addresses, payment details or order notes; it replaces values in database queries, and email addresses, IP addresses, links and long numbers in error messages and names, before anything leaves the store.
+* Encryption in transit: app.pirkoo.com and Pirkoo's API accept HTTPS only; the app calls stores only over HTTPS.
+* Secrets: each store's connection secret is encrypted with AES-256-GCM before it is stored; login links and session tokens are stored only as hashes; operating secrets are kept in the hosting provider's secret store, not in the code.
+* Signed requests: every request between the app and a store's plugin is signed with the store's secret (HMAC-SHA256), valid for 5 minutes and accepted once.
+* Access in the app: login by one-time email link, valid 15 minutes; sessions of 30 days in an HttpOnly, Secure cookie; every page checks the session, the company holding the store, and the person's role; what identifies shoppers is returned only to Owners and Admins, and is left out of the database queries for the others.
+* Limits: on login links per address and network, on invitations, and on scans per store.
+* Requests to stores go only to public internet addresses, never to private networks.
+* Logs: store addresses and technical identifiers; never shoppers' data, email addresses, login links or secrets.
+* Retention: the periods of Annex 1 are applied automatically, daily or hourly.
+* Hosting in the European Union (Amsterdam), on one provider, with daily database snapshots kept 5 days.
+
+FOUNDER CONFIRMATION REQUIRED, not verifiable from the code: that the hosting provider encrypts the databases' volumes at rest; that two-factor authentication is on for the accounts that control production (hosting, source code, email, DNS); who holds those accounts; and whether any written procedure exists for incidents and for restoring from a snapshot.
