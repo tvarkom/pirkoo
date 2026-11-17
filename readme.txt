@@ -92,7 +92,7 @@ Once a day on its own, between 02:00 and 05:00 in your store's timezone (skipped
 
 = Is Pirkoo free? =
 
-Yes: the plugin is free, and so is the Pirkoo service at app.pirkoo.com for now. It's offered to a limited number of companies while we finish it: a company can use everything for its first 14 days; after that it's read-only (dashboards and history stay available; scans, the daily copies, updates and monitoring pause) unless we've agreed with it to go on. Write to support@pirkoo.com. We plan to offer paid plans later, with new terms published first.
+Yes: the plugin is free, and so is the Pirkoo service at app.pirkoo.com for now. It's offered to a limited number of companies while we finish it: a person's first company is free for up to 3 stores, with everything and no time limit; a company holding more stores than that is paused (dashboards and history stay available; scans, the daily copies, updates and monitoring pause) until it removes stores. Write to support@pirkoo.com. We plan to offer paid plans later, with new terms published first.
 
 = Does it send anything on its own? =
 

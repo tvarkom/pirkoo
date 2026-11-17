@@ -33,7 +33,7 @@ Your Pirkoo account
 
 * The session cookie: app.pirkoo.com sets one cookie, the session (HttpOnly, Secure, valid 30 days), and a short-lived one (30 minutes) that remembers the page you were opening before logging in. Both are strictly necessary to use the app. There are no analytics, advertising or third-party cookies.
 
-* Usage records: we record how you use the app (logins, stores connected, disconnected and removed, scans asked for, refused and finished, dashboards viewed, and when a company's 14 days start and end), linked to your account and company, to improve Pirkoo. They hold the app's own numbers for the account, company and store, the action and its time; never your IP address, browser, email address or store data. We keep them 13 months, then only monthly totals without any link to you. We use no analytics cookies or third-party analytics.
+* Usage records: we record how you use the app (logins, stores connected, disconnected and removed, scans asked for, refused and finished, dashboards viewed, and changes to a company's plan), linked to your account and company, to improve Pirkoo. They hold the app's own numbers for the account, company and store, the action and its time; never your IP address, browser, email address or store data. We keep them 13 months, then only monthly totals without any link to you. We use no analytics cookies or third-party analytics.
 
 Connecting your store
 ---------------------
@@ -116,7 +116,7 @@ From Pirkoo 0.4, app.pirkoo.com shows each connected store's WordPress, plugins,
 When a company's access is paused
 ---------------------------------
 
-Pirkoo is free of charge for now. The first company a person creates can use everything for 14 days; after that, unless we've agreed with it to go on, it is read-only: its people still see its dashboards, records and history, but for its stores we stop the scans, the daily copy of records and of the inventory, updates from the app, and the uptime, performance and broken-link checks (the inventory is still refreshed when someone opens the Plugins, Themes, Core, Vulnerabilities or PHP issues pages). Nothing is deleted because of it; the retention periods below keep running, so orders still leave our copy 12 months after they were placed, and scan results 12 months after each scan.
+Pirkoo is free of charge for now. The first company a person creates is free for up to 3 stores, with no time limit; further companies a person creates can't hold stores. A company that holds more stores than it's allowed is paused until it removes stores: its people still see its dashboards, records and history, but for its stores we stop the scans, the daily copy of records and of the inventory, updates from the app, and the uptime, performance and broken-link checks (the inventory is still refreshed when someone opens the Plugins, Themes, Core, Vulnerabilities or PHP issues pages). Nothing is deleted because of it; the retention periods below keep running, so orders still leave our copy 12 months after they were placed, and scan results 12 months after each scan.
 
 Disconnecting, removing and deleting
 ------------------------------------

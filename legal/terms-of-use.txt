@@ -96,11 +96,9 @@ Price and access
 
 * Pirkoo is free of charge for now, and offered to a limited number of companies while we finish it. We don't sell plans and take no payment.
 
-* The first company a person creates can use everything for 14 days, starting when the company is created, with up to 10 stores. After that, unless we've agreed with you to go on (write to support@pirkoo.com), the company is read-only: its pages and history stay available, but for its stores no scans run, the daily copies and the uptime, performance and broken-link checks stop, updates can't be started from the app, and no stores can be added. Further companies the same person creates start read-only. Nothing is deleted because of it; the retention periods in the Privacy Policy keep running.
+* The first company a person creates is free for up to 3 stores, with everything Pirkoo does and no time limit. Further companies the same person creates can't hold stores. A company that holds more stores than it's allowed is paused: its pages and history stay available, but for its stores no scans run, the daily copies and the uptime, performance and broken-link checks stop, updates can't be started from the app, and no stores can be added, until it removes stores. Nothing is deleted because of it; the retention periods in the Privacy Policy keep running.
 
-IMPLEMENTATION REQUIRED: built, not deployed: `admin keep-active -company ID` (app PR #19) keeps a company active after its 14 days, which "unless we've agreed with you to go on" needs. Until it is merged, nothing does.
-
-* We plan to offer paid plans later. Nothing here sets a price, a billing period, a renewal or a cancellation rule, because none exists yet. Before anything is charged, we'll publish new terms that set them out and tell each company's Owners by email at least 30 days ahead. You will be charged only if you then choose a plan and agree to those terms; without that, your company stays as it is or becomes read-only, and nothing is deleted for that reason.
+* We plan to offer paid plans later. Nothing here sets a price, a billing period, a renewal or a cancellation rule, because none exists yet. Before anything is charged, we'll publish new terms that set them out and tell each company's Owners by email at least 30 days ahead. You will be charged only if you then choose a plan and agree to those terms; without that, your company stays as it is (free for up to 3 stores, or paused while it holds more), and nothing is deleted for that reason.
 
 Limits and acceptable use
 -------------------------
@@ -149,7 +147,7 @@ Keeping, returning and deleting your data
 
 The Privacy Policy and the Data Processing Agreement give the details. In short:
 
-* A read-only company keeps its pages and history; nothing is deleted for that reason. The usual retention periods keep running (for example, orders leave our copy 12 months after they were placed, and scan results 12 months after each scan).
+* A paused company keeps its pages and history; nothing is deleted for that reason. The usual retention periods keep running (for example, orders leave our copy 12 months after they were placed, and scan results 12 months after each scan).
 
 * Removing a store deletes its data from the company; deleting the company deletes all of them. What was deleted can remain in our provider's database snapshots for up to 5 days.
 
