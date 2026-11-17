@@ -3,7 +3,7 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Pirkoo 0.4.1\n"
+"Project-Id-Version: Pirkoo 0.4.2\n"
 "Report-Msgid-Bugs-To: support@pirkoo.com\n"
 "Language-Team: tvarkom <support@pirkoo.com>\n"
 "Language: pt_BR\n"
@@ -37,8 +37,12 @@ msgstr "Este site usa o plugin Pirkoo (Gerenciador Multilojas para WooCommerce),
 msgid "Pirkoo Privacy Policy"
 msgstr "Política de Privacidade do Pirkoo"
 
-msgid "Multi-Store WooCommerce Manager"
-msgstr "Gerenciador Multilojas para WooCommerce"
+msgid "Manage, monitor and report on all your WooCommerce stores from one dashboard, with your team."
+msgstr "Gerencie, monitore e acompanhe os relatórios de todas as suas lojas WooCommerce em um só painel, com a sua equipe."
+
+#. Plugin Name of the plugin
+msgid "Pirkoo - Multi-Store WooCommerce Manager - Monitoring & Reports"
+msgstr "Pirkoo - Gerenciador Multilojas para WooCommerce - Monitoramento e Relatórios"
 
 msgid "That connection link has expired. Click Connect to Pirkoo again."
 msgstr "Esse link de conexão expirou. Clique de novo em Conectar ao Pirkoo."

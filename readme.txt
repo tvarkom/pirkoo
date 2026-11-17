@@ -1,40 +1,108 @@
-=== Pirkoo ===
+=== Pirkoo - Multi-Store WooCommerce Manager - Monitoring & Reports ===
 Contributors: tvarkom
-Tags: woocommerce, performance, speed, health, dashboard
+Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Multi-Store WooCommerce Manager.
+Manage, monitor and report on all your WooCommerce stores from one dashboard, with your team.
 
 == Description ==
 
-Pirkoo, the Multi-Store WooCommerce Manager, connects your store to **app.pirkoo.com**, where you and your team see how healthy your store is. The plugin has no screen in wp-admin: it adds **Connect to Pirkoo** under its name on the Plugins screen, and answers Pirkoo's scans once the store is connected. Agencies follow all their clients' stores in one place.
+Connect your WooCommerce stores to **Pirkoo** and see every store's health, sales and upkeep in one place, with your team, and act on what needs attention.
 
-The dashboard shows:
+_Your first company on Pirkoo is free for up to 3 stores, with every feature and no time limit._ **[Get started at app.pirkoo.com](https://app.pirkoo.com/)**
 
-* **A store health score** out of 100, with its risk level (80–100 low, 50–79 moderate, 0–49 high) and how many of the scanner's 44 checks it is based on
-* **Needs attention**: the problems that cost the most points, each linked to its check
-* **Store health trends**: how your score changed since your previous and first scans, scan by scan
-* **Your store's profile**: sales and checkout over the last 30 days as counted on your store, products and inventory, payment and shipping methods, and traffic and marketing
-* **The scanner pipeline**: all 44 checks, stage by stage (server, store pages, front end, database, background tasks, platform, security and email), coloured red, orange, yellow or green like a CI/CD pipeline. Click a check to see what was measured and against which reference
+= What is Pirkoo? =
 
-Every problem a check finds lowers the score by a share of what's left: more for the cart, checkout, HTTPS, search visibility and registration, less for upkeep issues. Checks that couldn't be measured, or don't apply to your site (for example, search engines blocked on a staging site), are left out and counted.
+Pirkoo is a manager for WooCommerce stores, made for store owners and for the agencies that look after them. Connect a store in a click: Pirkoo checks it every day, watches it around the clock and turns its orders, customers and products into clear reports, next to all your other stores.
 
-Pirkoo's scanner measures your store from outside, the way a shopper's browser loads it, and adds the figures the plugin reads inside WordPress. The plugin changes nothing on your store.
+**At a glance:**
 
-= How it works =
+* ✅ A health score for every store, from 44 checks
+* ✅ Uptime monitoring every 5 minutes, with email alerts
+* ✅ A daily performance test with Google PageSpeed
+* ✅ A weekly hunt for broken links and images
+* ✅ Plugin, theme and WordPress updates in one click
+* ✅ Known vulnerabilities and PHP errors
+* ✅ Orders, refunds, customers and coupons
+* ✅ Product, category and stock reports
+* ✅ Teams with roles, for agencies and their clients
+* ✅ In English and Brazilian Portuguese
+* 💥 Free for up to 3 stores
 
-1. Install and activate the plugin. Nothing is sent yet.
-2. On the Plugins screen, click **Connect to Pirkoo** under Pirkoo's name (administrators and shop managers).
-3. On app.pirkoo.com, log in with your email (a link is emailed to you, no password) and confirm the connection, right under the list of what is collected.
-4. Pirkoo scans the store once a day on its own, and whenever you click **Scan now** in the app; the dashboard shows the latest results and the score history.
-5. To stop, click **Disconnect from Pirkoo** on the Plugins screen, or disconnect the store in the app.
+= 🩺 Store Health Score =
+
+Every store gets a **score out of 100** and a risk level, updated every day. Pirkoo looks at your store the way a shopper does, and from the inside: speed, cart and checkout, database, background tasks, security and email.
+
+* See each store's score and how it changed over time.
+* The problems that cost the most come first.
+* Short steps to fix each one, with recommended plugins.
+* Every check at a glance, in red, orange, yellow or green.
+* A checkout speed test from inside your store, to find what slows it down.
+
+= 📈 Uptime & Performance Monitoring =
+
+Know your store is down before your customers tell you.
+
+* Your home page is checked every 5 minutes.
+* An email when a store goes down, and another when it's back.
+* Response times and HTTPS certificate expiry.
+* A daily Google PageSpeed test, on mobile and desktop.
+* Every week, up to 200 pages checked for broken links and images.
+
+= 🔄 Updates & Security =
+
+Keep every store up to date without logging in to each one.
+
+* Every store's plugins, themes and WordPress version, with the updates waiting.
+* Update in one click from Pirkoo.
+* Known vulnerabilities in what you have installed.
+* The PHP errors of the last 7 days, grouped.
+* Warnings about exposed backups, error messages shown to visitors, open registration and more.
+
+= 🛒 Sales Reports =
+
+Your stores' orders and customers, updated every day, without slowing the stores down.
+
+* Orders and refunds from the last 12 months.
+* Customers and what they bought.
+* Coupons and how often they're used.
+* Only your company's Owners and Admins see who your shoppers are.
+
+= 👕 Product & Stock Reports =
+
+* Products, variations and categories, with what they sold.
+* Top sellers.
+* Stock velocity: how fast each product sells.
+* Sales by variation attribute, such as size or colour.
+* Products often bought together.
+
+= 👥 Made for Agencies & Teams =
+
+* All your stores, or all your clients' stores, in one dashboard.
+* Invite your team as Owners, Admins, Members or Viewers.
+* Log in with a link sent to your email: no password to remember.
+* Use Pirkoo in English or Brazilian Portuguese.
+
+= ⚡ Light on Your Store =
+
+The plugin has no settings to fill in and sends nothing until you connect. Pirkoo does its work on its own servers: the plugin only answers its requests, once a day at night and when you ask. If your firewall blocks Pirkoo, it can connect the other way round.
+
+= 🚀 Get Started in 3 Steps =
+
+1. Install and activate Pirkoo. Nothing is sent yet.
+2. On the Plugins screen, click **Connect to Pirkoo** under its name.
+3. Log in at app.pirkoo.com with your email and confirm the connection.
+
+👉 **[Open app.pirkoo.com](https://app.pirkoo.com/)**
 
 == External services ==
+
+The technical details of what the plugin sends, when and why.
 
 This plugin uses Pirkoo (https://app.pirkoo.com), run by MB TVARKOM SOFTWARE (Lithuania), to scan your store and show the results. It contacts nobody until an administrator clicks **Connect to Pirkoo** on the Plugins screen and confirms on app.pirkoo.com, right under a list of what is collected, which accepts Pirkoo's Privacy Policy. Before that, nothing is sent.
 
@@ -78,6 +146,10 @@ Uninstalling the plugin deletes its settings, connection secret and table of dai
 
 == Frequently Asked Questions ==
 
+= How is the health score worked out? =
+
+Pirkoo's scanner runs 44 checks, stage by stage: server, store pages, front end, database, background tasks, platform, security and email. Every problem a check finds lowers the score by a share of what's left: more for the cart, checkout, HTTPS, search visibility and registration, less for upkeep issues. Checks that couldn't be measured, or don't apply to your site (for example, search engines blocked on a staging site), are left out. A score of 80–100 is low risk, 50–79 moderate and 0–49 high. Click a check in the app to see what was measured and against which reference.
+
 = Does it slow down my store? =
 
 No. Apart from adding one to a daily total when a shopper adds to cart, opens the checkout or orders, the plugin runs only when Pirkoo scans the store (once a day, at night in your store's timezone, and when you ask): it collects its figures and loads your checkout once to profile it. Nothing runs in the background. The scanner runs on Pirkoo's servers and loads your public pages like one visitor would.
@@ -107,6 +179,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.4.2 =
+* A new name, Pirkoo - Multi-Store WooCommerce Manager - Monitoring & Reports, and a new plugin page.
 
 = 0.4.1 =
 * Pirkoo is now the Multi-Store WooCommerce Manager.
