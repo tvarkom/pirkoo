@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Pirkoo
- * Description:       On-board Diagnostics Scanner for WooCommerce
+ * Description:       Multi-Store WooCommerce Manager
  * Version:           0.4.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
