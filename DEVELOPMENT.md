@@ -6,8 +6,8 @@ The plugin is procedural WordPress code: a main file and `includes/`, every func
 option, table, CSS class and REST route prefixed `pirkoo` / `PIRKOO` (since 0.2.3; nothing on a
 store carries another name). It supports PHP 7.4+ and WordPress 6.5+, and
 needs WooCommerce. Text domain: `pirkoo`, the WordPress.org slug
-(it must always equal the slug). The plugin is called Pirkoo; "On-board Diagnostics Scanner for
-WooCommerce" is its description, never its name. The repo and folder are `pirkoo`.
+(it must always equal the slug). The plugin is called Pirkoo; "Multi-Store WooCommerce
+Manager" is its description, never its name. The repo and folder are `pirkoo`.
 
 ## How it works
 

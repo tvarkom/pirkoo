@@ -3,7 +3,7 @@ Pirkoo
 
 DRAFT for the founder's review, version 0.5 of 16 November 2026. Not published and not reviewed by a lawyer; version 0.4 of 15 November 2026 stays in force until this one is approved and published. Lines marked FOUNDER CONFIRMATION REQUIRED, LEGAL REVIEW REQUIRED or IMPLEMENTATION REQUIRED are open points, not part of the terms.
 
-The terms for using Pirkoo (On-board Diagnostics Scanner for WooCommerce): the app at app.pirkoo.com and the WooCommerce plugin that connects stores to it, by tvarkom.
+The terms for using Pirkoo (Multi-Store WooCommerce Manager): the app at app.pirkoo.com and the WooCommerce plugin that connects stores to it, by tvarkom.
 
 Who we are
 ----------

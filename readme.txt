@@ -8,11 +8,11 @@ Stable tag: 0.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-On-board Diagnostics Scanner for WooCommerce.
+Multi-Store WooCommerce Manager.
 
 == Description ==
 
-Pirkoo, the On-board Diagnostics Scanner for WooCommerce, connects your store to **app.pirkoo.com**, where you and your team see how healthy your store is. The plugin has no screen in wp-admin: it adds **Connect to Pirkoo** under its name on the Plugins screen, and answers Pirkoo's scans once the store is connected. Agencies follow all their clients' stores in one place.
+Pirkoo, the Multi-Store WooCommerce Manager, connects your store to **app.pirkoo.com**, where you and your team see how healthy your store is. The plugin has no screen in wp-admin: it adds **Connect to Pirkoo** under its name on the Plugins screen, and answers Pirkoo's scans once the store is connected. Agencies follow all their clients' stores in one place.
 
 The dashboard shows:
 
