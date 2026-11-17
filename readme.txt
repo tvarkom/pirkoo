@@ -4,7 +4,7 @@ Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.4
+Stable tag: 0.4.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Manage, monitor and report on all your WooCommerce stores from one dashboard, wi
 
 Connect your WooCommerce stores to **Pirkoo** and see every store's health, sales and upkeep in one place, with your team, and act on what needs attention.
 
-_Your first company on Pirkoo is free for up to 3 stores, with every feature and no time limit._ **[Get started at app.pirkoo.com](https://app.pirkoo.com/)**
+_Your first company on Pirkoo is free for 1 store, with every feature and no time limit._ **[Get started at app.pirkoo.com](https://app.pirkoo.com/)**
 
 = What is Pirkoo? =
 
@@ -32,7 +32,7 @@ Pirkoo is a Multi-Store WooCommerce Manager, made for store owners and for the a
 * ✅ Product, category and stock reports
 * ✅ Teams with roles, for agencies and their clients
 * ✅ In English and Brazilian Portuguese
-* 💥 Free for up to 3 stores
+* 💥 Free for 1 store
 
 = 🩺 Store Health Score =
 
@@ -143,7 +143,7 @@ Once a day on its own, between 02:00 and 05:00 in your store's timezone (skipped
 
 = Is Pirkoo free? =
 
-Yes: the plugin is free, and so is the Pirkoo service at app.pirkoo.com for now. It's offered to a limited number of companies while we finish it: a person's first company is free for up to 3 stores, with everything and no time limit; a company holding more stores than that is paused (dashboards and history stay available; scans, the daily copies, updates and monitoring pause) until it removes stores. Write to support@pirkoo.com. We plan to offer paid plans later, with new terms published first.
+Yes: the plugin is free, and so is the Pirkoo service at app.pirkoo.com for now. It's offered to a limited number of companies while we finish it: a person's first company is free for 1 store, with everything and no time limit; a company holding more stores than that is paused (dashboards and history stay available; scans, the daily copies, updates and monitoring pause) until it removes stores. Write to support@pirkoo.com. We plan to offer paid plans later, with new terms published first.
 
 = Does it send anything on its own? =
 
@@ -158,6 +158,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.4.5 =
+* A person's first company on app.pirkoo.com is now free for 1 store: the readme, the Terms of Use (version 0.4.2) and the Privacy Policy shipped with the plugin say so.
 
 = 0.4.4 =
 * Plugin page wording.

@@ -3,7 +3,7 @@ Pirkoo
 
 The terms for using Pirkoo (Multi-Store WooCommerce Manager): the app at app.pirkoo.com and the WooCommerce plugin that connects stores to it, by tvarkom.
 
-Last updated: 17 November 2026 (version 0.4.1)
+Last updated: 17 November 2026 (version 0.4.2)
 
 Who we are
 ----------
@@ -47,7 +47,7 @@ Price and access
 
 * Pirkoo is free of charge for now, and offered to a limited number of companies while we finish it. We don't sell plans yet and take no payment.
 
-* The first company a person creates is free for up to 3 stores, with everything Pirkoo does and no time limit. Further companies the same person creates can't hold stores. A company that holds more stores than it's allowed is paused: its pages and history stay available, but for its stores no scans run, the daily copies and the uptime, performance and broken-link checks stop, updates can't be started from the app, and no stores can be added, until it removes stores. Nothing is deleted because of it; the retention periods in the Privacy Policy keep running.
+* The first company a person creates is free for 1 store, with everything Pirkoo does and no time limit. Further companies the same person creates can't hold stores. A company that holds more stores than it's allowed is paused: its pages and history stay available, but for its stores no scans run, the daily copies and the uptime, performance and broken-link checks stop, updates can't be started from the app, and no stores can be added, until it removes stores. Nothing is deleted because of it; the retention periods in the Privacy Policy keep running.
 
 * We plan to offer paid plans later. Before anything is charged, we'll publish new terms with the prices and conditions and tell each company's Owners by email at least 30 days ahead. Nothing will be charged to you without your agreement to those terms.
 
