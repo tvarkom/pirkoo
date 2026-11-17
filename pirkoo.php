@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Pirkoo - Multi-Store WooCommerce Manager - Monitoring & Reports
  * Description:       Manage, monitor and report on all your WooCommerce stores from one dashboard, with your team.
- * Version:           0.4.2
+ * Version:           0.4.3
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  woocommerce
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PIRKOO_VERSION', '0.4.2' );
+define( 'PIRKOO_VERSION', '0.4.3' );
 define( 'PIRKOO_FILE', __FILE__ );
 define( 'PIRKOO_OPTION', 'pirkoo' );
 define( 'PIRKOO_LOCK', 'pirkoo_scan_lock' );
