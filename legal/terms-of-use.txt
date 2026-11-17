@@ -1,30 +1,16 @@
 TERMS OF USE
 Pirkoo
 
-DRAFT for the founder's review, version 0.5 of 16 November 2026. Not published and not reviewed by a lawyer; version 0.4 of 15 November 2026 stays in force until this one is approved and published. Lines marked FOUNDER CONFIRMATION REQUIRED, LEGAL REVIEW REQUIRED or IMPLEMENTATION REQUIRED are open points, not part of the terms.
-
 The terms for using Pirkoo (Multi-Store WooCommerce Manager): the app at app.pirkoo.com and the WooCommerce plugin that connects stores to it, by tvarkom.
+
+Last updated: 17 November 2026 (version 0.4.1)
 
 Who we are
 ----------
 
 Pirkoo is provided by MB TVARKOM SOFTWARE ("tvarkom", "we", "us"), a small partnership (mažoji bendrija) registered in Lithuania under company code 308171668, registered office Gedimino g. 22A-14, 44319 Kaunas, Lithuania. Contact and help: support@pirkoo.com; for privacy questions, privacy@pirkoo.com.
 
-Who Pirkoo is for, and the documents that apply
------------------------------------------------
-
-Pirkoo is a tool for businesses: WooCommerce merchants, and the agencies and professionals who look after their stores. It isn't offered to consumers. By creating an account on app.pirkoo.com, or by connecting a store with the Pirkoo plugin, you agree to these terms and confirm that you act for a business or in the course of your trade or profession, and that you may accept these terms for that business; the business is then the customer ("you").
-
-If the law nevertheless treats you as a consumer, these terms don't take away any right that the law gives you and that can't be excluded.
-
-Four documents apply together:
-
-* These Terms of Use: how Pirkoo may be used, and what we and you owe each other.
-* The Privacy Policy (https://pirkoo.com/privacy/): what personal data we handle as its controller (people with a Pirkoo account, visitors, people who write to us), and a full description of what Pirkoo collects from stores.
-* The Data Processing Agreement (legal/data-processing-agreement.txt, shipped with the plugin): the terms on which we process personal data from your stores on your behalf. It is part of these terms for every connected store, and prevails over them where they differ about that data.
-* The Sub-processor Register (legal/subprocessors.txt): the providers we use.
-
-IMPLEMENTATION REQUIRED: the Data Processing Agreement and the register have no public address yet, and the app's Connect page links only the Terms of Use and the Privacy Policy.
+By creating an account on app.pirkoo.com, or by connecting a store with the Pirkoo plugin, you agree to these terms. If you use Pirkoo for a business, you confirm you may accept them on its behalf; the business is then the customer.
 
 What Pirkoo does
 ----------------
@@ -33,101 +19,56 @@ For the WooCommerce stores your company connects, Pirkoo:
 
 * scans them, when someone in the company asks and once a day, and shows a health score, the checks that cost points, the measurements, the store's profile and how the score changes over time;
 
-* copies the store's orders, refunds, customers, products and coupons of the last 12 months, once a day, and shows them to the company's people, by role;
+* copies the store's orders, refunds, customers, products and coupons of the last 12 months, once a day, and shows them to the company's people;
 
 * shows the store's WordPress version, plugins and themes with their updates, its PHP errors of the last 7 days and the known vulnerabilities of what is installed, and updates a plugin, a theme or WordPress when an Owner or Admin asks for it;
 
 * checks every 5 minutes that the store answers and emails the company's Owners and Admins when it doesn't and when it's back, tests its home page's performance once a day, and looks for broken links once a week.
 
-Our scanner and monitors load your store's public pages like a visitor would. The plugin sends data it reads on your store's server, including the store's business context, a profile of one checkout page load and the records above. What is collected, why, who else processes it and how long it's kept is described in the Privacy Policy.
+Our scanner and monitors load your store's public pages like a visitor would. The plugin sends data it reads on your store's server, including the store's business context, a profile of one checkout page load and the records above. What is collected, why, who else processes it and how long it's kept is described in our Privacy Policy (https://pirkoo.com/privacy/, also shipped with the plugin), which is part of how the service works.
 
 On your store, the plugin keeps its own settings, a small table of daily shop totals and short-lived working values, and for the checkout profile it uses a temporary cart that is never saved. It changes nothing else, except that it updates a plugin, a theme or WordPress when an Owner or Admin of your company starts that update in the app. Uninstalling the plugin removes what it kept.
 
 Results describe your store at the moment of each scan or check, and can vary with traffic, hosting and caching.
 
-Accounts, companies and roles
------------------------------
+Accounts and companies
+----------------------
 
-* You log in with your email address, through a one-time link we email you. Keep access to that mailbox to yourself: whoever can read it can log in. Tell us at support@pirkoo.com if you think someone else has used your account.
+* You log in with your email address; keep access to it private, because it's how you get in.
 
-* A company holds stores and has people with roles:
-  - Owners manage everything, including people's roles and deleting the company;
-  - Admins manage stores and people (except Owners) and start updates;
-  - Members see the company's pages and run scans;
-  - Viewers see the company's pages.
-
-* Who a store's shoppers are (their names, email addresses, phone numbers and the Customers page) is shown to Owners and Admins only. Members and Viewers see orders, refunds and the reports without it.
-
-* The company's Owners are responsible for who they invite, the roles they give, and what the people in the company do with it. Give the Owner and Admin roles only to people who need to see shoppers' details. A person can send at most 5 invitations a day, and a company 30.
+* A company holds stores and has people with roles: Owners manage everything, including deleting the company; Admins manage stores and people (except Owners) and start updates; Members see the company's pages and run scans; Viewers see the company's pages. The company's Owners are responsible for who they invite and the roles they give: everyone in the company sees its stores' data, including the shoppers' data in the store records.
 
 * A store is connected to one company at a time. Connecting it to another company ends the first connection; the first company keeps what it had, and keeps seeing the store's scan results, until it removes the store.
 
-Your stores and their data
---------------------------
-
-* You may connect only stores you own or are authorised to manage. An agency connecting a client's store confirms that the client has authorised it to do so and to use Pirkoo for that store.
-
-* You are responsible for having the right to send us the store's data described in the Privacy Policy, for the information you owe your shoppers, and for deciding which of your people may see it.
-
-* The data of your stores is yours, or your client's. We claim no ownership of it, and use it only to provide Pirkoo to you, as the Data Processing Agreement says. Your store's own data stays on your store: Pirkoo holds a copy, never the original.
-
-* We may make statistics that are irreversibly anonymised and aggregated across stores (today: counts of stores by a profile value, shown only for groups of at least 5 stores), and use them to improve Pirkoo and to set benchmarks. They contain nothing about your shoppers, your sales or your store's address. We don't use personal data, or store-linked information that is only pseudonymised, for analysis across stores.
-
-Pirkoo's software and your licence
-----------------------------------
-
-* The Pirkoo plugin is free software under the GNU General Public License, version 2 or later; that licence governs your rights in the plugin's code.
-
-* The service at app.pirkoo.com, its scanner, its texts, its design and the Pirkoo name belong to tvarkom or its licensors. While these terms apply, you may use the service for your company's own stores and your clients' stores: a licence that is limited, non-exclusive, and can't be transferred or sub-licensed. Nothing else is granted.
-
-* If you send us ideas or feedback, we may use them without owing you anything.
-
-LEGAL REVIEW REQUIRED: the licence wording, and the feedback clause.
-
-Confidentiality
----------------
-
-Each of us keeps confidential what the other shares that is plainly not public: for us, your stores' data and results; for you, anything about Pirkoo that we tell you in confidence, such as security details. Each uses it only for the purposes of these terms and protects it as it protects its own confidential information. This doesn't cover what is or becomes public without a breach, what the receiver already knew or learns lawfully from someone else, or what the law requires to be disclosed. It continues for 3 years after you stop using Pirkoo; for personal data, the Data Processing Agreement applies instead, for as long as we hold it.
-
-FOUNDER CONFIRMATION REQUIRED: the 3-year period. LEGAL REVIEW REQUIRED: the clause.
+* You may connect only stores you own or are authorized to manage, and you're responsible for having the right to send us the store's data described in the Privacy Policy. For the shoppers' data in the store records, the store is the data controller and we act on its behalf, as the Privacy Policy describes; ask privacy@pirkoo.com for a data processing agreement.
 
 Price and access
 ----------------
 
-* Pirkoo is free of charge for now, and offered to a limited number of companies while we finish it. We don't sell plans and take no payment.
+* Pirkoo is free of charge for now, and offered to a limited number of companies while we finish it. We don't sell plans yet and take no payment.
 
 * The first company a person creates is free for up to 3 stores, with everything Pirkoo does and no time limit. Further companies the same person creates can't hold stores. A company that holds more stores than it's allowed is paused: its pages and history stay available, but for its stores no scans run, the daily copies and the uptime, performance and broken-link checks stop, updates can't be started from the app, and no stores can be added, until it removes stores. Nothing is deleted because of it; the retention periods in the Privacy Policy keep running.
 
-* We plan to offer paid plans later. Nothing here sets a price, a billing period, a renewal or a cancellation rule, because none exists yet. Before anything is charged, we'll publish new terms that set them out and tell each company's Owners by email at least 30 days ahead. You will be charged only if you then choose a plan and agree to those terms; without that, your company stays as it is (free for up to 3 stores, or paused while it holds more), and nothing is deleted for that reason.
+* We plan to offer paid plans later. Before anything is charged, we'll publish new terms with the prices and conditions and tell each company's Owners by email at least 30 days ahead. Nothing will be charged to you without your agreement to those terms.
 
 Limits and acceptable use
 -------------------------
 
-* A store can't be scanned while a scan of it is running, nor within 10 minutes after one finishes, and at most 30 times a day.
+* A store can't be scanned while a scan of it is running, nor within 10 minutes after one finishes, and at most 30 times a day. A person can send at most 5 invitations a day, and a company 30.
 
-* Don't use Pirkoo:
-  - to scan, monitor or copy data from stores you don't control or aren't authorised to manage;
-  - to get around its limits (for example with several accounts or companies for the same stores);
-  - to overload or probe our systems or other websites, or to look for or use weaknesses in them;
-  - to get at data of companies or stores that aren't yours, or at shoppers' details your role doesn't show you;
-  - to resell Pirkoo, or offer it under another name, without our written agreement;
-  - against the law, or to contact shoppers in ways the law or the store's own promises to them don't allow.
+* Don't use Pirkoo to scan or monitor stores you don't control, to get around its limits (for example with several accounts or companies for the same stores), to overload our systems or other websites, or to resell Pirkoo without our written agreement.
 
 Results and updates
 -------------------
 
-Results are information to help you decide what to improve. They aren't a guarantee of any result, and you decide which changes to make. The fixes and plugins Pirkoo suggests are suggestions, not instructions; the vulnerability list comes from a third party and can be incomplete.
+Results are information to help you decide what to improve. They aren't a guarantee of any result, and you decide which changes to make. The fixes and plugins Pirkoo suggests are suggestions, not instructions.
 
 An update you start from the app runs on your store the way WordPress's own Dashboard → Updates does, and can break a store just as that can. Back up your store before updating or making changes, and test them on a staging copy where possible.
 
-Availability, monitoring and third parties
-------------------------------------------
+Availability and changes
+------------------------
 
-We work to keep Pirkoo available, but we don't promise it will be uninterrupted or error-free. We offer no service level and no support hours.
-
-Monitoring has limits you should plan for: the uptime check requests your home page every 5 minutes from one location (Amsterdam) and reports a store down only after 2 failed checks; alerts go by email and can be late, filtered or missed; a firewall on your store can block our checks. Don't rely on Pirkoo as your only monitoring, and never as a backup of your store.
-
-Pirkoo depends on services we don't control: your store's hosting and WordPress, our hosting and email providers, Google PageSpeed Insights, Wordfence's vulnerability list, and WordPress.org. When one of them fails or changes, the part of Pirkoo that uses it can fail too.
+We work to keep Pirkoo available, but we don't promise it will be uninterrupted or error-free; uptime alerts and other notices can be late or missed, so don't rely on Pirkoo as your only monitoring.
 
 We may change or discontinue features. If we discontinue Pirkoo, we'll tell the companies' Owners by email at least 30 days before.
 
@@ -140,41 +81,31 @@ Suspension and ending
 
 * For a reason other than a breach, we'll give the company's Owners at least 30 days' notice before ending its access.
 
-FOUNDER CONFIRMATION REQUIRED: these notices are sent by hand; nothing in the app sends them.
+Your data when access is paused or a company ends
+-------------------------------------------------
 
-Keeping, returning and deleting your data
------------------------------------------
-
-The Privacy Policy and the Data Processing Agreement give the details. In short:
+How we handle personal data is described in our Privacy Policy (https://pirkoo.com/privacy/). In short:
 
 * A paused company keeps its pages and history; nothing is deleted for that reason. The usual retention periods keep running (for example, orders leave our copy 12 months after they were placed, and scan results 12 months after each scan).
 
 * Removing a store deletes its data from the company; deleting the company deletes all of them. What was deleted can remain in our provider's database snapshots for up to 5 days.
 
-* The app has no export of its own. Before deleting a store or a company, ask privacy@pirkoo.com if you need a copy of the data we hold for you.
-
-* If we end a company's access, we keep its data for 30 days so that an Owner can ask for a copy, then delete it, unless the law requires us to keep something longer.
-
-FOUNDER CONFIRMATION REQUIRED and IMPLEMENTATION REQUIRED: the 30 days after we end access is a proposal; nothing in the app applies it.
+* The app has no export of its own. Before deleting a store or a company, ask privacy@pirkoo.com if you need a copy of your data; your rights under data protection law are in the Privacy Policy. Your store's own data stays on your store: Pirkoo holds a copy, never the original.
 
 Liability
 ---------
 
-Pirkoo is provided free of charge and as it is. To the extent the law allows, we aren't liable for indirect or consequential losses such as lost profit, lost revenue or lost data, nor for what a third party's service does, nor for changes made to your store on the strength of Pirkoo's results or through an update you started. Nothing in these terms limits liability for intent or gross negligence, or any other liability or right that the law doesn't allow to be limited or excluded.
-
-LEGAL REVIEW REQUIRED: the whole clause under Lithuanian law, including whether a monetary cap should be set while the service is free.
+Pirkoo is provided free of charge and as it is. To the extent the law allows, we aren't liable for indirect or consequential losses such as lost profit or lost data. Nothing in these terms limits liability that can't be limited by law, or rights you have as a consumer.
 
 Changes to these terms
 ----------------------
 
-We may update these terms. We'll change the date at the top, publish the new version and, for changes that affect how you use Pirkoo, tell the companies' Owners by email at least 30 days before they take effect. If you don't agree, you can stop using Pirkoo before then.
+We may update these terms. We'll change the date at the top, publish the new version and, for changes that affect how you use Pirkoo, tell the companies' Owners by email at least 30 days before they take effect.
 
 Governing law
 -------------
 
-These terms are governed by the law of the Republic of Lithuania. Disputes go to the courts of Lithuania that have jurisdiction over our registered office, unless a rule of law that can't be set aside gives you the right to bring them elsewhere.
-
-LEGAL REVIEW REQUIRED: the choice of court, and its wording for customers outside Lithuania and outside the EU.
+These terms are governed by the law of the Republic of Lithuania. Disputes go to the courts of Lithuania, unless you're a consumer and the law of your country gives you the right to bring them where you live.
 
 Contact
 -------

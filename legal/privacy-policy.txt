@@ -3,31 +3,21 @@ Pirkoo
 
 What personal data Pirkoo handles (the app at app.pirkoo.com, the WooCommerce plugin that connects your store to it, and the website pirkoo.com), why, who processes it for us and how long we keep it. Pirkoo is made by tvarkom.
 
-DRAFT for the founder's review, version 0.5 of 16 November 2026. Not published and not reviewed by a lawyer; the policy of 15 November 2026 stays in force until this one is approved and published. Lines marked FOUNDER CONFIRMATION REQUIRED, LEGAL REVIEW REQUIRED or IMPLEMENTATION REQUIRED are open points, not part of the policy.
+Last updated: 17 November 2026
 
-Who we are, and in which role
------------------------------
+Who we are
+----------
 
-Pirkoo is provided by MB TVARKOM SOFTWARE ("tvarkom", "we", "us"), a small partnership (mažoji bendrija) registered in Lithuania under company code 308171668, registered office Gedimino g. 22A-14, 44319 Kaunas, Lithuania. For privacy questions and data requests, email privacy@pirkoo.com.
+The data controller is MB TVARKOM SOFTWARE ("tvarkom", "we", "us"), a small partnership (mažoji bendrija) registered in Lithuania under company code 308171668, registered office Gedimino g. 22A-14, 44319 Kaunas, Lithuania. For privacy questions and data requests, email privacy@pirkoo.com.
 
-We handle personal data in two roles, and this policy says which applies where:
-
-* As controller, we decide why and how. This covers the people with a Pirkoo account and the companies they belong to, visitors of pirkoo.com, and people who write to us.
-
-* As processor, we handle data for someone else, on their instructions. This covers the data that reaches us from a connected store: its shoppers' data in the store records, the site's admin email address, and the store's own figures where they relate to a person (a sole trader). The controller is the business the store belongs to. The Data Processing Agreement (shipped with the plugin as legal/data-processing-agreement.txt) governs it; this policy describes that data in full so that everyone can see what Pirkoo does.
-
-* Agencies: when an agency connects a client's store, the client (the merchant) is the controller, the agency is its processor, and we are the agency's sub-processor. When an agency connects a store it runs itself, the agency is the controller and we are its processor.
-
-* Statistics that are irreversibly anonymised and aggregated across stores are no longer personal data; we use them as our own (see "Statistics across stores").
-
-LEGAL REVIEW REQUIRED: this allocation of roles, in particular for scan data about the store itself and for the admin email address.
+For one kind of data we are not the controller: the shoppers' data in a store's records (below). There the store is the controller and we process the data on its behalf.
 
 Your Pirkoo account
 -------------------
 
 * Logging in: you log in to app.pirkoo.com with your email address. We email you a one-time login link, which works for 15 minutes, and keep the address, the time and your IP address with the request, to limit how many links can be asked for. When you use the link, we create your account (your email address, when you joined and last logged in, and the language you use the app in: English or Brazilian Portuguese, taken from your browser at your first login and changed in the account menu) and a session, kept in one cookie (below). The app and its emails to you are in that language.
 
-* Companies: an account belongs to companies, and a company holds stores. We keep each company's name, its people and their roles (Owner, Admin, Member or Viewer), and, for each person, when the 14 free days of the first company they created started. The role decides what a person sees: see "Who sees a store, and who sees its shoppers".
+* Companies: an account belongs to companies, and a company holds stores. We keep each company's name, its people and their roles (Owner, Admin, Member or Viewer), and, for each person, when the 14 free days of the first company they created started.
 
 * Invitations: when someone in a company invites you, we keep your email address, the role offered, who invited you and when, and email you the invitation. You don't need an account to receive one.
 
@@ -65,19 +55,11 @@ What the scan reads. Our scanner loads your store's public homepage, cart and ch
 
 Your scans' analysis. We keep each scan's full analysis, including your store's business context and its sales amounts, linked to your store for 12 months after the scan. We use it to show it to the people in the companies holding your store on app.pirkoo.com and to answer you when you contact us. For a sole trader, sales can relate to a person: we keep them only for this, and they're not part of our statistics across stores.
 
-Your audit history. For each completed scan we keep: the health score and risk level; which checks found a problem and how many points each cost; the measurements (such as server, cart and checkout response times, page weight and number of files, the autoloaded options size, the PHP version and object cache type, the days left on your HTTPS certificate, and whether SPF and DMARC records were found). It's linked to your store through the scan request, which holds the admin email until it's erased after 90 days. We use it to show your store's results over time and to answer you. We don't analyse it across stores.
+Your audit history. For each completed scan we keep: the health score and risk level; which checks found a problem and how many points each cost; the measurements (such as server, cart and checkout response times, page weight and number of files, the autoloaded options size, the PHP version and object cache type, the days left on your HTTPS certificate, and whether SPF and DMARC records were found). It's linked to your store through the scan request, which holds the admin email until it's erased after 90 days. We use it to show your store's results over time, to answer you, and, across stores, to improve our scanner.
 
-Your store's profile. We keep the latest business context of each store (not the analysis, the store data, the checkout profile or any sales amount), replaced by each scan and linked to the store. We use that linked copy only to support your store when you contact us, and as the source of the anonymous statistics below.
+Your store's profile. We keep the latest business context of each store (not the analysis, the store data, the checkout profile or any sales amount), replaced by each scan. We use it as totals across stores, for example how many stores per country, size or checkout type, to understand which stores use Pirkoo, and to support your store when you contact us.
 
-Statistics across stores. From the store profiles we count how many stores share a value, for example how many stores per country, size or checkout type, to understand which stores use Pirkoo, to improve it and its scanner, and to set benchmarks. These counts are anonymised and aggregated: a count is shown only for a group of at least 5 stores, a value that fewer stores share is never shown on its own, and nothing is shown while fewer than 5 stores have a profile. They never include shoppers' data, sales amounts, store addresses or email addresses, and never say which stores are in a group. This is the only use we make of store information across stores. We don't use personal data, or store-linked information that is merely pseudonymised, for analysis across stores.
-
-Who sees a store, and who sees its shoppers. Only the people in a company holding the store, on app.pirkoo.com. Within a company, the role decides:
-
-* Owners and Admins see everything about the company's stores, including who the shoppers are: their names, email addresses and the other details in the store records, and the Customers page.
-
-* Members and Viewers see the scans, the reports, the WordPress and monitoring pages, and the orders and refunds without who the shopper is: no names or email addresses, no search or sorting by them, and no Customers page. The app doesn't send them those fields at all; it isn't only that they aren't displayed.
-
-Scan results and their history are kept per store address: if two companies hold the same store (for example an agency and the shop owner), each sees them, including the scans started after the store was connected to the other company. The store's records, WordPress inventory and monitoring (below) are kept per company: only the company the store is connected to receives new ones; a company holding it without a connection keeps what it had until it removes the store.
+Who sees a store. Only the people in a company holding the store, on app.pirkoo.com. Scan results and their history are kept per store address: if two companies hold the same store (for example an agency and the shop owner), each sees them, including the scans started after the store was connected to the other company. The store's records, WordPress inventory and monitoring (below) are kept per company: only the company the store is connected to receives new ones; a company holding it without a connection keeps what it had until it removes the store.
 
 Store records
 -------------
@@ -92,7 +74,7 @@ From Pirkoo 0.4, so the people in the company a store is connected to can see it
 
 * Products and variations: name, SKU, type, status, regular price and price, stock settings and quantity, categories, attributes, and when they were created and changed. Coupons: code, type, amount, dates and how many times used.
 
-For the shoppers' data in these records, the business the store belongs to is the data controller and we process it on its behalf, under its instructions, only to show it to the Owners and Admins of the store's company on app.pirkoo.com: we don't contact shoppers, combine their data across stores, use it for our statistics or share it with anyone but the providers below. The Data Processing Agreement applies to every connected store. Shoppers with a request about their data should contact the store; we pass on a request that reaches us and help the store answer it.
+For the shoppers' data in these records, the store is the data controller and we process it on the store's behalf, under the store's instructions, only to show it to the people in the store's company on app.pirkoo.com: we don't contact shoppers, combine their data across stores, use it for our statistics or share it with anyone but the providers below. Stores that need a data processing agreement can ask for one at privacy@pirkoo.com. Shoppers with a request about their data should contact the store; we help the store answer it.
 
 We delete orders and their refunds 12 months after the order was placed. Customers, products and coupons stay in our copy until the store is removed from the company or the company is deleted, which deletes all of the store's records; one deleted on the store afterwards isn't removed from our copy by itself. Disconnecting a store stops the daily copy and keeps what was copied until then.
 
@@ -137,19 +119,10 @@ The app sends only these emails, each in the recipient's language: login links; 
 Legal basis (Art. 6 GDPR), by purpose
 -------------------------------------
 
-Where we are the controller:
-
-* Your account, your companies and roles, invitations you accept, the language you chose, and the emails the app sends you: providing the service you ask for (Art. 6(1)(b)). An invited person's email address before they accept: the inviting company's and our legitimate interest in letting it add its people (Art. 6(1)(f)).
-* The usage records, the login limits and the IP addresses kept with login requests: our legitimate interests in understanding how Pirkoo is used, improving it and preventing abuse (Art. 6(1)(f)).
-* Visitors of pirkoo.com and people who write to us: see those sections below.
-
-Where we are the processor (the data from connected stores, including shoppers' data): the legal basis is the controller's, the business the store belongs to. We act on its instructions under the Data Processing Agreement and Art. 28 GDPR.
-
-Making the anonymous statistics across stores from the store profiles: our legitimate interest in improving Pirkoo (Art. 6(1)(f)), with the authorisation each customer gives in the Data Processing Agreement.
+* Your account, companies, invitations, connecting stores, scanning them, copying their records and inventory, updating and monitoring them, the emails above, and showing all of it to the company's people: providing the service you request (Art. 6(1)(b)). For shoppers' data in store records, we act as the store's processor (Art. 28 GDPR); the store's own legal basis applies. An invited person's email address: the inviting company's and our legitimate interest in letting it add its people (Art. 6(1)(f)).
+* The audit history, the store profile and its statistics, the usage records, the login and scan limits, and IP addresses with login requests: our legitimate interests in supporting your store, showing its results over time, understanding how Pirkoo is used, improving it and preventing abuse (Art. 6(1)(f)).
 
 You can object at any time to what rests on our legitimate interests: email privacy@pirkoo.com.
-
-LEGAL REVIEW REQUIRED: the legal bases above, and the basis for anonymising.
 
 Pirkoo's website
 ----------------
@@ -164,28 +137,17 @@ We keep your messages and contact details to answer you and, if you become a cli
 Who processes data for us
 -------------------------
 
-The Sub-processor Register (shipped with the plugin as legal/subprocessors.txt) lists each provider's legal entity, what it does, which data it handles, where, and how transfers outside the European Economic Area are covered. In short:
-
-* Fly.io: hosts app.pirkoo.com, Pirkoo's API and our scanner, with their databases and logs, on servers in Amsterdam, the Netherlands. It holds everything Pirkoo stores, including the data from stores.
-
-* Google PageSpeed Insights: tests a connected store's public home page once a day; it receives only that page's address.
-
-* Resend: sends the app's emails (login links, invitations, and the notices about a store disconnected, down and back up). It handles the recipients' email addresses and the emails' content, and stores them in the United States.
-
-* Google Workspace: hosts our mailboxes, with the messages people send us.
+* Fly.io: hosts app.pirkoo.com, pirkoo.com, Pirkoo's API and our scanner, with their databases and logs, on servers in Amsterdam, Netherlands.
 
 * Cloudflare: DNS for pirkoo.com and network protection for the website pirkoo.com (not for the app).
 
-Wordfence isn't one of them: we download its public vulnerability list and send it nothing about you or your store. We use no payment provider, because Pirkoo takes no payments today.
+* Resend: sends the app's emails (login links, invitations, and the notices about a store disconnected, down and back up).
 
-Transfers outside the European Economic Area. The data from stores is stored in the European Union. Some providers are United States companies or store data there (Resend does). Where personal data leaves the EEA, it does so only under a mechanism the GDPR allows: an adequacy decision, such as the EU-U.S. Data Privacy Framework for a provider certified under it, or the European Commission's Standard Contractual Clauses. The register says which is relied on for each provider. We don't sell your data or use it for advertising.
+* Google: Google Workspace hosts our mailboxes; Google PageSpeed Insights tests your store's public home page (it receives only its address).
 
-FOUNDER CONFIRMATION REQUIRED: the entity, location and transfer mechanism of each provider as marked in the register, and that each provider's data processing terms have been accepted.
+Wordfence isn't one of them: we download its public vulnerability list and send it nothing about you or your store.
 
-How we protect it
------------------
-
-What is in place, as built: all connections to the app and its API use HTTPS; each store's connection secret is encrypted before it is stored, and login links and session tokens are stored only as hashes; every request between the app and a store's plugin is signed and accepted once; every page checks the session, the company and the role, and shoppers' details are returned only to Owners and Admins; the plugin strips email addresses, IP addresses, links and long numbers from error messages and names before they leave the store; our logs hold store addresses and technical identifiers, not personal data; and the retention periods below are applied automatically. We hold no security certification. No system is perfectly secure; if a breach affects your data, we'll tell you as the law requires, and for data from stores as the Data Processing Agreement says.
+Some of these providers are based in the United States. Where data leaves the EU, they process it under an EU adequacy decision, such as the EU-US Data Privacy Framework, or Standard Contractual Clauses. We don't sell your data or use it for advertising.
 
 How long we keep it
 -------------------
@@ -222,25 +184,18 @@ Other copies:
 
 * Database snapshots: our hosting provider takes daily snapshots of our databases, plus one before some updates, and deletes each after 5 days. Data we've deleted can remain in a snapshot until it expires. We use snapshots only to restore our service, and if we restore one, we delete again anything that had already been deleted.
 
-* Logs: our service logs record store addresses and technical identifiers, not scan contents, shoppers' data, email addresses or login links. Our hosting provider keeps them for about 7 days.
-
-FOUNDER CONFIRMATION REQUIRED: the hosting provider's current log retention ("about 7 days" comes from its documentation, not from a setting of ours).
+* Logs: our service logs record store addresses and technical identifiers, not scan contents, email addresses or login links. Our hosting provider keeps them for about 7 days.
 
 Your rights
 -----------
 
-If you have a Pirkoo account, visited pirkoo.com or wrote to us, we are the controller of your data: you can ask us for a copy of it, to correct or delete it, to restrict or object to how we use it, or to receive it in a portable format. The app has no download of its own for this: email privacy@pirkoo.com and we'll reply within one month. You can delete your account yourself in the app. For help with Pirkoo, email support@pirkoo.com.
+You can ask us for a copy of your data, to correct or delete it, to restrict or object to how we use it, or to receive it in a portable format. The app has no download of its own for this: email privacy@pirkoo.com and we'll reply within one month. You can delete your account yourself in the app, and a company's Owners and Admins can remove stores; its Owners can delete the company. For help with Pirkoo, email support@pirkoo.com.
 
-If your data reached us from a store (you bought from it, or you run it), the business the store belongs to is the controller and decides how your data is used: contact the store. If you write to us instead, we'll pass your request to the store's company and help it answer. A company's Owners and Admins can remove a store, which deletes its data from that company, and its Owners can delete the company.
+If you're a shopper of a store that uses Pirkoo, the store decides how your data is used: contact the store, and we'll help it answer you.
 
 You can also complain to the Lithuanian supervisory authority, the State Data Protection Inspectorate (https://vdai.lrv.lt/en/), or to the authority where you live.
-
-Cookies
--------
-
-app.pirkoo.com sets two cookies, both strictly necessary: the session cookie (__Host-pirkoo_session; HttpOnly, Secure, 30 days) that keeps you logged in, and a cookie that remembers for 30 minutes the page you were opening before you logged in. pirkoo.com sets none of its own; Cloudflare may set cf_clearance (see "Pirkoo's website"). There are no analytics, advertising or third-party tracking cookies, and the plugin sets no cookie on your store.
 
 Changes
 -------
 
-This policy is published at https://pirkoo.com/privacy/ and shipped with the Pirkoo plugin, with the Terms of Use, the Data Processing Agreement and the Sub-processor Register. If we change how we handle your data, we'll update it and the date at the top, and tell the people with a Pirkoo account by email before a change that affects them takes effect.
+This policy is published at https://pirkoo.com/privacy/ and shipped with the Pirkoo plugin. If we change how we handle your data, we'll update it and the date at the top, and tell the people with a Pirkoo account by email before a change that affects them takes effect.

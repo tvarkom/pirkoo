@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Pirkoo
  * Description:       Multi-Store WooCommerce Manager
- * Version:           0.4.0
+ * Version:           0.4.1
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  woocommerce
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PIRKOO_VERSION', '0.4.0' );
+define( 'PIRKOO_VERSION', '0.4.1' );
 define( 'PIRKOO_FILE', __FILE__ );
 define( 'PIRKOO_OPTION', 'pirkoo' );
 define( 'PIRKOO_LOCK', 'pirkoo_scan_lock' );

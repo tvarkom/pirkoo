@@ -4,7 +4,7 @@ Tags: woocommerce, performance, speed, health, dashboard
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.0
+Stable tag: 0.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,10 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.4.1 =
+* Pirkoo is now the Multi-Store WooCommerce Manager.
+* A person's first company on app.pirkoo.com is free for up to 3 stores, with no time limit: the readme, the Terms of Use (version 0.4.1) and the Privacy Policy shipped with the plugin say so, and no longer describe a 14-day trial.
 
 = 0.4.0 =
 * Relay mode, for a store whose firewall blocks app.pirkoo.com: when the app can't reach the plugin, it offers to connect the other way round, and the store then calls app.pirkoo.com for its requests (when the app asks, and every 5 minutes).

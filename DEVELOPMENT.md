@@ -72,6 +72,10 @@ Build the zip from a tagged commit, its folder named after the slug
 `pirkoo-pt_BR.mo` its compiled form: change both together (`msgfmt -o languages/pirkoo-pt_BR.mo
 languages/pirkoo-pt_BR.po`), and add every new translatable text to them in the same commit.
 
+`legal/` holds only the texts in force, as published on pirkoo.com; drafts under review (Terms and
+Privacy Policy 0.5, the Data Processing Agreement, the sub-processor register) live in
+`legal-drafts/`, which is never shipped, until the owner approves and publishes them.
+
 `legal/privacy-policy.txt` is Pirkoo's privacy policy (the app at app.pirkoo.com, this plugin and
 pirkoo.com), published at https://pirkoo.com/privacy/: the pirkoo-website repo (`../../website`)
 generates that page from a copy of this file (its `content/privacy-policy.txt`,
