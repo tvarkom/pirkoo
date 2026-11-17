@@ -3,7 +3,7 @@ Pirkoo
 
 The terms for using Pirkoo (Multi-Store WooCommerce Manager): the app at app.pirkoo.com and the WooCommerce plugin that connects stores to it, by tvarkom.
 
-Last updated: 17 November 2026 (version 0.4.3)
+Last updated: 17 November 2026 (version 0.4.4)
 
 Who we are
 ----------
@@ -47,7 +47,7 @@ Price and access
 
 * The first company a person creates is free for 1 store, with everything Pirkoo does and no time limit. Further companies the same person creates can't hold stores until they have a plan.
 
-* Paid plans, per company, paid monthly: up to 3 stores €49, up to 10 stores €149, up to 20 stores €249, up to 30 stores €297, plus VAT where it applies. For more than 30 stores, write to contact@pirkoo.com for a custom plan. A company's Owners buy and manage its plan on the Billing page in the app; the payment page shows the total, VAT included, before you pay.
+* For more stores, a company buys a paid plan, per company and paid monthly. The plans, their store limits and their prices (plus VAT where it applies) are shown on the Billing page in the app; for more stores than the largest plan allows, write to contact@pirkoo.com for a custom plan. A company's Owners buy and manage its plan on the Billing page; the payment page shows the total, VAT included, before you pay.
 
 * Plans are sold only to businesses, for use in their trade or profession, not to consumers. By buying a plan you confirm you're buying it for a business.
 

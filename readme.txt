@@ -4,7 +4,7 @@ Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.6
+Stable tag: 0.4.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Manage, monitor and report on all your WooCommerce stores from one dashboard, wi
 
 Connect your WooCommerce stores to **Pirkoo** and see every store's health, sales and upkeep in one place, with your team, and act on what needs attention.
 
-_Your first company on Pirkoo is free for 1 store, with every feature and no time limit. Plans for more stores start at €49 a month._ **[Get started at app.pirkoo.com](https://app.pirkoo.com/)**
+_Your first company on Pirkoo is free for 1 store, with every feature and no time limit._ **[Get started at app.pirkoo.com](https://app.pirkoo.com/)**
 
 = What is Pirkoo? =
 
@@ -143,7 +143,7 @@ Once a day on its own, between 02:00 and 05:00 in your store's timezone (skipped
 
 = How much does Pirkoo cost? =
 
-The plugin is free. On app.pirkoo.com, a person's first company is free for 1 store, with everything and no time limit. For more stores, a company buys a monthly plan: up to 3 stores €49, up to 10 €149, up to 20 €249, up to 30 €297, plus VAT where it applies; for more than 30, write to contact@pirkoo.com. Plans are for businesses and are paid through Stripe; cancel at any time from the app's Billing page. A company holding more stores than its plan allows is paused (dashboards and history stay; scans, the daily copies, updates and monitoring pause) until it removes stores or buys a larger plan.
+The plugin is free. On app.pirkoo.com, a person's first company is free for 1 store, with everything and no time limit. For more stores, a company buys a monthly plan, shown with its price on the app's Billing page. Plans are for businesses and are paid through Stripe; cancel at any time from the app's Billing page. A company holding more stores than its plan allows is paused (dashboards and history stay; scans, the daily copies, updates and monitoring pause) until it removes stores or buys a larger plan.
 
 = Does it send anything on its own? =
 
@@ -158,6 +158,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.4.7 =
+* Plan prices are shown only in the app: removed from the plugin page and from the Terms of Use (version 0.4.4) shipped with the plugin.
 
 = 0.4.6 =
 * Paid plans for more stores on app.pirkoo.com: the readme, the Terms of Use (version 0.4.3) and the Privacy Policy shipped with the plugin describe them.
