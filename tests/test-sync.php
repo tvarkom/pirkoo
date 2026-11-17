@@ -134,8 +134,9 @@ class Test_Pirkoo_Sync extends Pirkoo_Test_Case {
 		$plain->save();
 		$items = $this->sync(
 			array(
-				'kind'  => 'orders',
-				'since' => 0,
+				'kind'     => 'orders',
+				'since'    => 0,
+				'per_page' => 50, // another body: the same signed request twice is refused as a replay
 			)
 		)['items'];
 		$last  = end( $items );
