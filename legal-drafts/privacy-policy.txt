@@ -84,9 +84,9 @@ Store records
 
 From Pirkoo 0.4, so the people in the company a store is connected to can see its orders, refunds, customers, products and coupons on app.pirkoo.com, app.pirkoo.com asks the plugin for the store's records: the last 12 months when the store is connected, then what changed, once a day.
 
-* Orders: number, status, dates (created, paid, completed), currency, totals (subtotal, discounts, shipping, tax, total), the payment method's title, the products and variations ordered with their quantities, prices and chosen attributes, the coupons used, and refunds with their amounts, items and reasons.
+* Orders: number, status, dates (created, paid, completed), currency, totals (subtotal, discounts, shipping, fees, tax, total), the titles of the payment method and of the shipping methods (such as "Flat rate"), the products and variations ordered with their quantities, prices and chosen attributes, the coupons used, and refunds with their amounts, items and reasons.
 
-* The shopper on each order (the billing details): first and last name, email address, phone number, company, city, state, postcode and country. We don't receive the street address, shipping details, order notes, IP addresses or payment details.
+* The shopper on each order (the billing details): first and last name, email address, phone number, company, city, state, postcode and country. We don't receive the street address, the shipping address, order notes, IP addresses or payment details.
 
 * Registered customers: name, email address, phone number, city, state, postcode, country and when they registered.
 
