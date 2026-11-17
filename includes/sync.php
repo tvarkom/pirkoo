@@ -14,11 +14,17 @@ defined( 'ABSPATH' ) || exit;
 const PIRKOO_SYNC_MAX_PAGE = 100;
 
 /**
+ * What the records hold, raised when they gain fields (2: orders' fees and shipping methods, 0.4.8):
+ * app.pirkoo.com syncs the 12 months of orders again when it rises, so older ones gain them too.
+ */
+const PIRKOO_SYNC_SCHEMA = 2;
+
+/**
  * POST /pirkoo/v1/sync {"kind", "since", "page", "per_page"}: one page of the store's records of a
  * kind (orders, customers, products or coupons) changed since a Unix time, oldest change first.
  *
  * @param WP_REST_Request $request The request.
- * @return array{kind: string, page: int, more: bool, items: array<int, array<string, mixed>>}|WP_Error
+ * @return array{kind: string, schema: int, page: int, more: bool, items: array<int, array<string, mixed>>}|WP_Error
  */
 function pirkoo_rest_sync( WP_REST_Request $request ) {
 	$kind     = $request->get_param( 'kind' );
@@ -36,10 +42,11 @@ function pirkoo_rest_sync( WP_REST_Request $request ) {
 	}
 	list( $items, $more ) = call_user_func( $readers[ $kind ], $since, $page, $per_page );
 	return array(
-		'kind'  => $kind,
-		'page'  => $page,
-		'more'  => $more,
-		'items' => $items,
+		'kind'   => $kind,
+		'schema' => PIRKOO_SYNC_SCHEMA,
+		'page'   => $page,
+		'more'   => $more,
+		'items'  => $items,
 	);
 }
 
@@ -137,6 +144,12 @@ function pirkoo_sync_order( WC_Order $order ) {
 			);
 		}
 	}
+	$shipping_methods = array();
+	foreach ( $order->get_items( 'shipping' ) as $shipping ) {
+		if ( $shipping instanceof WC_Order_Item_Shipping ) {
+			$shipping_methods[] = $shipping->get_method_title();
+		}
+	}
 	$refunds = array();
 	foreach ( $order->get_refunds() as $refund ) {
 		$refund_lines = array();
@@ -159,22 +172,24 @@ function pirkoo_sync_order( WC_Order $order ) {
 		);
 	}
 	return array(
-		'id'             => $order->get_id(),
-		'number'         => (string) $order->get_order_number(),
-		'status'         => $order->get_status(),
-		'currency'       => $order->get_currency(),
-		'created'        => pirkoo_sync_time( $order->get_date_created() ),
-		'paid'           => pirkoo_sync_time( $order->get_date_paid() ),
-		'completed'      => pirkoo_sync_time( $order->get_date_completed() ),
-		'modified'       => pirkoo_sync_time( $order->get_date_modified() ),
-		'total'          => pirkoo_sync_money( $order->get_total() ),
-		'subtotal'       => pirkoo_sync_money( $order->get_subtotal() ),
-		'discount'       => pirkoo_sync_money( $order->get_discount_total() ),
-		'shipping'       => pirkoo_sync_money( $order->get_shipping_total() ),
-		'tax'            => pirkoo_sync_money( $order->get_total_tax() ),
-		'payment_method' => $order->get_payment_method_title(),
-		'customer_id'    => $order->get_customer_id(),
-		'customer'       => array(
+		'id'               => $order->get_id(),
+		'number'           => (string) $order->get_order_number(),
+		'status'           => $order->get_status(),
+		'currency'         => $order->get_currency(),
+		'created'          => pirkoo_sync_time( $order->get_date_created() ),
+		'paid'             => pirkoo_sync_time( $order->get_date_paid() ),
+		'completed'        => pirkoo_sync_time( $order->get_date_completed() ),
+		'modified'         => pirkoo_sync_time( $order->get_date_modified() ),
+		'total'            => pirkoo_sync_money( $order->get_total() ),
+		'subtotal'         => pirkoo_sync_money( $order->get_subtotal() ),
+		'discount'         => pirkoo_sync_money( $order->get_discount_total() ),
+		'shipping'         => pirkoo_sync_money( $order->get_shipping_total() ),
+		'tax'              => pirkoo_sync_money( $order->get_total_tax() ),
+		'fees'             => pirkoo_sync_money( $order->get_total_fees() ),
+		'payment_method'   => $order->get_payment_method_title(),
+		'shipping_methods' => $shipping_methods,
+		'customer_id'      => $order->get_customer_id(),
+		'customer'         => array(
 			'first_name' => $order->get_billing_first_name(),
 			'last_name'  => $order->get_billing_last_name(),
 			'email'      => $order->get_billing_email(),
@@ -185,9 +200,9 @@ function pirkoo_sync_order( WC_Order $order ) {
 			'postcode'   => $order->get_billing_postcode(),
 			'country'    => $order->get_billing_country(),
 		),
-		'items'          => $lines,
-		'coupons'        => $coupons,
-		'refunds'        => $refunds,
+		'items'            => $lines,
+		'coupons'          => $coupons,
+		'refunds'          => $refunds,
 	);
 }
 

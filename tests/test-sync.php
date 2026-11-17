@@ -90,6 +90,59 @@ class Test_Pirkoo_Sync extends Pirkoo_Test_Case {
 		$this->assertSame( array(), $later['items'], 'Nothing changed since then.' );
 	}
 
+	/**
+	 * Orders carry their fees and shipping methods' titles, and every page the records' schema
+	 * (0.4.8), so app.pirkoo.com knows to sync older orders again.
+	 */
+	public function test_orders_carry_fees_and_shipping_methods() {
+		$this->connect_store( self::SECRET );
+		$product = new WC_Product_Simple();
+		$product->set_name( 'Notebook' );
+		$product->set_regular_price( '10' );
+		$product->save();
+
+		$order = wc_create_order();
+		$order->add_product( $product, 1 );
+		$fee = new WC_Order_Item_Fee();
+		$fee->set_name( 'Gift wrap' );
+		$fee->set_total( '2.50' );
+		$order->add_item( $fee );
+		$shipping = new WC_Order_Item_Shipping();
+		$shipping->set_method_title( 'Flat rate' );
+		$shipping->set_method_id( 'flat_rate' );
+		$shipping->set_total( '4.90' );
+		$order->add_item( $shipping );
+		$order->calculate_totals( false );
+		$order->save();
+
+		$page = $this->sync(
+			array(
+				'kind'  => 'orders',
+				'since' => 0,
+			)
+		);
+		$this->assertSame( 2, $page['schema'] );
+		$o = $page['items'][0];
+		$this->assertSame( '2.50', $o['fees'] );
+		$this->assertSame( '4.90', $o['shipping'] );
+		$this->assertSame( array( 'Flat rate' ), $o['shipping_methods'] );
+		$this->assertSame( '17.40', $o['total'] );
+
+		$plain = wc_create_order();
+		$plain->add_product( $product, 1 );
+		$plain->calculate_totals( false );
+		$plain->save();
+		$items = $this->sync(
+			array(
+				'kind'  => 'orders',
+				'since' => 0,
+			)
+		)['items'];
+		$last  = end( $items );
+		$this->assertSame( '0.00', $last['fees'] );
+		$this->assertSame( array(), $last['shipping_methods'] );
+	}
+
 	public function test_orders_page_by_page() {
 		$this->connect_store( self::SECRET );
 		for ( $i = 0; $i < 3; $i++ ) {
