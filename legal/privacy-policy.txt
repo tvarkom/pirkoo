@@ -98,7 +98,7 @@ From Pirkoo 0.4, app.pirkoo.com shows each connected store's WordPress, plugins,
 When a company's access is paused
 ---------------------------------
 
-Pirkoo is free of charge for now. The first company a person creates is free for 1 store, with no time limit; further companies a person creates can't hold stores. A company that holds more stores than it's allowed is paused until it removes stores: its people still see its dashboards, records and history, but for its stores we stop the scans, the daily copy of records and of the inventory, updates from the app, and the uptime, performance and broken-link checks (the inventory is still refreshed when someone opens the Plugins, Themes, Core, Vulnerabilities or PHP issues pages). Nothing is deleted because of it; the retention periods below keep running, so orders still leave our copy 12 months after they were placed, and scan results 12 months after each scan.
+The first company a person creates is free for 1 store, with no time limit; further companies need a plan to hold stores. When a company's plan ends or it holds more stores than its plan allows, it's paused until it removes stores or buys a larger plan: its people still see its dashboards, records and history, but for its stores we stop the scans, the daily copy of records and of the inventory, updates from the app, and the uptime, performance and broken-link checks (the inventory is still refreshed when someone opens the Plugins, Themes, Core, Vulnerabilities or PHP issues pages). Nothing is deleted because of it; the retention periods below keep running, so orders still leave our copy 12 months after they were placed, and scan results 12 months after each scan.
 
 Disconnecting, removing and deleting
 ------------------------------------
@@ -111,6 +111,11 @@ Disconnecting, removing and deleting
 
 * Deleting your account (in the app's account menu) deletes your memberships, sessions and login links; usage records lose their link to you. You must first hand over or delete a company of which you're the only Owner.
 
+Paying for a plan
+-----------------
+
+When an Owner buys a plan, the payment page is Stripe's. Link, a Stripe company and the merchant of record, collects the name, email address, billing address, VAT ID if given, and payment details directly, under its own privacy policy, and is the controller of that data; it also sends the receipts and invoices. We send Stripe the company's ID in Pirkoo and the Owner's email address. From Stripe we receive and keep the customer ID, the plan, the subscription's status and its renewal date, never the card or bank details. We keep them as long as the company exists, and the records the law requires for accounting for as long as it requires.
+
 Emails we send
 --------------
 
@@ -121,6 +126,8 @@ Legal basis (Art. 6 GDPR), by purpose
 
 * Your account, companies, invitations, connecting stores, scanning them, copying their records and inventory, updating and monitoring them, the emails above, and showing all of it to the company's people: providing the service you request (Art. 6(1)(b)). For shoppers' data in store records, we act as the store's processor (Art. 28 GDPR); the store's own legal basis applies. An invited person's email address: the inviting company's and our legitimate interest in letting it add its people (Art. 6(1)(f)).
 * The audit history, the store profile and its statistics, the usage records, the login and scan limits, and IP addresses with login requests: our legitimate interests in supporting your store, showing its results over time, understanding how Pirkoo is used, improving it and preventing abuse (Art. 6(1)(f)).
+
+* Buying and managing a plan: performing the contract (Art. 6(1)(b)); keeping billing records: our legal obligation (Art. 6(1)(c)).
 
 You can object at any time to what rests on our legitimate interests: email privacy@pirkoo.com.
 
@@ -142,6 +149,8 @@ Who processes data for us
 * Cloudflare: DNS for pirkoo.com and network protection for the website pirkoo.com (not for the app).
 
 * Resend: sends the app's emails (login links, invitations, and the notices about a store disconnected, down and back up).
+
+* Stripe: provides the payment pages, the subscription records and the billing portal. For the payments themselves, Link (Stripe) is the merchant of record and a controller (see "Paying for a plan").
 
 * Google: Google Workspace hosts our mailboxes; Google PageSpeed Insights tests your store's public home page (it receives only its address).
 

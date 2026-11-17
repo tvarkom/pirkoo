@@ -3,7 +3,7 @@ Pirkoo
 
 The terms for using Pirkoo (Multi-Store WooCommerce Manager): the app at app.pirkoo.com and the WooCommerce plugin that connects stores to it, by tvarkom.
 
-Last updated: 17 November 2026 (version 0.4.2)
+Last updated: 17 November 2026 (version 0.4.3)
 
 Who we are
 ----------
@@ -45,11 +45,21 @@ Accounts and companies
 Price and access
 ----------------
 
-* Pirkoo is free of charge for now, and offered to a limited number of companies while we finish it. We don't sell plans yet and take no payment.
+* The first company a person creates is free for 1 store, with everything Pirkoo does and no time limit. Further companies the same person creates can't hold stores until they have a plan.
 
-* The first company a person creates is free for 1 store, with everything Pirkoo does and no time limit. Further companies the same person creates can't hold stores. A company that holds more stores than it's allowed is paused: its pages and history stay available, but for its stores no scans run, the daily copies and the uptime, performance and broken-link checks stop, updates can't be started from the app, and no stores can be added, until it removes stores. Nothing is deleted because of it; the retention periods in the Privacy Policy keep running.
+* Paid plans, per company, paid monthly: up to 3 stores €49, up to 10 stores €149, up to 20 stores €249, up to 30 stores €297, plus VAT where it applies. For more than 30 stores, write to contact@pirkoo.com for a custom plan. A company's Owners buy and manage its plan on the Billing page in the app; the payment page shows the total, VAT included, before you pay.
 
-* We plan to offer paid plans later. Before anything is charged, we'll publish new terms with the prices and conditions and tell each company's Owners by email at least 30 days ahead. Nothing will be charged to you without your agreement to those terms.
+* Plans are sold only to businesses, for use in their trade or profession, not to consumers. By buying a plan you confirm you're buying it for a business.
+
+* We, MB TVARKOM SOFTWARE, provide Pirkoo and its plans. Payments go through Stripe Managed Payments: Link, a Stripe company, acts as the merchant of record. It takes the payment, charges and pays the VAT, issues the receipts and invoices, appears on your card statement and handles refunds and disputes, under its own terms shown on the payment page. We never see your card or bank details.
+
+* A plan starts when the payment is confirmed and renews every month until it's cancelled. Owners can cancel, change plan, update the payment method and download invoices from the Billing page. A cancellation takes effect at the end of the month already paid, with no refund for the rest of it, unless the law or Link's terms give you one. A change to a larger plan starts at once and the difference for the rest of the month is charged; a change to a smaller plan applies the same way, with the difference credited to the next payment.
+
+* If a payment fails, it's tried again for a few days and the plan stays active meanwhile. When a plan ends (cancelled or unpaid), the company goes back to the free limit: 1 store for a person's first company, none for other companies.
+
+* A company that holds more stores than its plan allows is paused: its pages and history stay available, but for its stores no scans run, the daily copies and the uptime, performance and broken-link checks stop, updates can't be started from the app, and no stores can be added, until it removes stores or buys a larger plan. Nothing is deleted because of it; the retention periods in the Privacy Policy keep running.
+
+* We may change the prices. We'll tell each company's Owners by email at least 30 days before; the new price applies from the first renewal after that, and you can cancel before it does.
 
 Limits and acceptable use
 -------------------------
@@ -95,7 +105,7 @@ How we handle personal data is described in our Privacy Policy (https://pirkoo.c
 Liability
 ---------
 
-Pirkoo is provided free of charge and as it is. To the extent the law allows, we aren't liable for indirect or consequential losses such as lost profit or lost data. Nothing in these terms limits liability that can't be limited by law, or rights you have as a consumer.
+Pirkoo is provided as it is. To the extent the law allows, we aren't liable for indirect or consequential losses such as lost profit or lost data. Nothing in these terms limits liability that can't be limited by law, or rights you have as a consumer.
 
 Changes to these terms
 ----------------------
