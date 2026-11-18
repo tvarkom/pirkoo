@@ -86,7 +86,7 @@ From Pirkoo 0.4, so the people in the company a store is connected to can see it
 
 * Orders: number, status, dates (created, paid, completed), currency, totals (subtotal, discounts, shipping, fees, tax, total), the titles of the payment method and of the shipping methods (such as "Flat rate"), the products and variations ordered with their quantities, prices and chosen attributes, the coupons used, and refunds with their amounts, items and reasons.
 
-* The shopper on each order (the billing details): first and last name, email address, phone number, company, city, state, postcode and country. We don't receive the street address, the shipping address, order notes, IP addresses or payment details.
+* The shopper on each order: the billing details (first and last name, email address, phone number, company, street address, city, state, postcode and country), the shipping details (name, company, phone number and the same address fields), and the shopper's account role. The order's notes, the note written at checkout and custom fields are copied too (see the published policy). We don't receive IP addresses, browser details or payment details.
 
 * Registered customers: name, email address, phone number, city, state, postcode, country and when they registered.
 

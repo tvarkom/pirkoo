@@ -121,7 +121,7 @@ class Test_Pirkoo_Sync extends Pirkoo_Test_Case {
 				'since' => 0,
 			)
 		);
-		$this->assertSame( 2, $page['schema'] );
+		$this->assertSame( 3, $page['schema'] );
 		$o = $page['items'][0];
 		$this->assertSame( '2.50', $o['fees'] );
 		$this->assertSame( '4.90', $o['shipping'] );
@@ -142,6 +142,90 @@ class Test_Pirkoo_Sync extends Pirkoo_Test_Case {
 		$last  = end( $items );
 		$this->assertSame( '0.00', $last['fees'] );
 		$this->assertSame( array(), $last['shipping_methods'] );
+	}
+
+	/**
+	 * What the app's order page shows (0.5.0, records schema 3): both addresses, the payment
+	 * method's id, fee and shipping lines, how it was created, its source, notes and custom fields,
+	 * without those that look like secrets.
+	 */
+	public function test_orders_carry_what_the_order_page_shows() {
+		$this->connect_store( self::SECRET );
+		$product = new WC_Product_Simple();
+		$product->set_name( 'Mug' );
+		$product->set_regular_price( '12' );
+		$product->save();
+
+		$order = wc_create_order();
+		$order->add_product( $product, 1 );
+		$order->set_billing_first_name( 'Ona' );
+		$order->set_billing_email( 'ona@example.com' );
+		$order->set_billing_address_1( 'Laisvės al. 1' );
+		$order->set_shipping_first_name( 'Petras' );
+		$order->set_shipping_address_1( 'Vilniaus g. 2' );
+		$order->set_shipping_city( 'Vilnius' );
+		$order->set_shipping_country( 'LT' );
+		$order->set_payment_method( 'cod' );
+		$order->set_payment_method_title( 'Cash on delivery' );
+		$order->set_created_via( 'checkout' );
+		$order->set_customer_note( 'Leave at the door' );
+		$fee = new WC_Order_Item_Fee();
+		$fee->set_name( 'Gift wrap' );
+		$fee->set_total( '3.50' );
+		$order->add_item( $fee );
+		$order->update_meta_data( '_wc_order_attribution_utm_source', 'newsletter' );
+		$order->update_meta_data( '_pirkoo_fake', '1' );
+		$order->update_meta_data( 'gift_message', array( 'to' => 'Ona' ) );
+		$order->update_meta_data( '_stripe_customer_token', 'tok_123' );
+		$order->update_meta_data( '_api_key', 'k' );
+		$order->update_meta_data( '_customer_ip_address_copy', '10.0.0.1' );
+		$order->update_meta_data( 'user_agent', 'Mozilla' );
+		$order->calculate_totals( false );
+		$order->save();
+		$order->add_order_note( 'Packed.' );
+
+		$o = $this->sync(
+			array(
+				'kind'  => 'orders',
+				'since' => 0,
+			)
+		)['items'][0];
+		$this->assertSame( 'cod', $o['payment_method_id'] );
+		$this->assertSame( 'checkout', $o['created_via'] );
+		$this->assertSame( 'guest', $o['customer_role'] );
+		$this->assertSame( 'Leave at the door', $o['customer_note'] );
+		$this->assertSame( 'Laisvės al. 1', $o['customer']['address_1'] );
+		$this->assertSame( 'Petras', $o['shipping_address']['first_name'] );
+		$this->assertSame( 'Vilnius', $o['shipping_address']['city'] );
+		$this->assertSame(
+			array(
+				array(
+					'name'  => 'Gift wrap',
+					'total' => '3.50',
+				),
+			),
+			$o['fee_lines']
+		);
+		$this->assertSame( 'newsletter', $o['attribution']['utm_source'] );
+		$this->assertSame( 'Packed.', $o['notes'][0]['content'] );
+		$keys = wp_list_pluck( $o['meta'], 'key' );
+		$this->assertContains( '_pirkoo_fake', $keys );
+		$this->assertContains( 'gift_message', $keys );
+		$this->assertNotContains( '_stripe_customer_token', $keys );
+		$this->assertNotContains( '_api_key', $keys );
+		$this->assertNotContains( '_customer_ip_address_copy', $keys );
+		$this->assertNotContains( 'user_agent', $keys );
+		$gift = array_values( wp_list_filter( $o['meta'], array( 'key' => 'gift_message' ) ) );
+		$this->assertSame( '{"to":"Ona"}', $gift[0]['value'] );
+	}
+
+	public function test_secret_looking_keys() {
+		foreach ( array( '_order_key', 'stripe_token', 'api_secret', 'password', '_card_last4', 'session_hash', '_customer_ip_address', 'ip', 'user_agent', '_wc_order_attribution_user_agent' ) as $key ) {
+			$this->assertTrue( pirkoo_sync_secret_key( $key ), $key );
+		}
+		foreach ( array( '_pirkoo_fake', 'gift_message', '_wc_order_attribution_utm_source', 'shipping_zip', 'description' ) as $key ) {
+			$this->assertFalse( pirkoo_sync_secret_key( $key ), $key );
+		}
 	}
 
 	public function test_orders_page_by_page() {
@@ -243,5 +327,9 @@ class Test_Pirkoo_Sync extends Pirkoo_Test_Case {
 		);
 		$this->assertSame( 'spring10', $coupons['items'][0]['code'] );
 		$this->assertSame( '10.00', $coupons['items'][0]['amount'] );
+		$this->assertFalse( $coupons['items'][0]['restrictions']['individual_use'] );
+		$this->assertSame( 0, $coupons['items'][0]['restrictions']['allowed_emails'] );
+		$this->assertSame( 'customer', $customers['items'][0]['role'] );
+		$this->assertSame( 'LT', $customers['items'][0]['billing']['country'] );
 	}
 }

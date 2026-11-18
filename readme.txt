@@ -4,7 +4,7 @@ Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.8
+Stable tag: 0.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,7 +110,7 @@ Once connected, app.pirkoo.com sends requests signed with a secret shared only w
 
 * **Scans** (once a day at night in your store's timezone, and when you ask): store settings and versions, database and server figures, background task health, site and security checks, order and sales counts for the last 30 days, and a profile of one checkout page load (nothing is ordered). Never customers' details, option contents, task arguments or payment settings.
 * **WordPress management** (once a day, and when you open those pages): WordPress's version and each installed plugin and theme with their updates, and the PHP errors of the last 7 days, with emails, IP addresses and links removed. An update runs only when an Owner or Admin clicks Update.
-* **Store records** (the last 12 months when you connect, then what changed, daily): orders with the billing customer's name, email, phone, company, city, state, postcode and country; registered customers; products, variations, categories and coupons. Never street addresses, shipping details, order notes, IP addresses or payment details. Pirkoo processes this data on your behalf and keeps orders 12 months; ask privacy@pirkoo.com for a data processing agreement.
+* **Store records** (the last 12 months when you connect, then what changed, daily): orders with the customer's billing and shipping names, email, phone, company and addresses, the order's notes, the note written at checkout and its custom fields; registered customers; products, variations, categories and coupons. Never IP addresses, browser details, payment details or custom fields whose names suggest secrets. Pirkoo processes this data on your behalf and keeps orders 12 months; ask privacy@pirkoo.com for a data processing agreement.
 
 In relay mode (only for a store whose firewall blocks Pirkoo, and only if an administrator accepts it), the plugin fetches the same requests from app.pirkoo.com and sends back the same answers, every 5 minutes.
 
@@ -158,6 +158,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.5.0 =
+* The records app.pirkoo.com copies now carry what its order, customer, product and coupon pages show: billing and shipping addresses, order notes, the note written at checkout, custom fields (leaving out any whose name suggests a secret, card details, an IP address or a user agent), fee and shipping lines, the payment method's id, how and from where an order came (WooCommerce's order attribution), customers' roles, product page and image addresses, and coupons' restrictions. Each scan also sends the address of the store's wp-admin, for the app's Edit links. The Privacy Policy shipped with the plugin lists them.
 
 = 0.4.8 =
 * The orders app.pirkoo.com copies now carry their fees and the names of their shipping methods, for the Sales reports. The Privacy Policy shipped with the plugin lists them.
