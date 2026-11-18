@@ -256,6 +256,7 @@ function pirkoo_register_routes() {
 		'/sync'       => 'pirkoo_rest_sync',
 		'/inventory'  => 'pirkoo_rest_inventory',
 		'/update'     => 'pirkoo_rest_update',
+		'/install'    => 'pirkoo_rest_install',
 	) as $route => $callback ) {
 		register_rest_route(
 			'pirkoo/v1',
