@@ -4,7 +4,7 @@ Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.6.0
+Stable tag: 0.6.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,7 +26,7 @@ Pirkoo is a Multi-Store WooCommerce Manager, made for store owners and for the a
 * ✅ Uptime monitoring every 5 minutes, with email alerts
 * ✅ A daily performance test with Google PageSpeed
 * ✅ A weekly hunt for broken links and images
-* ✅ Plugin, theme and WordPress updates in one click
+* ✅ Plugin and theme updates in one click; WordPress updates pointed out
 * ✅ Known vulnerabilities and PHP errors
 * ✅ Orders, refunds, customers and coupons
 * ✅ Product, category and stock reports
@@ -59,7 +59,7 @@ Know your store is down before your customers tell you.
 Keep every store up to date without logging in to each one.
 
 * Every store's plugins, themes and WordPress version, with the updates waiting.
-* Update in one click from Pirkoo.
+* Update plugins and themes in one click from Pirkoo; WordPress updates are shown, and done from your store's admin.
 * Install and activate the WordPress.org plugins Pirkoo recommends for a problem it found, from Pirkoo.
 * Known vulnerabilities in what you have installed.
 * The PHP errors of the last 7 days, grouped.
@@ -110,7 +110,7 @@ This plugin connects your store to Pirkoo (https://app.pirkoo.com), run by MB TV
 Once connected, app.pirkoo.com sends requests signed with a secret shared only with your store to the plugin's routes (`/wp-json/pirkoo/v1/`), and the plugin answers with:
 
 * **Scans** (once a day at night in your store's timezone, and when you ask): store settings and versions, database and server figures, background task health, site and security checks, order and sales counts for the last 30 days, and a profile of one checkout page load (nothing is ordered). Never customers' details, option contents, task arguments or payment settings.
-* **WordPress management** (once a day, and when you open those pages): WordPress's version and each installed plugin and theme with their updates, and the PHP errors of the last 7 days, with emails, IP addresses and links removed. An update runs only when an Owner or Admin clicks Update. From 0.6, an Owner or Admin can also install and activate one of the WordPress.org plugins Pirkoo recommends (only those): the plugin downloads it from WordPress.org (`https://api.wordpress.org/plugins/info/` and `https://downloads.wordpress.org/`), as Plugins → Add New does.
+* **WordPress management** (once a day, and when you open those pages): WordPress's version and each installed plugin and theme with their updates, and the PHP errors of the last 7 days, with emails, IP addresses and links removed. A plugin or theme update runs only when an Owner or Admin clicks Update; WordPress itself is never updated from Pirkoo. From 0.6, an Owner or Admin can also install and activate one of the WordPress.org plugins Pirkoo recommends (only those): the plugin downloads it from WordPress.org (`https://api.wordpress.org/plugins/info/` and `https://downloads.wordpress.org/`), as Plugins → Add New does.
 * **Store records** (the last 12 months when you connect, then what changed, daily): orders with the customer's billing and shipping names, email, phone, company and addresses, the order's notes, the note written at checkout and its custom fields; registered customers; products, variations, categories and coupons. Never IP addresses, browser details, payment details or custom fields whose names suggest secrets. Pirkoo processes this data on your behalf and keeps orders 12 months; ask privacy@pirkoo.com for a data processing agreement.
 
 In relay mode (only for a store whose firewall blocks Pirkoo, and only if an administrator accepts it), the plugin fetches the same requests from app.pirkoo.com and sends back the same answers, every 5 minutes.
@@ -160,9 +160,12 @@ Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnos
 
 == Changelog ==
 
+= 0.6.1 =
+* WordPress itself is no longer updated from app.pirkoo.com: the app shows the update waiting and links to the store's Dashboard → Updates. Plugin and theme updates are unchanged.
+
 = 0.6.0 =
 * Install and activate from app.pirkoo.com: an Owner or Admin can install one of the WordPress.org plugins Pirkoo recommends for a problem it found, and the plugin activates it. Only those plugins can be installed this way.
-* Fix: a WordPress update from app.pirkoo.com on a server where WordPress can't write to its own files (it would ask for FTP details) was reported as done although nothing changed. It now says why it can't update; plugin and theme updates check the same first.
+* Fix: an update from app.pirkoo.com on a server where WordPress can't write to its own files (it would ask for FTP details) could be reported as done although nothing changed. Plugin and theme updates and installs now check first and say why they can't.
 
 = 0.5.0 =
 * The records app.pirkoo.com copies now carry what its order, customer, product and coupon pages show: billing and shipping addresses, order notes, the note written at checkout, custom fields (leaving out any whose name suggests a secret, card details, an IP address or a user agent), fee and shipping lines, the payment method's id, how and from where an order came (WooCommerce's order attribution), customers' roles, product page and image addresses, and coupons' restrictions. Each scan also sends the address of the store's wp-admin, for the app's Edit links. The Privacy Policy shipped with the plugin lists them.

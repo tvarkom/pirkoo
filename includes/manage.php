@@ -2,7 +2,8 @@
 /**
  * WordPress management for app.pirkoo.com (Pirkoo 0.4, owner decisions of 15 Nov 2026): the store's
  * WordPress core, plugins and themes with their versions and available updates, its PHP errors of
- * the last 7 days, and an update of one of them when an Owner or Admin asks for it in the app.
+ * the last 7 days, and an update of a plugin or theme when an Owner or Admin asks for it in the app
+ * (WordPress itself is updated from the store's admin, never from the app).
  * From Pirkoo 0.6 (owner, 18 Nov 2026), an Owner or Admin can also install and activate one of the
  * WordPress.org plugins Pirkoo recommends (pirkoo_installable_plugins()); nothing else is
  * installed, and nothing is deactivated or deleted from the app.
@@ -204,9 +205,10 @@ function pirkoo_redact( $text ) {
 }
 
 /**
- * POST /pirkoo/v1/update {"type": "plugin"|"theme"|"core", "target"}: updates one plugin (by its
- * file), theme (by its folder) or WordPress core to the newest version WordPress offers, as
- * Dashboard → Updates would, and answers the version now installed.
+ * POST /pirkoo/v1/update {"type": "plugin"|"theme", "target"}: updates one plugin (by its file) or
+ * theme (by its folder) to the newest version WordPress offers, as Dashboard → Updates would, and
+ * answers the version now installed. WordPress itself is not updated from the app (owner, 18 Nov
+ * 2026): "core" is refused as an unknown type, and the store's admin does it.
  *
  * @param WP_REST_Request $request The request.
  * @return array{type: string, target: string, version: string}|WP_Error
@@ -251,25 +253,6 @@ function pirkoo_rest_update( WP_REST_Request $request ) {
 				}
 				$result  = ( new Theme_Upgrader( $skin ) )->upgrade( $target );
 				$version = (string) wp_get_theme( $target )->get( 'Version' );
-				break;
-			case 'core':
-				$offer = find_core_update( '', get_locale() );
-				if ( ! $offer ) {
-					$updates = get_core_updates();
-					$offer   = is_array( $updates ) && isset( $updates[0] ) ? $updates[0] : false;
-				}
-				if ( ! is_object( $offer ) || 'upgrade' !== $offer->response ) {
-					return new WP_Error( 'pirkoo_no_update', 'No WordPress update is offered.', array( 'status' => 409 ) );
-				}
-				$blocked = pirkoo_cannot_write( $skin, ABSPATH );
-				if ( $blocked ) {
-					return $blocked;
-				}
-				// Core_Upgrader answers the new version, a WP_Error, or false when it gave up (no
-				// access to the files): only a version is a finished update.
-				$result  = ( new Core_Upgrader( $skin ) )->upgrade( $offer );
-				$version = is_string( $result ) ? $result : (string) get_bloginfo( 'version' );
-				$result  = is_string( $result ) ? true : ( is_wp_error( $result ) ? $result : false );
 				break;
 			default:
 				return new WP_Error( 'pirkoo_invalid_update', 'Unknown type.', array( 'status' => 400 ) );
