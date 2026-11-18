@@ -386,6 +386,8 @@ function pirkoo_collect() {
 			'timezone'         => wp_timezone_string(),
 			// Where the store's wp-admin is (a security plugin may move it), for the app's Edit links (0.5).
 			'admin_url'        => admin_url(),
+			// Whether orders live in WooCommerce's own tables (HPOS): their edit screen's address differs.
+			'orders_hpos'      => class_exists( '\\Automattic\\WooCommerce\\Utilities\\OrderUtil' ) && \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled(),
 			'date_format'      => (string) get_option( 'date_format' ),
 			'time_format'      => (string) get_option( 'time_format' ),
 			'locale'           => get_locale(),

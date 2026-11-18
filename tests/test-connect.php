@@ -134,7 +134,7 @@ class Pirkoo_Connect_Test extends Pirkoo_Test_Case {
 		$this->assertSame( home_url( '/' ), $data['website'] );
 		$this->assertSame( get_option( 'admin_email' ), $data['email'] );
 		$this->assertSame( 3, $data['metrics']['schema'] );
-		$this->assertSame( array( 'name', 'timezone', 'admin_url', 'date_format', 'time_format', 'locale', 'payment_methods', 'shipping_methods', 'plugins' ), array_keys( $data['store'] ) );
+		$this->assertSame( array( 'name', 'timezone', 'admin_url', 'orders_hpos', 'date_format', 'time_format', 'locale', 'payment_methods', 'shipping_methods', 'plugins' ), array_keys( $data['store'] ) );
 		$this->assertSame( admin_url(), $data['store']['admin_url'] );
 		$this->assertFalse( get_option( PIRKOO_LOCK ), 'The lock is released.' );
 
