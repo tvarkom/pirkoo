@@ -55,6 +55,10 @@ class Test_Pirkoo_Manage extends Pirkoo_Test_Case {
 			self::SECRET
 		);
 		$this->assertSame( 400, $bad->get_status() );
+		// WordPress itself isn't updated from the app (owner, 18 Nov 2026).
+		$core = $this->rest_post( '/pirkoo/v1/update', '{"type":"core","target":"core"}', self::SECRET );
+		$this->assertSame( 400, $core->get_status() );
+		$this->assertSame( 'pirkoo_invalid_update', $core->get_data()['code'] );
 		$this->assertSame( 401, $this->rest_post( '/pirkoo/v1/update', '{"type":"core"}', 'other' )->get_status() );
 		$this->assertFalse( get_option( PIRKOO_LOCK ), 'The lock is released.' );
 	}
