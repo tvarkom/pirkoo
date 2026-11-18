@@ -3,7 +3,9 @@
  * WordPress management for app.pirkoo.com (Pirkoo 0.4, owner decisions of 15 Nov 2026): the store's
  * WordPress core, plugins and themes with their versions and available updates, its PHP errors of
  * the last 7 days, and an update of one of them when an Owner or Admin asks for it in the app.
- * Nothing is activated, deactivated or deleted from the app.
+ * From Pirkoo 0.6 (owner, 18 Nov 2026), an Owner or Admin can also install and activate one of the
+ * WordPress.org plugins Pirkoo recommends (pirkoo_installable_plugins()); nothing else is
+ * installed, and nothing is deactivated or deleted from the app.
  *
  * @package Pirkoo
  */
@@ -227,6 +229,10 @@ function pirkoo_rest_update( WP_REST_Request $request ) {
 				if ( ! array_key_exists( $target, get_plugins() ) ) {
 					return new WP_Error( 'pirkoo_unknown_plugin', 'No such plugin.', array( 'status' => 404 ) );
 				}
+				$blocked = pirkoo_cannot_write( $skin, WP_PLUGIN_DIR );
+				if ( $blocked ) {
+					return $blocked;
+				}
 				$active = is_plugin_active( $target );
 				$result = ( new Plugin_Upgrader( $skin ) )->upgrade( $target );
 				if ( true === $result && $active && ! is_plugin_active( $target ) ) {
@@ -238,6 +244,10 @@ function pirkoo_rest_update( WP_REST_Request $request ) {
 			case 'theme':
 				if ( ! wp_get_theme( $target )->exists() ) {
 					return new WP_Error( 'pirkoo_unknown_theme', 'No such theme.', array( 'status' => 404 ) );
+				}
+				$blocked = pirkoo_cannot_write( $skin, get_theme_root( $target ) );
+				if ( $blocked ) {
+					return $blocked;
 				}
 				$result  = ( new Theme_Upgrader( $skin ) )->upgrade( $target );
 				$version = (string) wp_get_theme( $target )->get( 'Version' );
@@ -251,9 +261,15 @@ function pirkoo_rest_update( WP_REST_Request $request ) {
 				if ( ! is_object( $offer ) || 'upgrade' !== $offer->response ) {
 					return new WP_Error( 'pirkoo_no_update', 'No WordPress update is offered.', array( 'status' => 409 ) );
 				}
+				$blocked = pirkoo_cannot_write( $skin, ABSPATH );
+				if ( $blocked ) {
+					return $blocked;
+				}
+				// Core_Upgrader answers the new version, a WP_Error, or false when it gave up (no
+				// access to the files): only a version is a finished update.
 				$result  = ( new Core_Upgrader( $skin ) )->upgrade( $offer );
 				$version = is_string( $result ) ? $result : (string) get_bloginfo( 'version' );
-				$result  = is_wp_error( $result ) ? $result : true;
+				$result  = is_string( $result ) ? true : ( is_wp_error( $result ) ? $result : false );
 				break;
 			default:
 				return new WP_Error( 'pirkoo_invalid_update', 'Unknown type.', array( 'status' => 400 ) );
@@ -269,6 +285,139 @@ function pirkoo_rest_update( WP_REST_Request $request ) {
 			'type'    => $type,
 			'target'  => $target,
 			'version' => $version,
+		);
+	} finally {
+		pirkoo_unlock();
+	}
+}
+
+/**
+ * An error when WordPress can't change the files under $context without asking for FTP or SSH
+ * details, as its own automatic updates check first; null when it can.
+ *
+ * @param Automatic_Upgrader_Skin $skin    The upgrader's skin.
+ * @param string                  $context The folder the update or install writes to.
+ * @return WP_Error|null
+ */
+function pirkoo_cannot_write( $skin, $context ) {
+	if ( $skin->request_filesystem_credentials( false, $context ) ) {
+		return null;
+	}
+	return new WP_Error(
+		'pirkoo_files_not_writable',
+		'WordPress can\'t write to its own files on this server (it would ask for FTP details), so it can\'t do this from Pirkoo. Ask the host to let the web server write to the WordPress folder, or do it from the store\'s admin.',
+		array( 'status' => 409 )
+	);
+}
+
+/**
+ * The plugins Pirkoo may install: the WordPress.org plugins app.pirkoo.com recommends in its fixes
+ * (their slugs). Only these; anything else is refused.
+ *
+ * @return string[]
+ */
+function pirkoo_installable_plugins() {
+	return array(
+		'advanced-database-cleaner',
+		'better-wp-security',
+		'health-check',
+		'litespeed-cache',
+		'query-monitor',
+		'redis-cache',
+		'shortpixel-image-optimiser',
+		'stops-core-theme-and-plugin-updates',
+		'updraftplus',
+		'wordfence',
+		'wp-crontrol',
+		'wp-mail-smtp',
+		'wp-optimize',
+	);
+}
+
+/**
+ * The installed plugin in the folder $slug (its file, such as "query-monitor/query-monitor.php"),
+ * or "".
+ *
+ * @param string $slug The plugin's folder name.
+ * @return string
+ */
+function pirkoo_plugin_file( $slug ) {
+	foreach ( array_keys( get_plugins() ) as $file ) {
+		if ( dirname( (string) $file ) === $slug ) {
+			return (string) $file;
+		}
+	}
+	return '';
+}
+
+/**
+ * POST /pirkoo/v1/install {"slug"}: installs one of the recommended plugins from WordPress.org,
+ * as Plugins → Add New would, and activates it (an installed one is only activated). Answers the
+ * plugin's file and version, whether it was installed now, and whether it is active.
+ *
+ * @param WP_REST_Request $request The request.
+ * @return array{slug: string, file: string, version: string, installed: bool, active: bool}|WP_Error
+ */
+function pirkoo_rest_install( WP_REST_Request $request ) {
+	$slug = (string) $request->get_param( 'slug' );
+	if ( ! in_array( $slug, pirkoo_installable_plugins(), true ) ) {
+		return new WP_Error( 'pirkoo_not_installable', 'Pirkoo only installs the plugins it recommends.', array( 'status' => 400 ) );
+	}
+	if ( ! wp_is_file_mod_allowed( 'pirkoo_install' ) ) {
+		return new WP_Error( 'pirkoo_updates_disabled', 'This site doesn\'t allow installing plugins from WordPress (DISALLOW_FILE_MODS).', array( 'status' => 409 ) );
+	}
+	if ( ! pirkoo_lock() ) {
+		return new WP_Error( 'pirkoo_busy', 'Another Pirkoo task is running.', array( 'status' => 409 ) );
+	}
+	try {
+		pirkoo_load_admin_files();
+		require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+		$file      = pirkoo_plugin_file( $slug );
+		$installed = false;
+		if ( '' === $file ) {
+			$skin    = new Automatic_Upgrader_Skin();
+			$blocked = pirkoo_cannot_write( $skin, WP_PLUGIN_DIR );
+			if ( $blocked ) {
+				return $blocked;
+			}
+			$api = plugins_api(
+				'plugin_information',
+				array(
+					'slug'   => $slug,
+					'fields' => array( 'sections' => false ),
+				)
+			);
+			if ( is_wp_error( $api ) || ! is_object( $api ) || empty( $api->download_link ) ) {
+				return new WP_Error( 'pirkoo_install_failed', 'WordPress.org couldn\'t be reached for the plugin. Try again in a few minutes.', array( 'status' => 502 ) );
+			}
+			$upgrader = new Plugin_Upgrader( $skin );
+			$result   = $upgrader->install( (string) $api->download_link );
+			if ( true !== $result ) {
+				$message  = is_wp_error( $result ) ? $result->get_error_message() : '';
+				$messages = array_filter( array_map( 'wp_strip_all_tags', (array) $skin->get_upgrade_messages() ) );
+				$message  = '' !== $message ? $message : ( $messages ? implode( ' ', $messages ) : 'The install didn\'t complete.' );
+				return new WP_Error( 'pirkoo_install_failed', $message, array( 'status' => 502 ) );
+			}
+			$file      = (string) $upgrader->plugin_info();
+			$file      = '' !== $file ? $file : pirkoo_plugin_file( $slug );
+			$installed = true;
+		}
+		if ( '' === $file ) {
+			return new WP_Error( 'pirkoo_install_failed', 'The plugin was installed, but its file wasn\'t found.', array( 'status' => 502 ) );
+		}
+		if ( ! is_plugin_active( $file ) ) {
+			$activated = activate_plugin( $file );
+			if ( is_wp_error( $activated ) ) {
+				return new WP_Error( 'pirkoo_activate_failed', 'The plugin is installed, but WordPress didn\'t activate it: ' . $activated->get_error_message(), array( 'status' => 502 ) );
+			}
+		}
+		$plugins = get_plugins();
+		return array(
+			'slug'      => $slug,
+			'file'      => $file,
+			'version'   => isset( $plugins[ $file ]['Version'] ) ? (string) $plugins[ $file ]['Version'] : '',
+			'installed' => $installed,
+			'active'    => is_plugin_active( $file ),
 		);
 	} finally {
 		pirkoo_unlock();

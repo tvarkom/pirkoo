@@ -234,6 +234,7 @@ function pirkoo_relay_run( array $task ) {
 		'/sync'       => 'pirkoo_rest_sync',
 		'/inventory'  => 'pirkoo_rest_inventory',
 		'/update'     => 'pirkoo_rest_update',
+		'/install'    => 'pirkoo_rest_install',
 		'/disconnect' => 'pirkoo_rest_disconnect',
 	);
 	$route  = isset( $task['route'] ) && is_string( $task['route'] ) ? $task['route'] : '';

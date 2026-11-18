@@ -1,6 +1,6 @@
 <?php
 /**
- * POST /pirkoo/v1/inventory and /pirkoo/v1/update.
+ * POST /pirkoo/v1/inventory, /pirkoo/v1/update and /pirkoo/v1/install.
  *
  * @package Pirkoo
  */
@@ -57,5 +57,56 @@ class Test_Pirkoo_Manage extends Pirkoo_Test_Case {
 		$this->assertSame( 400, $bad->get_status() );
 		$this->assertSame( 401, $this->rest_post( '/pirkoo/v1/update', '{"type":"core"}', 'other' )->get_status() );
 		$this->assertFalse( get_option( PIRKOO_LOCK ), 'The lock is released.' );
+	}
+
+	public function test_install_refuses_plugins_pirkoo_does_not_recommend() {
+		$this->connect_store( self::SECRET );
+		foreach ( array( 'hello-dolly', '../woocommerce', '' ) as $slug ) {
+			$response = $this->rest_post( '/pirkoo/v1/install', (string) wp_json_encode( array( 'slug' => $slug ) ), self::SECRET );
+			$this->assertSame( 400, $response->get_status(), $slug );
+			$this->assertSame( 'pirkoo_not_installable', $response->get_data()['code'] );
+		}
+		$this->assertSame( 401, $this->rest_post( '/pirkoo/v1/install', '{"slug":"query-monitor"}', 'other' )->get_status() );
+		$this->assertFalse( get_option( PIRKOO_LOCK ), 'The lock is released.' );
+	}
+
+	public function test_install_fails_cleanly_when_wordpress_org_is_offline() {
+		$this->connect_store( self::SECRET );
+		// Requests outside the fake app fail as if offline (Pirkoo_Test_Case).
+		$response = $this->rest_post( '/pirkoo/v1/install', '{"slug":"query-monitor"}', self::SECRET );
+		$this->assertContains( $response->get_status(), array( 409, 502 ), (string) wp_json_encode( $response->get_data() ) );
+		$this->assertContains( $response->get_data()['code'], array( 'pirkoo_install_failed', 'pirkoo_files_not_writable' ) );
+		$this->assertFalse( get_option( PIRKOO_LOCK ), 'The lock is released.' );
+	}
+
+	public function test_install_activates_a_recommended_plugin_already_there() {
+		$folder = WP_PLUGIN_DIR . '/wp-crontrol';
+		if ( ! wp_mkdir_p( $folder ) || ! wp_is_writable( $folder ) ) {
+			$this->markTestSkipped( 'The plugins folder is not writable here.' );
+		}
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- a fixture plugin.
+		file_put_contents( $folder . '/wp-crontrol.php', "<?php\n/**\n * Plugin Name: WP Crontrol\n * Version: 9.9.9\n */\n" );
+		wp_clean_plugins_cache( false );
+		try {
+			$this->connect_store( self::SECRET );
+			$response = $this->rest_post( '/pirkoo/v1/install', '{"slug":"wp-crontrol"}', self::SECRET );
+			$this->assertSame( 200, $response->get_status(), (string) wp_json_encode( $response->get_data() ) );
+			$this->assertSame(
+				array(
+					'slug'      => 'wp-crontrol',
+					'file'      => 'wp-crontrol/wp-crontrol.php',
+					'version'   => '9.9.9',
+					'installed' => false,
+					'active'    => true,
+				),
+				$response->get_data()
+			);
+			$this->assertTrue( is_plugin_active( 'wp-crontrol/wp-crontrol.php' ) );
+		} finally {
+			deactivate_plugins( 'wp-crontrol/wp-crontrol.php', true );
+			wp_delete_file( $folder . '/wp-crontrol.php' );
+			rmdir( $folder ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_rmdir -- the fixture's folder.
+			wp_clean_plugins_cache( false );
+		}
 	}
 }
