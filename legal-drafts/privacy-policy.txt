@@ -33,6 +33,8 @@ Your Pirkoo account
 
 * The session cookie: app.pirkoo.com sets one cookie, the session (HttpOnly, Secure, valid 30 days), and a short-lived one (30 minutes) that remembers the page you were opening before logging in. Both are strictly necessary to use the app. There are no analytics, advertising or third-party cookies.
 
+* Product pictures: a store's order, customer, product, category and coupon pages in the app show its products' thumbnail images from the address the store gives for them (usually the store's own website or its image service). Your browser loads them from there over https, so that site receives your IP address and browser details, as when you visit the store, but not the address of the app page. No other page of the app loads anything from outside app.pirkoo.com.
+
 * Usage records: we record how you use the app (logins, stores connected, disconnected and removed, scans asked for, refused and finished, dashboards viewed, and changes to a company's plan), linked to your account and company, to improve Pirkoo. They hold the app's own numbers for the account, company and store, the action and its time; never your IP address, browser, email address or store data. We keep them 13 months, then only monthly totals without any link to you. We use no analytics cookies or third-party analytics.
 
 Connecting your store
