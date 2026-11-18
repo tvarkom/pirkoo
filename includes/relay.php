@@ -230,12 +230,13 @@ function pirkoo_relay_post( $path, array $data ) {
  */
 function pirkoo_relay_run( array $task ) {
 	$routes = array(
-		'/collect'    => 'pirkoo_rest_collect',
-		'/sync'       => 'pirkoo_rest_sync',
-		'/inventory'  => 'pirkoo_rest_inventory',
-		'/update'     => 'pirkoo_rest_update',
-		'/install'    => 'pirkoo_rest_install',
-		'/disconnect' => 'pirkoo_rest_disconnect',
+		'/collect'     => 'pirkoo_rest_collect',
+		'/sync'        => 'pirkoo_rest_sync',
+		'/inventory'   => 'pirkoo_rest_inventory',
+		'/update'      => 'pirkoo_rest_update',
+		'/install'     => 'pirkoo_rest_install',
+		'/disconnect'  => 'pirkoo_rest_disconnect',
+		'/white-label' => 'pirkoo_rest_white_label',
 	);
 	$route  = isset( $task['route'] ) && is_string( $task['route'] ) ? $task['route'] : '';
 	if ( ! isset( $routes[ $route ] ) ) {

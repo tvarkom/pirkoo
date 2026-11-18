@@ -4,7 +4,7 @@ Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.6.2
+Stable tag: 0.7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,7 @@ Your stores' orders and customers, updated every day, without slowing the stores
 * Invite your team as Owners, Admins, Members or Viewers.
 * Log in with a link sent to your email: no password to remember.
 * Use Pirkoo in English or Brazilian Portuguese.
+* White label: show the plugin under your agency's name, description and author on your clients' Plugins screens, or hide it there.
 
 = ⚡ Light on Your Store =
 
@@ -113,13 +114,15 @@ Once connected, app.pirkoo.com sends requests signed with a secret shared only w
 * **WordPress management** (once a day, and when you open those pages): WordPress's version and each installed plugin and theme with their updates, and the PHP errors of the last 7 days, with emails, IP addresses and links removed. A plugin or theme update runs only when an Owner or Admin clicks Update; WordPress itself is never updated from Pirkoo. From 0.6, an Owner or Admin can also install and activate one of the WordPress.org plugins Pirkoo recommends (only those): the plugin downloads it from WordPress.org (`https://api.wordpress.org/plugins/info/` and `https://downloads.wordpress.org/`), as Plugins → Add New does.
 * **Store records** (the last 12 months when you connect, then what changed, daily): orders with the customer's billing and shipping names, email, phone, company and addresses, the order's notes, the note written at checkout and its custom fields; registered customers; products, variations, categories and coupons. Never IP addresses, browser details, payment details or custom fields whose names suggest secrets. Pirkoo processes this data on your behalf and keeps orders 12 months; ask privacy@pirkoo.com for a data processing agreement.
 
+**White label** (from 0.7): app.pirkoo.com also sends the name, description, author, author address and logo address your company set for the plugin, or that it should be hidden, and the plugin shows itself that way on the Plugins screen and Dashboard → Updates. Nothing is sent back. Disconnecting removes it.
+
 In relay mode (only for a store whose firewall blocks Pirkoo, and only if an administrator accepts it), the plugin fetches the same requests from app.pirkoo.com and sends back the same answers, every 5 minutes.
 
 Without the plugin, app.pirkoo.com checks your home page every 5 minutes, reads up to 200 of your public pages once a week for broken links, and once a day sends only your home page's address to Google PageSpeed Insights (terms: https://developers.google.com/terms, privacy: https://policies.google.com/privacy). Vulnerabilities come from Wordfence Intelligence's public list (https://www.wordfence.com/threat-intel/); nothing about your store is sent to Wordfence.
 
 For its core files check, the plugin asks WordPress.org (`https://api.wordpress.org/core/checksums/1.0/`) for the official checksums of your WordPress version and language, as WordPress does for its own updates. WordPress.org's privacy policy: https://wordpress.org/about/privacy/
 
-To stop, click **Disconnect from Pirkoo** on the Plugins screen. Uninstalling deletes the plugin's settings, secret and data from your store; to have Pirkoo's copies deleted sooner than their retention periods, email privacy@pirkoo.com.
+To stop, click **Disconnect from Pirkoo** on the Plugins screen (**Disconnect** when the plugin shows under your agency's name; when it's hidden there, turn off hiding in Pirkoo's Settings → White label first, or deactivate it with WP-CLI). Uninstalling deletes the plugin's settings, secret and data from your store; to have Pirkoo's copies deleted sooner than their retention periods, email privacy@pirkoo.com.
 
 * Privacy Policy, with everything collected and how long it's kept: https://pirkoo.com/privacy/ (also shipped with the plugin, `legal/privacy-policy.txt`)
 * Terms of Use: https://pirkoo.com/terms/ (also shipped with the plugin, `legal/terms-of-use.txt`)
@@ -159,6 +162,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.7.0 =
+* White label: the company managing the store can set, at app.pirkoo.com, the name, description, author and logo the plugin shows on the Plugins screen and Dashboard → Updates, or hide it there. Disconnecting removes it.
 
 = 0.6.2 =
 * The Plugins screen now lists the plugin simply as "Pirkoo".

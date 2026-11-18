@@ -19,6 +19,9 @@ msgstr "Abrir o Pirkoo"
 msgid "Disconnect from Pirkoo"
 msgstr "Desconectar do Pirkoo"
 
+msgid "Disconnect"
+msgstr "Desconectar"
+
 msgid "Connect to Pirkoo"
 msgstr "Conectar ao Pirkoo"
 
