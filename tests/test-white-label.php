@@ -169,7 +169,7 @@ class Pirkoo_White_Label_Test extends Pirkoo_Test_Case {
 		$script = (string) ob_get_clean();
 		$this->assertStringContainsString( wp_json_encode( 'Agency "Care"' ), $script );
 		$this->assertStringContainsString( 'agency.example\/logo.png', $script );
-		$this->assertStringContainsString( plugin_basename( PIRKOO_FILE ), $script );
+		$this->assertStringContainsString( (string) wp_json_encode( 'input[value="' . plugin_basename( PIRKOO_FILE ) . '"]' ), $script );
 		$this->assertStringContainsString( 'if(false)', $script );
 
 		$this->send( array( 'hide' => true ) );
