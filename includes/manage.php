@@ -380,13 +380,25 @@ function pirkoo_rest_install( WP_REST_Request $request ) {
 			if ( $blocked ) {
 				return $blocked;
 			}
-			$api = plugins_api(
-				'plugin_information',
-				array(
-					'slug'   => $slug,
-					'fields' => array( 'sections' => false ),
-				)
+			// When WordPress.org can't be reached, plugins_api() raises a warning as well as
+			// answering an error: the error is what counts (as in pirkoo_refresh_updates()).
+			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_set_error_handler -- only around plugins_api().
+			set_error_handler(
+				function ( $level ) {
+					return E_USER_WARNING === $level;
+				}
 			);
+			try {
+				$api = plugins_api(
+					'plugin_information',
+					array(
+						'slug'   => $slug,
+						'fields' => array( 'sections' => false ),
+					)
+				);
+			} finally {
+				restore_error_handler();
+			}
 			if ( is_wp_error( $api ) || ! is_object( $api ) || empty( $api->download_link ) ) {
 				return new WP_Error( 'pirkoo_install_failed', 'WordPress.org couldn\'t be reached for the plugin. Try again in a few minutes.', array( 'status' => 502 ) );
 			}
