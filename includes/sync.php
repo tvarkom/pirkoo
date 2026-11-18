@@ -14,10 +14,18 @@ defined( 'ABSPATH' ) || exit;
 const PIRKOO_SYNC_MAX_PAGE = 100;
 
 /**
- * What the records hold, raised when they gain fields (2: orders' fees and shipping methods, 0.4.8):
- * app.pirkoo.com syncs the 12 months of orders again when it rises, so older ones gain them too.
+ * What the records hold, raised when they gain fields (2: orders' fees and shipping methods, 0.4.8;
+ * 3: what app.pirkoo.com's order, customer, product and coupon pages show, 0.5.0): app.pirkoo.com
+ * syncs a kind's records again when it rises, so older ones gain them too.
  */
-const PIRKOO_SYNC_SCHEMA = 2;
+const PIRKOO_SYNC_SCHEMA = 3;
+
+/** The most custom fields (meta) one order or coupon sends, and the longest value sent. */
+const PIRKOO_SYNC_MAX_META       = 100;
+const PIRKOO_SYNC_MAX_META_VALUE = 500;
+
+/** The most order notes one order sends, newest first. */
+const PIRKOO_SYNC_MAX_NOTES = 50;
 
 /**
  * POST /pirkoo/v1/sync {"kind", "since", "page", "per_page"}: one page of the store's records of a
@@ -150,6 +158,25 @@ function pirkoo_sync_order( WC_Order $order ) {
 			$shipping_methods[] = $shipping->get_method_title();
 		}
 	}
+	$fee_lines = array();
+	foreach ( $order->get_items( 'fee' ) as $fee ) {
+		if ( $fee instanceof WC_Order_Item_Fee ) {
+			$fee_lines[] = array(
+				'name'  => $fee->get_name(),
+				'total' => pirkoo_sync_money( $fee->get_total() ),
+			);
+		}
+	}
+	$shipping_lines = array();
+	foreach ( $order->get_items( 'shipping' ) as $shipping ) {
+		if ( $shipping instanceof WC_Order_Item_Shipping ) {
+			$shipping_lines[] = array(
+				'title'     => $shipping->get_method_title(),
+				'method_id' => $shipping->get_method_id(),
+				'total'     => pirkoo_sync_money( $shipping->get_total() ),
+			);
+		}
+	}
 	$refunds = array();
 	foreach ( $order->get_refunds() as $refund ) {
 		$refund_lines = array();
@@ -172,38 +199,177 @@ function pirkoo_sync_order( WC_Order $order ) {
 		);
 	}
 	return array(
-		'id'               => $order->get_id(),
-		'number'           => (string) $order->get_order_number(),
-		'status'           => $order->get_status(),
-		'currency'         => $order->get_currency(),
-		'created'          => pirkoo_sync_time( $order->get_date_created() ),
-		'paid'             => pirkoo_sync_time( $order->get_date_paid() ),
-		'completed'        => pirkoo_sync_time( $order->get_date_completed() ),
-		'modified'         => pirkoo_sync_time( $order->get_date_modified() ),
-		'total'            => pirkoo_sync_money( $order->get_total() ),
-		'subtotal'         => pirkoo_sync_money( $order->get_subtotal() ),
-		'discount'         => pirkoo_sync_money( $order->get_discount_total() ),
-		'shipping'         => pirkoo_sync_money( $order->get_shipping_total() ),
-		'tax'              => pirkoo_sync_money( $order->get_total_tax() ),
-		'fees'             => pirkoo_sync_money( $order->get_total_fees() ),
-		'payment_method'   => $order->get_payment_method_title(),
-		'shipping_methods' => $shipping_methods,
-		'customer_id'      => $order->get_customer_id(),
-		'customer'         => array(
+		'id'                => $order->get_id(),
+		'number'            => (string) $order->get_order_number(),
+		'status'            => $order->get_status(),
+		'currency'          => $order->get_currency(),
+		'created'           => pirkoo_sync_time( $order->get_date_created() ),
+		'paid'              => pirkoo_sync_time( $order->get_date_paid() ),
+		'completed'         => pirkoo_sync_time( $order->get_date_completed() ),
+		'modified'          => pirkoo_sync_time( $order->get_date_modified() ),
+		'total'             => pirkoo_sync_money( $order->get_total() ),
+		'subtotal'          => pirkoo_sync_money( $order->get_subtotal() ),
+		'discount'          => pirkoo_sync_money( $order->get_discount_total() ),
+		'shipping'          => pirkoo_sync_money( $order->get_shipping_total() ),
+		'tax'               => pirkoo_sync_money( $order->get_total_tax() ),
+		'fees'              => pirkoo_sync_money( $order->get_total_fees() ),
+		'payment_method'    => $order->get_payment_method_title(),
+		'payment_method_id' => $order->get_payment_method(),
+		'shipping_methods'  => $shipping_methods,
+		'shipping_lines'    => $shipping_lines,
+		'fee_lines'         => $fee_lines,
+		'created_via'       => $order->get_created_via(),
+		'customer_note'     => pirkoo_sync_text( $order->get_customer_note(), 2000 ),
+		'customer_id'       => $order->get_customer_id(),
+		'customer_role'     => pirkoo_sync_role( $order->get_customer_id() ),
+		'customer'          => array(
 			'first_name' => $order->get_billing_first_name(),
 			'last_name'  => $order->get_billing_last_name(),
 			'email'      => $order->get_billing_email(),
 			'phone'      => $order->get_billing_phone(),
 			'company'    => $order->get_billing_company(),
+			'address_1'  => $order->get_billing_address_1(),
+			'address_2'  => $order->get_billing_address_2(),
 			'city'       => $order->get_billing_city(),
 			'state'      => $order->get_billing_state(),
 			'postcode'   => $order->get_billing_postcode(),
 			'country'    => $order->get_billing_country(),
 		),
-		'items'            => $lines,
-		'coupons'          => $coupons,
-		'refunds'          => $refunds,
+		'shipping_address'  => array(
+			'first_name' => $order->get_shipping_first_name(),
+			'last_name'  => $order->get_shipping_last_name(),
+			'company'    => $order->get_shipping_company(),
+			'phone'      => $order->get_shipping_phone(),
+			'address_1'  => $order->get_shipping_address_1(),
+			'address_2'  => $order->get_shipping_address_2(),
+			'city'       => $order->get_shipping_city(),
+			'state'      => $order->get_shipping_state(),
+			'postcode'   => $order->get_shipping_postcode(),
+			'country'    => $order->get_shipping_country(),
+		),
+		'attribution'       => array(
+			'source_type'  => (string) $order->get_meta( '_wc_order_attribution_source_type' ),
+			'utm_source'   => (string) $order->get_meta( '_wc_order_attribution_utm_source' ),
+			'utm_medium'   => (string) $order->get_meta( '_wc_order_attribution_utm_medium' ),
+			'utm_campaign' => (string) $order->get_meta( '_wc_order_attribution_utm_campaign' ),
+			'device_type'  => (string) $order->get_meta( '_wc_order_attribution_device_type' ),
+		),
+		'items'             => $lines,
+		'coupons'           => $coupons,
+		'refunds'           => $refunds,
+		'notes'             => pirkoo_sync_order_notes( $order->get_id() ),
+		'meta'              => pirkoo_sync_meta( $order->get_meta_data() ),
 	);
+}
+
+/**
+ * A text from the store, without tags, at most $max characters.
+ *
+ * @param mixed $text The text.
+ * @param int   $max  The most characters kept.
+ * @return string
+ */
+function pirkoo_sync_text( $text, $max ) {
+	$text = trim( wp_strip_all_tags( is_scalar( $text ) ? (string) $text : '' ) );
+	return function_exists( 'mb_substr' ) ? mb_substr( $text, 0, $max ) : substr( $text, 0, $max );
+}
+
+/**
+ * A customer's first role ("guest" without an account).
+ *
+ * @param int $user_id The customer's user id (0: a guest).
+ * @return string
+ */
+function pirkoo_sync_role( $user_id ) {
+	if ( $user_id <= 0 ) {
+		return 'guest';
+	}
+	$user = get_userdata( $user_id );
+	return $user instanceof WP_User && ! empty( $user->roles ) ? (string) reset( $user->roles ) : '';
+}
+
+/**
+ * Whether a custom field's key looks like it holds a secret or what identifies a device (owner, 18
+ * Nov 2026: all meta but these): tokens, secrets, passwords, keys, hashes, card details, IP
+ * addresses and user agents are never sent.
+ *
+ * @param string $key The meta key.
+ * @return bool
+ */
+function pirkoo_sync_secret_key( $key ) {
+	return (bool) preg_match( '/token|secret|passw|key|hash|card|(^|_)ip($|_)|ip_?address|user_?agent/i', $key );
+}
+
+/**
+ * An order's or coupon's custom fields (meta), as Metorik shows them, less those that look like
+ * secrets: at most PIRKOO_SYNC_MAX_META, each value as text of at most PIRKOO_SYNC_MAX_META_VALUE
+ * characters (arrays and objects as JSON).
+ *
+ * @param array<int, WC_Meta_Data> $meta The meta.
+ * @return array<int, array{key: string, value: string}>
+ */
+function pirkoo_sync_meta( $meta ) {
+	$out = array();
+	foreach ( $meta as $m ) {
+		if ( count( $out ) >= PIRKOO_SYNC_MAX_META ) {
+			break;
+		}
+		$data  = $m->get_data();
+		$key   = isset( $data['key'] ) ? (string) $data['key'] : '';
+		$value = isset( $data['value'] ) ? $data['value'] : '';
+		if ( '' === $key || pirkoo_sync_secret_key( $key ) ) {
+			continue;
+		}
+		$value = is_scalar( $value ) ? (string) $value : (string) wp_json_encode( $value );
+		$out[] = array(
+			'key'   => pirkoo_sync_text( $key, 255 ),
+			'value' => pirkoo_sync_text( $value, PIRKOO_SYNC_MAX_META_VALUE ),
+		);
+	}
+	return $out;
+}
+
+/**
+ * An order's notes, newest first: the store's own and those for the customer.
+ *
+ * @param int $order_id The order.
+ * @return array<int, array<string, mixed>>
+ */
+function pirkoo_sync_order_notes( $order_id ) {
+	$out = array();
+	foreach ( wc_get_order_notes(
+		array(
+			'order_id' => $order_id,
+			'limit'    => PIRKOO_SYNC_MAX_NOTES,
+			'orderby'  => 'date_created',
+			'order'    => 'DESC',
+		)
+	) as $note ) {
+		$out[] = array(
+			'id'            => (int) $note->id,
+			'created'       => pirkoo_sync_time( $note->date_created ),
+			'content'       => pirkoo_sync_text( $note->content, 2000 ),
+			'added_by'      => pirkoo_sync_text( 'system' === $note->added_by ? 'WooCommerce' : $note->added_by, 100 ),
+			'customer_note' => (bool) $note->customer_note,
+		);
+	}
+	return $out;
+}
+
+/**
+ * An address from a customer's or order's getters.
+ *
+ * @param WC_Customer $customer The customer.
+ * @param string      $type     billing or shipping.
+ * @return array<string, string>
+ */
+function pirkoo_sync_customer_address( WC_Customer $customer, $type ) {
+	$out = array();
+	foreach ( array( 'first_name', 'last_name', 'company', 'phone', 'address_1', 'address_2', 'city', 'state', 'postcode', 'country' ) as $field ) {
+		$getter        = 'get_' . $type . '_' . $field;
+		$out[ $field ] = is_callable( array( $customer, $getter ) ) ? (string) $customer->$getter() : '';
+	}
+	return $out;
 }
 
 /**
@@ -248,6 +414,9 @@ function pirkoo_sync_customers( $since, $page, $per_page ) {
 			'state'      => $customer->get_billing_state(),
 			'postcode'   => $customer->get_billing_postcode(),
 			'country'    => $customer->get_billing_country(),
+			'role'       => pirkoo_sync_role( $customer->get_id() ),
+			'billing'    => pirkoo_sync_customer_address( $customer, 'billing' ),
+			'shipping'   => pirkoo_sync_customer_address( $customer, 'shipping' ),
 		);
 	}
 	return array( $items, $page * $per_page < (int) $query->get_total() );
@@ -319,9 +488,12 @@ function pirkoo_sync_product( WC_Product $product ) {
 			$attributes[ wc_attribute_label( $name, $product ) ] = (string) $value;
 		}
 	}
+	$image = $product->get_image_id() ? wp_get_attachment_image_url( (int) $product->get_image_id(), 'thumbnail' ) : '';
 	return array(
 		'id'             => $product->get_id(),
 		'parent_id'      => $product->get_parent_id(),
+		'image'          => is_string( $image ) ? $image : '',
+		'permalink'      => 'publish' === $product->get_status() ? (string) get_permalink( $product->get_id() ) : '',
 		'type'           => $product->get_type(),
 		'name'           => $product->get_name(),
 		'sku'            => $product->get_sku(),
@@ -369,14 +541,32 @@ function pirkoo_sync_coupons( $since, $page, $per_page ) {
 	foreach ( $query->posts as $id ) {
 		$coupon  = new WC_Coupon( (int) $id );
 		$items[] = array(
-			'id'          => $coupon->get_id(),
-			'code'        => $coupon->get_code(),
-			'type'        => $coupon->get_discount_type(),
-			'amount'      => pirkoo_sync_money( $coupon->get_amount() ),
-			'created'     => pirkoo_sync_time( $coupon->get_date_created() ),
-			'modified'    => pirkoo_sync_time( $coupon->get_date_modified() ),
-			'expires'     => pirkoo_sync_time( $coupon->get_date_expires() ),
-			'usage_count' => (int) $coupon->get_usage_count(),
+			'id'           => $coupon->get_id(),
+			'code'         => $coupon->get_code(),
+			'type'         => $coupon->get_discount_type(),
+			'amount'       => pirkoo_sync_money( $coupon->get_amount() ),
+			'created'      => pirkoo_sync_time( $coupon->get_date_created() ),
+			'modified'     => pirkoo_sync_time( $coupon->get_date_modified() ),
+			'expires'      => pirkoo_sync_time( $coupon->get_date_expires() ),
+			'usage_count'  => (int) $coupon->get_usage_count(),
+			'description'  => pirkoo_sync_text( $coupon->get_description(), 1000 ),
+			'restrictions' => array(
+				'individual_use'              => (bool) $coupon->get_individual_use(),
+				'exclude_sale_items'          => (bool) $coupon->get_exclude_sale_items(),
+				'free_shipping'               => (bool) $coupon->get_free_shipping(),
+				'minimum_amount'              => pirkoo_sync_money( $coupon->get_minimum_amount() ),
+				'maximum_amount'              => pirkoo_sync_money( $coupon->get_maximum_amount() ),
+				'usage_limit'                 => (int) $coupon->get_usage_limit(),
+				'usage_limit_per_user'        => (int) $coupon->get_usage_limit_per_user(),
+				'limit_usage_to_x_items'      => (int) $coupon->get_limit_usage_to_x_items(),
+				'product_ids'                 => array_map( 'intval', $coupon->get_product_ids() ),
+				'excluded_product_ids'        => array_map( 'intval', $coupon->get_excluded_product_ids() ),
+				'product_categories'          => array_map( 'intval', $coupon->get_product_categories() ),
+				'excluded_product_categories' => array_map( 'intval', $coupon->get_excluded_product_categories() ),
+				// How many email addresses may use it, not the addresses themselves.
+				'allowed_emails'              => count( $coupon->get_email_restrictions() ),
+			),
+			'meta'         => pirkoo_sync_meta( $coupon->get_meta_data() ),
 		);
 	}
 	return array( $items, $page < (int) $query->max_num_pages );

@@ -3,7 +3,7 @@ Pirkoo
 
 What personal data Pirkoo handles (the app at app.pirkoo.com, the WooCommerce plugin that connects your store to it, and the website pirkoo.com), why, who processes it for us and how long we keep it. Pirkoo is made by tvarkom.
 
-Last updated: 17 November 2026
+Last updated: 18 November 2026
 
 Who we are
 ----------
@@ -66,13 +66,13 @@ Store records
 
 From Pirkoo 0.4, so the people in the company a store is connected to can see its orders, refunds, customers, products and coupons on app.pirkoo.com, app.pirkoo.com asks the plugin for the store's records: the last 12 months when the store is connected, then what changed, once a day.
 
-* Orders: number, status, dates (created, paid, completed), currency, totals (subtotal, discounts, shipping, fees, tax, total), the titles of the payment method and of the shipping methods (such as "Flat rate"), the products and variations ordered with their quantities, prices and chosen attributes, the coupons used, and refunds with their amounts, items and reasons.
+* Orders: number, status, dates (created, paid, completed), currency, totals (subtotal, discounts, shipping, fees, tax, total), the payment method (its title and identifier, such as "Cash on delivery (cod)"), the shipping lines and fee lines with their names and amounts, the products and variations ordered with their quantities, prices and chosen attributes, the coupons used, refunds with their amounts, items and reasons, how the order was created (such as checkout or admin), the order's source as WooCommerce records it (source type, UTM source, medium and campaign, device type), the note the shopper wrote at checkout, the order's notes (up to the 50 newest, with who added them and when), and its custom fields (other plugins' data stored with the order, up to 100, each cut to 500 characters).
 
-* The shopper on each order (the billing details): first and last name, email address, phone number, company, city, state, postcode and country. We don't receive the street address, the shipping address, order notes, IP addresses or payment details.
+* The shopper on each order: the billing details (first and last name, email address, phone number, company, street address, city, state, postcode and country), the shipping details (name, company, phone number and the same address fields), and the shopper's account role (such as customer, or guest). We don't receive IP addresses, browser details or payment details: the plugin leaves out any custom field whose name suggests a token, secret, password, key, hash, card, IP address or user agent.
 
-* Registered customers: name, email address, phone number, city, state, postcode, country and when they registered.
+* Registered customers: name, email address, phone number, billing and shipping details as above, account role, and when they registered.
 
-* Products and variations: name, SKU, type, status, regular price and price, stock settings and quantity, categories, attributes, and when they were created and changed. Coupons: code, type, amount, dates and how many times used.
+* Products and variations: name, SKU, type, status, regular price and price, stock settings and quantity, categories, attributes, the address of the product's page and of its thumbnail image, and when they were created and changed. Coupons: code, type, amount, description, dates, how many times used, usage restrictions (such as minimum spend, usage limits and the products and categories they apply to; for a coupon limited to certain email addresses, only how many there are, not the addresses) and custom fields, as for orders.
 
 For the shoppers' data in these records, the store is the data controller and we process it on the store's behalf, under the store's instructions, only to show it to the people in the store's company on app.pirkoo.com: we don't contact shoppers, combine their data across stores, use it for our statistics or share it with anyone but the providers below. Stores that need a data processing agreement can ask for one at privacy@pirkoo.com. Shoppers with a request about their data should contact the store; we help the store answer it.
 

@@ -174,7 +174,7 @@ Data subjects:
 
 Personal data, by function (the Privacy Policy lists every field):
 
-* Store records (copied once a day): orders with the shopper's first and last name, email address, phone number, company, city, state, postcode and country; registered customers with the same fields and their registration date. Never street addresses, shipping details, order notes, IP addresses or payment details.
+* Store records (copied once a day): orders with the shopper's billing details (first and last name, email address, phone number, company, street address, city, state, postcode and country) and shipping details (name, company, phone number and address), account role, the note written at checkout, the order's notes and custom fields; registered customers with the same details and their registration date. Never IP addresses, browser details or payment details, nor custom fields whose names suggest secrets, keys, card details, IP addresses or user agents.
 * Scans: the site's admin email address; the store's figures (order counts, gross sales and average order value of the last 30 days), which relate to a person only for a sole trader. No shopper's data.
 * WordPress inventory: PHP error messages of the last 7 days, from which the plugin removes email addresses, IP addresses, links and long numbers before sending them; they could still contain a name written in an error text.
 * Monitoring (uptime, performance, broken links): public pages of the store only; no personal data is sought.
@@ -199,7 +199,7 @@ Annex 2: Technical and organisational measures
 
 What is in place today, as built:
 
-* Less data at the source: the plugin sends no street addresses, payment details or order notes; it replaces values in database queries, and email addresses, IP addresses, links and long numbers in error messages and names, before anything leaves the store.
+* Less data at the source: the plugin sends no payment details, IP addresses or browser details, and leaves out custom fields whose names suggest secrets; it replaces values in database queries, and email addresses, IP addresses, links and long numbers in error messages and names, before anything leaves the store.
 * Encryption in transit: app.pirkoo.com and Pirkoo's API accept HTTPS only; the app calls stores only over HTTPS.
 * Secrets: each store's connection secret is encrypted with AES-256-GCM before it is stored; login links and session tokens are stored only as hashes; operating secrets are kept in the hosting provider's secret store, not in the code.
 * Signed requests: every request between the app and a store's plugin is signed with the store's secret (HMAC-SHA256), valid for 5 minutes and accepted once.

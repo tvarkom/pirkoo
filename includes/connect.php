@@ -384,6 +384,10 @@ function pirkoo_collect() {
 		'store'    => array(
 			'name'             => wp_specialchars_decode( (string) get_bloginfo( 'name' ), ENT_QUOTES ),
 			'timezone'         => wp_timezone_string(),
+			// Where the store's wp-admin is (a security plugin may move it), for the app's Edit links (0.5).
+			'admin_url'        => admin_url(),
+			// Whether orders live in WooCommerce's own tables (HPOS): their edit screen's address differs.
+			'orders_hpos'      => class_exists( '\\Automattic\\WooCommerce\\Utilities\\OrderUtil' ) && \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled(),
 			'date_format'      => (string) get_option( 'date_format' ),
 			'time_format'      => (string) get_option( 'time_format' ),
 			'locale'           => get_locale(),
@@ -539,7 +543,7 @@ function pirkoo_privacy_policy_content() {
 	if ( ! function_exists( 'wp_add_privacy_policy_content' ) ) {
 		return;
 	}
-	$content  = '<p>' . esc_html__( 'This site uses the Pirkoo plugin (Multi-Store WooCommerce Manager), by tvarkom (MB TVARKOM SOFTWARE, Lithuania). After an administrator connects the store to Pirkoo, each time Pirkoo scans the store (once a day, and when the store\'s team asks) its address, its cart and checkout page addresses and the site\'s admin email are sent to tvarkom, with aggregate store data, such as software versions, database sizes, background task counts, order counts, the 30-day gross sales and average order value, new and returning customer counts, daily shop activity totals and order source counts, a profile of one checkout page load, the store\'s name, timezone and date format, and the titles of its payment and shipping methods. From Pirkoo 0.4, the store\'s orders of the last 12 months (with the billing customer\'s name, email, phone, company, city, state, postcode and country), its registered customers, products and coupons are also sent, once a day, so the store\'s team can see them at app.pirkoo.com; tvarkom processes them on this site\'s behalf and keeps orders for 12 months. Street addresses, shipping details, order notes and payment details are not sent. tvarkom keeps each scan\'s results and analysis linked to the store and shows them to the store\'s team at app.pirkoo.com.', 'pirkoo' ) . '</p>';
+	$content  = '<p>' . esc_html__( 'This site uses the Pirkoo plugin (Multi-Store WooCommerce Manager), by tvarkom (MB TVARKOM SOFTWARE, Lithuania). After an administrator connects the store to Pirkoo, each time Pirkoo scans the store (once a day, and when the store\'s team asks) its address, its cart and checkout page addresses and the site\'s admin email are sent to tvarkom, with aggregate store data, such as software versions, database sizes, background task counts, order counts, the 30-day gross sales and average order value, new and returning customer counts, daily shop activity totals and order source counts, a profile of one checkout page load, the store\'s name, timezone and date format, and the titles of its payment and shipping methods. From Pirkoo 0.4, the store\'s orders of the last 12 months (with the customer\'s billing and shipping names, email, phone, company and addresses, the order\'s notes, the note written at checkout and the order\'s custom fields), its registered customers, products and coupons are also sent, once a day, so the store\'s team can see them at app.pirkoo.com; tvarkom processes them on this site\'s behalf and keeps orders for 12 months. IP addresses, browser details and payment details are not sent. tvarkom keeps each scan\'s results and analysis linked to the store and shows them to the store\'s team at app.pirkoo.com.', 'pirkoo' ) . '</p>';
 	$content .= '<p><a href="' . esc_url( 'https://pirkoo.com/privacy/' ) . '">' . esc_html__( 'Pirkoo Privacy Policy', 'pirkoo' ) . '</a></p>';
 	wp_add_privacy_policy_content( 'Pirkoo', wp_kses_post( $content ) );
 }
