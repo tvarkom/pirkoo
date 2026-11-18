@@ -40,10 +40,6 @@ msgstr "Política de Privacidade do Pirkoo"
 msgid "Manage, monitor and report on all your WooCommerce stores from one dashboard, with your team."
 msgstr "Gerencie, monitore e acompanhe os relatórios de todas as suas lojas WooCommerce em um só painel, com a sua equipe."
 
-#. Plugin Name of the plugin
-msgid "Pirkoo - Multi-Store WooCommerce Manager - Monitoring & Reports"
-msgstr "Pirkoo - Gerenciador Multilojas para WooCommerce - Monitoramento e Relatórios"
-
 msgid "That connection link has expired. Click Connect to Pirkoo again."
 msgstr "Esse link de conexão expirou. Clique de novo em Conectar ao Pirkoo."
 

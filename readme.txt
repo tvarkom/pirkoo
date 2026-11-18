@@ -1,10 +1,10 @@
-=== Pirkoo - Multi-Store WooCommerce Manager - Monitoring & Reports ===
+=== Pirkoo – Multi-Store WooCommerce Manager – Monitoring & Reports ===
 Contributors: tvarkom
 Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.6.1
+Stable tag: 0.6.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -159,6 +159,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.6.2 =
+* The Plugins screen now lists the plugin simply as "Pirkoo".
 
 = 0.6.1 =
 * WordPress itself is no longer updated from app.pirkoo.com: the app shows the update waiting and links to the store's Dashboard → Updates. Plugin and theme updates are unchanged.
