@@ -71,7 +71,10 @@ function pirkoo_plugin_action_links( $links ) {
 	if ( ! current_user_can( 'manage_woocommerce' ) ) {
 		return $links;
 	}
-	if ( pirkoo_is_connected() ) {
+	if ( pirkoo_is_connected() && array() !== pirkoo_white_label() ) {
+		// White-labelled: no link names Pirkoo or opens its app.
+		array_unshift( $links, '<a href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=pirkoo_disconnect' ), 'pirkoo_disconnect' ) ) . '">' . esc_html__( 'Disconnect', 'pirkoo' ) . '</a>' );
+	} elseif ( pirkoo_is_connected() ) {
 		array_unshift(
 			$links,
 			'<a href="' . esc_url( PIRKOO_APP_URL ) . '">' . esc_html__( 'Open Pirkoo', 'pirkoo' ) . '</a>',
@@ -168,6 +171,7 @@ function pirkoo_handle_disconnect() {
  * @return void
  */
 function pirkoo_forget_connection() {
+	delete_option( PIRKOO_WHITE_LABEL_OPTION );
 	pirkoo_update_settings(
 		array(
 			'secret'       => '',
@@ -251,12 +255,13 @@ function pirkoo_register_routes() {
 		)
 	);
 	foreach ( array(
-		'/collect'    => 'pirkoo_rest_collect',
-		'/disconnect' => 'pirkoo_rest_disconnect',
-		'/sync'       => 'pirkoo_rest_sync',
-		'/inventory'  => 'pirkoo_rest_inventory',
-		'/update'     => 'pirkoo_rest_update',
-		'/install'    => 'pirkoo_rest_install',
+		'/collect'     => 'pirkoo_rest_collect',
+		'/disconnect'  => 'pirkoo_rest_disconnect',
+		'/sync'        => 'pirkoo_rest_sync',
+		'/inventory'   => 'pirkoo_rest_inventory',
+		'/update'      => 'pirkoo_rest_update',
+		'/install'     => 'pirkoo_rest_install',
+		'/white-label' => 'pirkoo_rest_white_label',
 	) as $route => $callback ) {
 		register_rest_route(
 			'pirkoo/v1',
@@ -353,9 +358,13 @@ function pirkoo_rest_signed( WP_REST_Request $request ) {
  * POST /pirkoo/v1/collect: the store's data for a scan, collected now (the checkout profile makes
  * it take several seconds). One collection at a time: 409 while another runs.
  *
+ * @param WP_REST_Request|null $request The request; its white_label, if any, is applied.
  * @return array<string, mixed>|WP_Error
  */
-function pirkoo_rest_collect() {
+function pirkoo_rest_collect( $request = null ) {
+	// The app sends the company's white label with each collection (0.7.0), for a store that
+	// missed its change.
+	pirkoo_white_label_from_request( $request );
 	if ( ! pirkoo_lock() ) {
 		return new WP_Error( 'pirkoo_busy', 'A collection is already running.', array( 'status' => 409 ) );
 	}

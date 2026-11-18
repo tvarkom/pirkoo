@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Pirkoo
  * Description:       Manage, monitor and report on all your WooCommerce stores from one dashboard, with your team.
- * Version:           0.6.2
+ * Version:           0.7.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  woocommerce
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PIRKOO_VERSION', '0.6.2' );
+define( 'PIRKOO_VERSION', '0.7.0' );
 define( 'PIRKOO_FILE', __FILE__ );
 define( 'PIRKOO_OPTION', 'pirkoo' );
 define( 'PIRKOO_LOCK', 'pirkoo_scan_lock' );
@@ -33,6 +33,7 @@ if ( ! defined( 'PIRKOO_APP_URL' ) ) {
 
 require_once __DIR__ . '/includes/settings.php';
 require_once __DIR__ . '/includes/connect.php';
+require_once __DIR__ . '/includes/white-label.php';
 require_once __DIR__ . '/includes/relay.php';
 require_once __DIR__ . '/includes/sync.php';
 require_once __DIR__ . '/includes/manage.php';
@@ -59,6 +60,12 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'pirkoo_plugin
 add_filter( 'allowed_redirect_hosts', 'pirkoo_allowed_redirect_hosts' );
 add_action( 'admin_post_pirkoo_connect', 'pirkoo_handle_connect' );
 add_action( 'admin_post_pirkoo_disconnect', 'pirkoo_handle_disconnect' );
+
+// White label (includes/white-label.php): the name, description and author the managing company
+// set at app.pirkoo.com, or the plugin hidden, on the Plugins screen and Dashboard → Updates.
+add_filter( 'all_plugins', 'pirkoo_white_label_plugins' );
+add_filter( 'plugin_row_meta', 'pirkoo_white_label_row_meta', 10, 2 );
+add_action( 'admin_footer-update-core.php', 'pirkoo_white_label_updates_screen' );
 
 // Relay mode (includes/relay.php), for a store whose firewall blocks the app's requests: the app's
 // proof and poke on the home page, finishing the connection, and collecting every 5 minutes.
