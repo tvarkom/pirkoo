@@ -3,7 +3,7 @@ Pirkoo
 
 The terms for using Pirkoo (Multi-Store WooCommerce Manager): the app at app.pirkoo.com and the WooCommerce plugin that connects stores to it, by tvarkom.
 
-Last updated: 23 November 2026 (version 0.5.0)
+Last updated: 23 November 2026 (version 0.4.5)
 
 Who we are
 ----------
