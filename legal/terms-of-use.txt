@@ -3,7 +3,7 @@ Pirkoo
 
 The terms for using Pirkoo (Multi-Store WooCommerce Manager): the app at app.pirkoo.com and the WooCommerce plugin that connects stores to it, by tvarkom.
 
-Last updated: 17 November 2026 (version 0.4.4)
+Last updated: 23 November 2026 (version 0.5.0)
 
 Who we are
 ----------
@@ -45,17 +45,19 @@ Accounts and companies
 Price and access
 ----------------
 
-* The first company a person creates is free for 1 store, with everything Pirkoo does and no time limit. Further companies the same person creates can't hold stores until they have a plan.
+* The first company a person creates is free for 1 store, with no time limit, for its Owner alone. Free includes the health score, its checks and a daily scan (Scan now once a day), uptime checks every 15 minutes without email alerts, a weekly performance test, a monthly broken-link check, vulnerabilities and PHP errors, the updates waiting (not run from the app), and the revenue, orders and products of the last 30 days; for it, Pirkoo copies only the store's orders of the last 30 days and no customers' records. Further companies the same person creates can't hold stores until they have a plan.
 
-* For more stores, a company buys a paid plan, per company and paid monthly. The plans, their store limits and their prices (plus VAT where it applies) are shown on the Billing page in the app; for more stores than the largest plan allows, write to contact@pirkoo.com for a custom plan. A company's Owners buy and manage its plan on the Billing page; the payment page shows the total, VAT included, before you pay.
+* For more stores and for everything Pirkoo does, a company buys a paid plan, per company, paid monthly or yearly. The plans, their store limits, what each includes and their prices (VAT included where it applies) are shown on the Billing page in the app; for more stores than the largest plan allows, write to contact@pirkoo.com for a custom plan. A company's Owners buy and manage its plan on the Billing page; the payment page shows the total, VAT included, before you pay.
 
 * Plans are sold only to businesses, for use in their trade or profession, not to consumers. By buying a plan you confirm you're buying it for a business.
 
 * We, MB TVARKOM SOFTWARE, provide Pirkoo and its plans. Payments go through Stripe Managed Payments: Link, a Stripe company, acts as the merchant of record. It takes the payment, charges and pays the VAT, issues the receipts and invoices, appears on your card statement and handles refunds and disputes, under its own terms shown on the payment page. We never see your card or bank details.
 
-* A plan starts when the payment is confirmed and renews every month until it's cancelled. Owners can cancel, change plan, update the payment method and download invoices from the Billing page. A cancellation takes effect at the end of the month already paid, with no refund for the rest of it, unless the law or Link's terms give you one. A change to a larger plan starts at once and the difference for the rest of the month is charged; a change to a smaller plan applies the same way, with the difference credited to the next payment.
+* A plan starts when the payment is confirmed and renews every month or every year, as chosen, until it's cancelled. Owners can cancel, change plan, update the payment method and download invoices from the Billing page. A cancellation takes effect at the end of the period already paid (month or year), with no refund for the rest of it, unless the money-back guarantee below, the law or Link's terms give you one. A change to a larger plan, or from monthly to yearly, starts at once and the difference for the rest of the period is charged; a change to a smaller plan, or from yearly to monthly, applies the same way, with the difference credited to the next payments.
 
-* If a payment fails, it's tried again for a few days and the plan stays active meanwhile. When a plan ends (cancelled or unpaid), the company goes back to the free limit: 1 store for a person's first company, none for other companies.
+* Money-back guarantee: if Pirkoo isn't right for you, write to support@pirkoo.com within 60 days of the first payment of the first company you paid a plan for, and we'll refund that first payment in full, monthly or yearly. It applies once per person, and the plan ends when it's refunded. The refund is made through Stripe to the card that paid.
+
+* If a payment fails, it's tried again for a few days and the plan stays active meanwhile. When a plan ends (cancelled or unpaid), the company goes back to the free limit: 1 store for a person's first company, with Free's features and data (orders older than 30 days and the customers' records are deleted from Pirkoo's copy at the next daily copy), none for other companies. Other people in a company back on Free can't open it until it has a plan for them again.
 
 * A company that holds more stores than its plan allows is paused: its pages and history stay available, but for its stores no scans run, the daily copies and the uptime, performance and broken-link checks stop, updates can't be started from the app, and no stores can be added, until it removes stores or buys a larger plan. Nothing is deleted because of it; the retention periods in the Privacy Policy keep running.
 
