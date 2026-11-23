@@ -3,7 +3,7 @@ Pirkoo
 
 What personal data Pirkoo handles (the app at app.pirkoo.com, the WooCommerce plugin that connects your store to it, and the website pirkoo.com), why, who processes it for us and how long we keep it. Pirkoo is made by tvarkom.
 
-Last updated: 18 November 2026
+Last updated: 23 November 2026
 
 Who we are
 ----------
@@ -17,7 +17,7 @@ Your Pirkoo account
 
 * Logging in: you log in to app.pirkoo.com with your email address. We email you a one-time login link, which works for 15 minutes, and keep the address, the time and your IP address with the request, to limit how many links can be asked for. When you use the link, we create your account (your email address, when you joined and last logged in, and the language you use the app in: English or Brazilian Portuguese, taken from your browser at your first login and changed in the account menu) and a session, kept in one cookie (below). The app and its emails to you are in that language.
 
-* Companies: an account belongs to companies, and a company holds stores. We keep each company's name, its people and their roles (Owner, Admin, Member or Viewer), and, for each person, when the 14 free days of the first company they created started.
+* Companies: an account belongs to companies, and a company holds stores. We keep each company's name, its people and their roles (Owner, Admin, Member or Viewer), and, for each person, which company is the first they created (the free one).
 
 * Invitations: when someone in a company invites you, we keep your email address, the role offered, who invited you and when, and email you the invitation. You don't need an account to receive one.
 
@@ -66,7 +66,7 @@ Who sees a store. Only the people in a company holding the store, on app.pirkoo.
 Store records
 -------------
 
-From Pirkoo 0.4, so the people in the company a store is connected to can see its orders, refunds, customers, products and coupons on app.pirkoo.com, app.pirkoo.com asks the plugin for the store's records: the last 12 months when the store is connected, then what changed, once a day.
+From Pirkoo 0.4, so the people in the company a store is connected to can see its orders, refunds, customers, products and coupons on app.pirkoo.com, app.pirkoo.com asks the plugin for the store's records: the last 12 months when the store is connected, then what changed, once a day. For a company on the free plan, it asks only for the orders (with their refunds) of the last 30 days, the products and the coupons, and for no customers' records; when the company buys a plan, it asks for the 12 months at the next daily copy.
 
 * Orders: number, status, dates (created, paid, completed), currency, totals (subtotal, discounts, shipping, fees, tax, total), the payment method (its title and identifier, such as "Cash on delivery (cod)"), the shipping lines and fee lines with their names and amounts, the products and variations ordered with their quantities, prices and chosen attributes, the coupons used, refunds with their amounts, items and reasons, how the order was created (such as checkout or admin), the order's source as WooCommerce records it (source type, UTM source, medium and campaign, device type), the note the shopper wrote at checkout, the order's notes (up to the 50 newest, with who added them and when), and its custom fields (other plugins' data stored with the order, up to 100, each cut to 500 characters).
 
@@ -78,7 +78,7 @@ From Pirkoo 0.4, so the people in the company a store is connected to can see it
 
 For the shoppers' data in these records, the store is the data controller and we process it on the store's behalf, under the store's instructions, only to show it to the people in the store's company on app.pirkoo.com: we don't contact shoppers, combine their data across stores, use it for our statistics or share it with anyone but the providers below. Stores that need a data processing agreement can ask for one at privacy@pirkoo.com. Shoppers with a request about their data should contact the store; we help the store answer it.
 
-We delete orders and their refunds 12 months after the order was placed. Customers, products and coupons stay in our copy until the store is removed from the company or the company is deleted, which deletes all of the store's records; one deleted on the store afterwards isn't removed from our copy by itself. Disconnecting a store stops the daily copy and keeps what was copied until then.
+We delete orders and their refunds 12 months after the order was placed. Customers, products and coupons stay in our copy until the store is removed from the company or the company is deleted, which deletes all of the store's records; one deleted on the store afterwards isn't removed from our copy by itself. Disconnecting a store stops the daily copy and keeps what was copied until then. When a company goes back to the free plan, its stores' orders older than 30 days and their customers' records are deleted from our copy at the next daily copy.
 
 WordPress management and monitoring
 -----------------------------------
@@ -173,7 +173,7 @@ These periods are applied automatically by our software:
 
 * Stores in a company, with their connection secret and latest details: until they're removed or the company is deleted. A request waiting for a store in relay mode is held in memory only, for at most a few minutes.
 
-* Store records: orders and refunds, 12 months after the order was placed; customers, products and coupons, until the store is removed from the company or the company is deleted, which deletes all of the store's records.
+* Store records: orders and refunds, 12 months after the order was placed (30 days for a company on the free plan); customers (none for a company on the free plan), products and coupons, until the store is removed from the company or the company is deleted, which deletes all of the store's records.
 
 * WordPress inventory and update log: while the store is in the company. Uptime checks: 30 days; uptime incidents: 12 months after they ended. Performance tests: 12 months. Broken links: the store's last 5 weekly checks. All of them are deleted when the store is removed or its company deleted.
 

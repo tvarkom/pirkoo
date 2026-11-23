@@ -4,7 +4,7 @@ Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.7.0
+Stable tag: 0.7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Manage, monitor and report on all your WooCommerce stores from one dashboard, wi
 
 Connect your WooCommerce stores to **Pirkoo** and see every store's health, sales and upkeep in one place, with your team, and act on what needs attention.
 
-_Your first company on Pirkoo is free for 1 store, with every feature and no time limit._ **[Get started at app.pirkoo.com](https://app.pirkoo.com/)**
+_Your first company on Pirkoo is free for 1 store, with no time limit. Paid plans add every report, email alerts, the steps to fix each problem, one-click updates and your whole team._ **[Get started at app.pirkoo.com](https://app.pirkoo.com/)**
 
 = What is Pirkoo? =
 
@@ -32,7 +32,7 @@ Pirkoo is a Multi-Store WooCommerce Manager, made for store owners and for the a
 * ✅ Product, category and stock reports
 * ✅ Teams with roles, for agencies and their clients
 * ✅ In English and Brazilian Portuguese
-* 💥 Free for 1 store
+* 💥 Free for 1 store; paid plans for more (see the FAQ)
 
 = 🩺 Store Health Score =
 
@@ -147,7 +147,9 @@ Once a day on its own, between 02:00 and 05:00 in your store's timezone (skipped
 
 = How much does Pirkoo cost? =
 
-The plugin is free. On app.pirkoo.com, a person's first company is free for 1 store, with everything and no time limit. For more stores, a company buys a monthly plan, shown with its price on the app's Billing page. Plans are for businesses and are paid through Stripe; cancel at any time from the app's Billing page. A company holding more stores than its plan allows is paused (dashboards and history stay; scans, the daily copies, updates and monitoring pause) until it removes stores or buys a larger plan.
+The plugin is free. On app.pirkoo.com, a person's first company is free for 1 store, with no time limit. Free gives the health score, its checks and a daily scan (Scan now once a day), uptime checks every 15 minutes without email alerts, a weekly PageSpeed test, a monthly broken-link check, vulnerabilities and PHP errors, the updates waiting (run from the store's admin), and the revenue, orders and products of the last 30 days, for the company's Owner alone.
+
+Paid plans add everything else: every report for 12 months, the steps and plugins to fix each problem, uptime every 5 minutes with email alerts, daily PageSpeed, weekly broken links, one-click updates and installs, and from Growth up your whole team with roles and white label. Plans are for 1, 10, 20 or 40 stores (more on request), paid monthly or yearly, with their prices, VAT included, on the app's Billing page. Plans are for businesses and are paid through Stripe; cancel at any time from the app's Billing page. A company holding more stores than its plan allows is paused (dashboards and history stay; scans, the daily copies, updates and monitoring pause) until it removes stores or buys a larger plan.
 
 = Does it send anything on its own? =
 
@@ -162,6 +164,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.7.1 =
+* The plans of app.pirkoo.com from 23 November 2026: the readme says what the free plan includes and what paid plans add; the Terms of Use (version 0.4.5) shipped with the plugin describe the free plan, monthly or yearly plans with VAT included and a 60-day money-back guarantee, and the Privacy Policy what is copied and kept for a store on the free plan. No change in what the plugin does.
 
 = 0.7.0 =
 * White label: the company managing the store can set, at app.pirkoo.com, the name, description, author and logo the plugin shows on the Plugins screen and Dashboard → Updates, or hide it there. Disconnecting removes it.
