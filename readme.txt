@@ -4,7 +4,7 @@ Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.7.0
+Stable tag: 0.7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -164,6 +164,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.7.1 =
+* The plans of app.pirkoo.com from 23 November 2026: the readme says what the free plan includes and what paid plans add; the Terms of Use (version 0.4.5) shipped with the plugin describe the free plan, monthly or yearly plans with VAT included and a 60-day money-back guarantee, and the Privacy Policy what is copied and kept for a store on the free plan. No change in what the plugin does.
 
 = 0.7.0 =
 * White label: the company managing the store can set, at app.pirkoo.com, the name, description, author and logo the plugin shows on the Plugins screen and Dashboard → Updates, or hide it there. Disconnecting removes it.
