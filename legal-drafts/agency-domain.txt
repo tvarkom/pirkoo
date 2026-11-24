@@ -1,0 +1,138 @@
+AGENCY DOMAIN AND CUSTOMER ROLE: LEGAL TEXTS
+Pirkoo
+
+DRAFT for the founder's review, 24 November 2026. Not published, not in force, and not reviewed by a lawyer (owner decision of 23 Nov 2026: no lawyer review, the founder approves). Lines marked FOUNDER CONFIRMATION REQUIRED, LEGAL REVIEW REQUIRED or IMPLEMENTATION REQUIRED are open points, not part of the texts.
+
+What this is: the text needed before an agency's own domain goes live (app docs/PROPOSAL-CUSTOM-DOMAIN.md, "Legal"). It has three parts, written so they can be added to the Terms of Use and Privacy Policy now in force (legal/, Terms version 0.4.5 of 23 November 2026) or to the 0.5 drafts, whichever is published next:
+
+* Part 1: additions to the Terms of Use.
+* Part 2: additions to the Privacy Policy.
+* Part 3: the White Label Data Processing Addendum, a new document accepted by an Owner when they add a domain.
+
+Why: on an agency's domain, the agency's clients (Customers) see the agency's name, logo and emails, and nothing names Pirkoo or tvarkom. They therefore can't learn from the app who processes their account data. The usual setup under the GDPR (Articles 13, 14 and 28) is that the agency is the controller of its Customers' account data, explains it in its own privacy policy (which the app's footer links to, and which is required before the domain goes live), and has a processing agreement with us. The store data itself (orders, shoppers) is unchanged: the existing texts already cover it.
+
+
+PART 1: TERMS OF USE
+====================
+
+1.1 In "Accounts and companies", replace the roles bullet with:
+
+* A company holds stores and has people with roles: Owners manage everything, including deleting the company; Admins manage stores and people (except Owners) and start updates; Members see the company's pages and run scans; Viewers see the company's pages; Customers see only the stores the company gives them, including those stores' shoppers' data, and change nothing. The company's Owners are responsible for who they invite, the roles they give and the stores they give to Customers: everyone in the company except Customers sees all its stores' data, including the shoppers' data in the store records.
+
+1.2 New section, after "Accounts and companies":
+
+Your own domain and brand
+-------------------------
+
+On Growth and higher plans, a company can use Pirkoo on a subdomain of its own (for example app.youragency.com) with its own name, logo and colour. On that domain, the pages and the login and invitation emails show the company's brand and not Pirkoo's, and the emails are sent from an address on that domain. These terms still apply to everyone who uses Pirkoo there.
+
+If your company uses its own domain:
+
+* You must own the domain or be authorised to use it, and you authorise us to serve the app on it and to send the app's emails from it, for as long as it's set up. You add and keep the DNS records the app shows you; if you remove them, the domain stops working.
+* Before the domain goes live you give the address of your privacy policy, which the app shows on the domain. For the people you invite as Customers, your company is the controller of their account data and we process it on your behalf (Privacy Policy, "Companies' own domains"), under the White Label Data Processing Addendum, which you accept when you add the domain. Your privacy policy must tell them so, as the law requires.
+* You're responsible for what your name, logo, colour, support address and policy addresses say, and for not misleading anyone with them. They must not imitate another business or use a name or logo you have no right to.
+* Your support address is where your Customers' questions and the replies to the app's emails go. You answer your Customers; we support your company's Owners and Admins.
+* We may stop serving a domain, at once and with an email to the company's Owners, if it is used to mislead people (for example for phishing), if its DNS records point elsewhere, or if continuing would break the law.
+* If your plan no longer includes your own domain, the domain stops being served and is kept for 30 days, so that choosing Growth or higher again restores it; after that it's removed, together with the sending address we set up for it. While the domain isn't served, your Customers use app.pirkoo.com, where Pirkoo's name is shown.
+
+1.3 Only if it goes out with the 0.5 Terms draft: in "Who Pirkoo is for, and the documents that apply", add a fifth item to "Four documents apply together" (and make it "Five"). With 0.4.5, the section in 1.2 is enough.
+
+* The White Label Data Processing Addendum: the terms on which we process the account data of the people your company invites as Customers, for companies that use their own domain.
+
+FOUNDER CONFIRMATION REQUIRED: the version number and date these additions go out with (0.4.6, or folded into 0.5), and whether the 30-day notice of section "Changes" applies: the additions only concern a feature not yet offered, so they could take effect when published.
+
+
+PART 2: PRIVACY POLICY
+======================
+
+2.1 In "Who we are", replace the paragraph "For one kind of data we are not the controller: ..." with:
+
+For two kinds of data we are not the controller: the shoppers' data in a store's records (below), where the store is the controller; and the account data of people a company invites as Customers when that company uses its own domain ("Companies' own domains", below), where that company is the controller. In both cases we process the data on the controller's behalf.
+
+2.2 In "Your Pirkoo account", replace the "Companies" bullet's list of roles with: "(Owner, Admin, Member, Viewer or Customer), the stores given to each Customer".
+
+2.3 New section, after "Your Pirkoo account":
+
+Companies' own domains
+----------------------
+
+A company on Growth or a higher plan can use the app on a subdomain of its own (for example app.youragency.com), with its name, logo and colour instead of Pirkoo's, and send the login and invitation emails from an address on that domain.
+
+* For people the company invites as Customers (its clients, who see only the stores the company gives them), that company is the controller of their account data: their email address, login requests (with time and IP address), sessions, language and usage records, as described under "Your Pirkoo account". We process that data on the company's behalf, under our White Label Data Processing Addendum with it, and only to provide the app to them. The company's own privacy policy, linked at the bottom of every page on its domain, explains how it uses that data and how to reach it. Requests about that data are best sent to the company; if you send them to us, we pass them on.
+* For the company's other people (its Owners, Admins, Members and Viewers), we remain the controller of their account data, as described above, wherever they log in.
+* On the company's domain, the session cookie is called "__Host-session" and the page-remembering one "__Host-next"; they work as described above and are set only for that domain.
+* To serve the domain and send from it, we keep the company's domain name, the DNS records it must add and when they were found, its logo (an image it uploads), its colour, its support address and the addresses of its privacy policy and terms. They contain no personal data unless the company puts some there (for example a person's name in its support address). We keep them while the domain is set up, and remove them when it's removed, or 30 days after the company's plan stops including it.
+* The emails are sent by Resend (see "Who processes data for us"), from an address on the company's domain that we register with Resend for it.
+
+2.4 In "Who processes data for us", in the Resend item, add: "For companies that use their own domain, it also sends their login and invitation emails from an address on that domain."
+
+LEGAL REVIEW REQUIRED (not done; owner decision): whether a person who is a Customer of one company and an Owner, Admin, Member or Viewer of another has one account with two controllers. The text above treats the Customer role's data (the membership, the stores given, the logins on that company's domain) as the company's, and the account itself (email address, language) as ours.
+
+
+PART 3: WHITE LABEL DATA PROCESSING ADDENDUM
+============================================
+
+The terms on which MB TVARKOM SOFTWARE processes, on behalf of a company that uses Pirkoo on its own domain, the account data of the people that company invites as Customers, as Article 28 of the General Data Protection Regulation (EU) 2016/679 ("GDPR") requires.
+
+1. Parties and how this addendum applies
+
+1.1 "tvarkom", "we": MB TVARKOM SOFTWARE, company code 308171668, Gedimino g. 22A-14, 44319 Kaunas, Lithuania; privacy@pirkoo.com.
+
+1.2 "The agency", "you": the business that holds the company on Pirkoo that adds its own domain.
+
+1.3 This addendum is part of the Pirkoo Terms of Use (https://pirkoo.com/terms/). It applies from the moment an Owner of your company accepts it when adding a domain in Settings → Domain and brand, and for as long as we hold account data of your Customers. It covers only that data (section 3). Store data, including shoppers' data, is covered by the Terms of Use, the Privacy Policy and, once published, the Data Processing Agreement; our processing of your Owners', Admins', Members' and Viewers' account data, as controller, by the Privacy Policy.
+
+LEGAL REVIEW REQUIRED (not done; owner decision): whether acceptance by a click, without a signature, is a sufficient written form under Art. 28(9) GDPR.
+IMPLEMENTATION REQUIRED: the Domain and brand page must show this addendum and record its acceptance (who, when, which version) before a domain can be saved; the addendum must be published at a stable address, linked from the Terms of Use.
+
+2. Roles
+
+You are the controller of your Customers' account data and we are your processor. You decide whom to invite as a Customer and which stores they see; you are responsible for having a lawful basis for it, and for informing your Customers, in your privacy policy, that you use a provider to run the app and what it processes.
+
+3. What we process, why and for how long
+
+3.1 Data subjects: the people your company invites as Customers, from the invitation until they leave your company.
+
+3.2 Personal data: the invitation (email address, the stores offered, who invited them and when); the account's membership of your company with the Customer role and the stores given; login requests on your domain (email address, time, IP address) and sessions; the language they use; usage records (as the Privacy Policy describes them, without IP address, browser or email address).
+
+3.3 Purpose and nature: providing the app to your Customers on your domain and on app.pirkoo.com: inviting them, emailing their login links from your domain, logging them in, showing them the stores you give them, and keeping the records the Privacy Policy describes to run and secure the service.
+
+3.4 Retention: as the Privacy Policy states for each item. When a Customer leaves your company or is removed, their membership and the stores given to them are deleted at once; the account itself is deleted when it no longer belongs to any company or when the person deletes it.
+
+4. Your instructions
+
+We process the data only on your documented instructions, which are this addendum, the Terms of Use and what your Owners and Admins do in the app (inviting, giving stores, removing people), unless the law requires otherwise, in which case we tell you first where the law allows. We tell you if we think an instruction breaks the GDPR.
+
+5. Confidentiality, security and sub-processors
+
+5.1 Only the people at tvarkom who need to, to run and support the service, have access, under a duty of confidentiality.
+
+5.2 We apply the security measures listed in the Data Processing Agreement's Annex 2 (or, until it is published, those the Privacy Policy describes): encryption in transit, login by one-time links stored only as hashes, sessions stored only as hashes, access limited by role in the app's database queries, hosting in the European Union with daily database snapshots kept 5 days.
+
+5.3 You authorise the sub-processors that handle this data: Fly.io (hosting, the EU) and Resend (emails, the United States, under the EU-U.S. Data Privacy Framework and the Standard Contractual Clauses), as the Sub-processor Register describes. We announce a change to them to your Owners by email at least 30 days ahead, and you may object by ending the use of your own domain.
+
+FOUNDER CONFIRMATION REQUIRED: the same points the Sub-processor Register marks for Fly.io and Resend (their data processing agreements accepted, their current transfer mechanisms).
+
+6. Helping you
+
+We help you, as far as we reasonably can and through the app where possible, to answer your Customers' requests to exercise their rights (a Customer can delete their own account in the app; you can remove them from your company), with security, and with breach notifications and impact assessments where needed. We forward to you any request we receive from your Customers about this data.
+
+7. Personal data breaches
+
+We tell your company's Owners by email without undue delay after becoming aware of a breach affecting this data, with what we know of its nature, likely consequences and the measures taken.
+
+FOUNDER CONFIRMATION REQUIRED: as in the Data Processing Agreement draft (10.1), whether to commit to a fixed number of hours.
+
+8. End
+
+When your company stops using its own domain or is deleted, we delete your Customers' memberships with it as section 3.4 states, and their accounts when they no longer belong to any company. What was deleted can remain in database snapshots for up to 5 days.
+
+9. Information and audits
+
+We give you the information needed to show compliance with Article 28 GDPR on request to privacy@pirkoo.com, and allow audits by you or an auditor you appoint, at your cost, on reasonable notice and at most once a year unless a breach or a supervisory authority requires more.
+
+10. Liability and law
+
+The Terms of Use's limits of liability apply to this addendum, except where the GDPR doesn't allow them. The law of the Republic of Lithuania applies and disputes go to the courts of Lithuania, as in the Terms of Use.
+
+FOUNDER CONFIRMATION REQUIRED: that sections 10 and 1.3 match the Terms of Use version this addendum goes out with.
