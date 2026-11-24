@@ -1,0 +1,72 @@
+WHITE LABEL DATA PROCESSING ADDENDUM
+Pirkoo
+
+For companies that use Pirkoo on their own domain: how we process, on their behalf, the account data of the people they invite as Customers.
+
+Last updated: 24 November 2026 (version 1.0)
+
+The terms on which MB TVARKOM SOFTWARE processes, on behalf of a company that uses Pirkoo on its own domain, the account data of the people that company invites as Customers, as Article 28 of the General Data Protection Regulation (EU) 2016/679 ("GDPR") requires.
+
+1. Parties and how this addendum applies
+----------------------------------------
+
+1.1 "tvarkom", "we": MB TVARKOM SOFTWARE, company code 308171668, Gedimino g. 22A-14, 44319 Kaunas, Lithuania; privacy@pirkoo.com.
+
+1.2 "The agency", "you": the business that holds the company on Pirkoo that adds its own domain.
+
+1.3 This addendum is part of the Pirkoo Terms of Use (https://pirkoo.com/terms/). It applies from the moment an Owner of your company accepts it when adding a domain in Settings → Domain and brand, and for as long as we hold account data of your Customers. It covers only that data (section 3). Store data, including shoppers' data, is covered by the Terms of Use and the Privacy Policy (for a data processing agreement about it, write to privacy@pirkoo.com); our processing of your Owners', Admins', Members' and Viewers' account data, as controller, by the Privacy Policy.
+
+2. Roles
+--------
+
+You are the controller of your Customers' account data and we are your processor. You decide whom to invite as a Customer and which stores they see; you are responsible for having a lawful basis for it, and for informing your Customers, in your privacy policy, that you use a provider to run the app and what it processes.
+
+3. What we process, why and for how long
+----------------------------------------
+
+3.1 Data subjects: the people your company invites as Customers, from the invitation until they leave your company.
+
+3.2 Personal data: the invitation (email address, the stores offered, who invited them and when); the account's membership of your company with the Customer role and the stores given; login requests on your domain (email address, time, IP address) and sessions; the language they use; usage records (as the Privacy Policy describes them, without IP address, browser or email address).
+
+3.3 Purpose and nature: providing the app to your Customers on your domain and on app.pirkoo.com: inviting them, emailing their login links from your domain, logging them in, showing them the stores you give them, and keeping the records the Privacy Policy describes to run and secure the service.
+
+3.4 Retention: as the Privacy Policy states for each item. When a Customer leaves your company or is removed, their membership and the stores given to them are deleted at once; the account itself is deleted when it no longer belongs to any company or when the person deletes it.
+
+4. Your instructions
+--------------------
+
+We process the data only on your documented instructions, which are this addendum, the Terms of Use and what your Owners and Admins do in the app (inviting, giving stores, removing people), unless the law requires otherwise, in which case we tell you first where the law allows. We tell you if we think an instruction breaks the GDPR.
+
+5. Confidentiality, security and sub-processors
+-----------------------------------------------
+
+5.1 Only the people at tvarkom who need to, to run and support the service, have access, under a duty of confidentiality.
+
+5.2 We apply these security measures: encryption in transit, login by one-time links stored only as hashes, sessions stored only as hashes, access limited by role in the app's database queries, hosting in the European Union with daily database snapshots kept 5 days.
+
+5.3 You authorise the sub-processors that handle this data: Fly.io (hosting, the EU) and Resend (emails, the United States, under the EU-U.S. Data Privacy Framework and the Standard Contractual Clauses), as the Privacy Policy's "Who processes data for us" describes. We announce a change to them to your Owners by email at least 30 days ahead, and you may object by ending the use of your own domain.
+
+6. Helping you
+--------------
+
+We help you, as far as we reasonably can and through the app where possible, to answer your Customers' requests to exercise their rights (a Customer can delete their own account in the app; you can remove them from your company), with security, and with breach notifications and impact assessments where needed. We forward to you any request we receive from your Customers about this data.
+
+7. Personal data breaches
+-------------------------
+
+We tell your company's Owners by email without undue delay after becoming aware of a breach affecting this data, with what we know of its nature, likely consequences and the measures taken.
+
+8. End
+------
+
+When your company stops using its own domain or is deleted, we delete your Customers' memberships with it as section 3.4 states, and their accounts when they no longer belong to any company. What was deleted can remain in database snapshots for up to 5 days.
+
+9. Information and audits
+-------------------------
+
+We give you the information needed to show compliance with Article 28 GDPR on request to privacy@pirkoo.com, and allow audits by you or an auditor you appoint, at your cost, on reasonable notice and at most once a year unless a breach or a supervisory authority requires more.
+
+10. Liability and law
+---------------------
+
+The Terms of Use's limits of liability apply to this addendum, except where the GDPR doesn't allow them. The law of the Republic of Lithuania applies and disputes go to the courts of Lithuania, as in the Terms of Use.

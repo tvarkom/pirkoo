@@ -3,7 +3,7 @@ Pirkoo
 
 The terms for using Pirkoo (Multi-Store WooCommerce Manager): the app at app.pirkoo.com and the WooCommerce plugin that connects stores to it, by tvarkom.
 
-Last updated: 23 November 2026 (version 0.4.5)
+Last updated: 24 November 2026 (version 0.4.6)
 
 Who we are
 ----------
@@ -36,11 +36,25 @@ Accounts and companies
 
 * You log in with your email address; keep access to it private, because it's how you get in.
 
-* A company holds stores and has people with roles: Owners manage everything, including deleting the company; Admins manage stores and people (except Owners) and start updates; Members see the company's pages and run scans; Viewers see the company's pages. The company's Owners are responsible for who they invite and the roles they give: everyone in the company sees its stores' data, including the shoppers' data in the store records.
+* A company holds stores and has people with roles: Owners manage everything, including deleting the company; Admins manage stores and people (except Owners) and start updates; Members see the company's pages and run scans; Viewers see the company's pages; Customers see only the stores the company gives them, including those stores' shoppers' data, and change nothing. The company's Owners are responsible for who they invite, the roles they give and the stores they give to Customers: everyone in the company except Customers sees all its stores' data, including the shoppers' data in the store records.
 
 * A store is connected to one company at a time. Connecting it to another company ends the first connection; the first company keeps what it had, and keeps seeing the store's scan results, until it removes the store.
 
 * You may connect only stores you own or are authorized to manage, and you're responsible for having the right to send us the store's data described in the Privacy Policy. For the shoppers' data in the store records, the store is the data controller and we act on its behalf, as the Privacy Policy describes; ask privacy@pirkoo.com for a data processing agreement.
+
+Your own domain and brand
+-------------------------
+
+On Growth and higher plans, a company can use Pirkoo on a subdomain of its own (for example app.youragency.com) with its own name, logo and colour. On that domain, the pages and the login and invitation emails show the company's brand and not Pirkoo's, and the emails are sent from an address on that domain. These terms still apply to everyone who uses Pirkoo there.
+
+If your company uses its own domain:
+
+* You must own the domain or be authorised to use it, and you authorise us to serve the app on it and to send the app's emails from it, for as long as it's set up. You add and keep the DNS records the app shows you; if you remove them, the domain stops working.
+* Before the domain goes live you give the address of your privacy policy, which the app shows on the domain. For the people you invite as Customers, your company is the controller of their account data and we process it on your behalf (Privacy Policy, "Companies' own domains"), under the White Label Data Processing Addendum (https://pirkoo.com/white-label-dpa/), which an Owner accepts when adding the domain. Your privacy policy must tell them so, as the law requires.
+* You're responsible for what your name, logo, colour, support address and policy addresses say, and for not misleading anyone with them. They must not imitate another business or use a name or logo you have no right to.
+* Your support address is where your Customers' questions and the replies to the app's emails go. You answer your Customers; we support your company's Owners and Admins.
+* We may stop serving a domain, at once and with an email to the company's Owners, if it is used to mislead people (for example for phishing), if its DNS records point elsewhere, or if continuing would break the law.
+* If your plan no longer includes your own domain, the domain stops being served and is kept for 30 days, so that choosing Growth or higher again restores it; after that it's removed, together with the sending address we set up for it. While the domain isn't served, your Customers use app.pirkoo.com, where Pirkoo's name is shown.
 
 Price and access
 ----------------

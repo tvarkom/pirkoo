@@ -126,6 +126,7 @@ To stop, click **Disconnect from Pirkoo** on the Plugins screen (**Disconnect** 
 
 * Privacy Policy, with everything collected and how long it's kept: https://pirkoo.com/privacy/ (also shipped with the plugin, `legal/privacy-policy.txt`)
 * Terms of Use: https://pirkoo.com/terms/ (also shipped with the plugin, `legal/terms-of-use.txt`)
+* White Label Data Processing Addendum, for companies that use the app on their own domain: https://pirkoo.com/white-label-dpa/ (also shipped with the plugin, `legal/white-label-addendum.txt`)
 
 == Frequently Asked Questions ==
 

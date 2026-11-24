@@ -3,21 +3,21 @@ Pirkoo
 
 What personal data Pirkoo handles (the app at app.pirkoo.com, the WooCommerce plugin that connects your store to it, and the website pirkoo.com), why, who processes it for us and how long we keep it. Pirkoo is made by tvarkom.
 
-Last updated: 23 November 2026
+Last updated: 24 November 2026
 
 Who we are
 ----------
 
 The data controller is MB TVARKOM SOFTWARE ("tvarkom", "we", "us"), a small partnership (mažoji bendrija) registered in Lithuania under company code 308171668, registered office Gedimino g. 22A-14, 44319 Kaunas, Lithuania. For privacy questions and data requests, email privacy@pirkoo.com.
 
-For one kind of data we are not the controller: the shoppers' data in a store's records (below). There the store is the controller and we process the data on its behalf.
+For two kinds of data we are not the controller: the shoppers' data in a store's records (below), where the store is the controller; and the account data of people a company invites as Customers when that company uses its own domain ("Companies' own domains", below), where that company is the controller. In both cases we process the data on the controller's behalf.
 
 Your Pirkoo account
 -------------------
 
 * Logging in: you log in to app.pirkoo.com with your email address. We email you a one-time login link, which works for 15 minutes, and keep the address, the time and your IP address with the request, to limit how many links can be asked for. When you use the link, we create your account (your email address, when you joined and last logged in, and the language you use the app in: English or Brazilian Portuguese, taken from your browser at your first login and changed in the account menu) and a session, kept in one cookie (below). The app and its emails to you are in that language.
 
-* Companies: an account belongs to companies, and a company holds stores. We keep each company's name, its people and their roles (Owner, Admin, Member or Viewer), and, for each person, which company is the first they created (the free one).
+* Companies: an account belongs to companies, and a company holds stores. We keep each company's name, its people and their roles (Owner, Admin, Member, Viewer or Customer), the stores given to each Customer, and, for each person, which company is the first they created (the free one).
 
 * Invitations: when someone in a company invites you, we keep your email address, the role offered, who invited you and when, and email you the invitation. You don't need an account to receive one.
 
@@ -26,6 +26,17 @@ Your Pirkoo account
 * Product pictures: a store's order, customer, product, category and coupon pages in the app show its products' thumbnail images from the address the store gives for them (usually the store's own website or its image service). Your browser loads them from there over https, so that site receives your IP address and browser details, as when you visit the store, but not the address of the app page. No other page of the app loads anything from outside app.pirkoo.com.
 
 * Usage records: we record how you use the app (logins, stores connected, disconnected and removed, scans asked for, refused and finished, dashboards viewed, and changes to a company's plan), linked to your account and company, to improve Pirkoo. They hold the app's own numbers for the account, company and store, the action and its time; never your IP address, browser, email address or store data. We keep them 13 months, then only monthly totals without any link to you. We use no analytics cookies or third-party analytics.
+
+Companies' own domains
+----------------------
+
+A company on Growth or a higher plan can use the app on a subdomain of its own (for example app.youragency.com), with its name, logo and colour instead of Pirkoo's, and send the login and invitation emails from an address on that domain.
+
+* For people the company invites as Customers (its clients, who see only the stores the company gives them), that company is the controller of their account data: their email address, login requests (with time and IP address), sessions, language and usage records, as described under "Your Pirkoo account". We process that data on the company's behalf, under our White Label Data Processing Addendum with it (https://pirkoo.com/white-label-dpa/), and only to provide the app to them. The company's own privacy policy, linked at the bottom of every page on its domain, explains how it uses that data and how to reach it. Requests about that data are best sent to the company; if you send them to us, we pass them on.
+* For the company's other people (its Owners, Admins, Members and Viewers), we remain the controller of their account data, as described above, wherever they log in.
+* On the company's domain, the session cookie is called "__Host-session" and the page-remembering one "__Host-next"; they work as described above and are set only for that domain.
+* To serve the domain and send from it, we keep the company's domain name, the DNS records it must add and when they were found, its logo (an image it uploads), its colour, its support address and the addresses of its privacy policy and terms. They contain no personal data unless the company puts some there (for example a person's name in its support address). We keep them while the domain is set up, and remove them when it's removed, or 30 days after the company's plan stops including it.
+* The emails are sent by Resend (see "Who processes data for us"), from an address on the company's domain that we register with Resend for it.
 
 Connecting your store
 ---------------------
@@ -150,7 +161,7 @@ Who processes data for us
 
 * Cloudflare: DNS for pirkoo.com and network protection for the website pirkoo.com (not for the app).
 
-* Resend: sends the app's emails (login links, invitations, and the notices about a store disconnected, down and back up).
+* Resend: sends the app's emails (login links, invitations, and the notices about a store disconnected, down and back up). For companies that use their own domain, it also sends their login and invitation emails from an address on that domain.
 
 * Stripe: provides the payment pages, the subscription records and the billing portal. For the payments themselves, Link (Stripe) is the merchant of record and a controller (see "Paying for a plan").
 
