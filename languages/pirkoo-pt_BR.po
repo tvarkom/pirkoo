@@ -3,7 +3,7 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Pirkoo 0.4.7\n"
+"Project-Id-Version: Pirkoo 0.8.0\n"
 "Report-Msgid-Bugs-To: support@pirkoo.com\n"
 "Language-Team: tvarkom <support@pirkoo.com>\n"
 "Language: pt_BR\n"
@@ -21,6 +21,13 @@ msgstr "Desconectar do Pirkoo"
 
 msgid "Disconnect"
 msgstr "Desconectar"
+
+#. translators: %s: the name the company managing the store gave the plugin.
+msgid "Open %s"
+msgstr "Abrir %s"
+
+msgid "Open dashboard"
+msgstr "Abrir o painel"
 
 msgid "Connect to Pirkoo"
 msgstr "Conectar ao Pirkoo"

@@ -6,7 +6,9 @@
  * up at its next scan. Disconnecting removes it.
  *
  * It changes the plugin's name, description and author on the Plugins screen and its row on
- * Dashboard → Updates, or hides it from both. The privacy policy text WordPress suggests
+ * Dashboard → Updates, or hides it from both. Since 0.8.0 it may also carry app_url: the company's
+ * own domain for the app (custom domain phase 3), where the Plugins screen's link to the app points.
+ * It's taken only from the app's signed requests, never from the store's settings. The privacy policy text WordPress suggests
  * (pirkoo_privacy_policy_content()) keeps naming Pirkoo and tvarkom: it describes who processes
  * the store's data.
  *
@@ -22,7 +24,7 @@ define( 'PIRKOO_WHITE_LABEL_OPTION', 'pirkoo_white_label' );
 /**
  * The store's white label; an empty array when there is none (the plugin shows as itself).
  *
- * @return array{hide: bool, name: string, description: string, author: string, author_url: string, logo: string}|array{}
+ * @return array{hide: bool, name: string, description: string, author: string, author_url: string, logo: string, app_url: string}|array{}
  */
 function pirkoo_white_label() {
 	$saved = get_option( PIRKOO_WHITE_LABEL_OPTION, array() );
@@ -36,7 +38,7 @@ function pirkoo_white_label() {
  * Keeps only the white label's known fields, as plain text and web addresses of limited length.
  *
  * @param array<string, mixed> $data The white label as sent by the app.
- * @return array{hide: bool, name: string, description: string, author: string, author_url: string, logo: string}
+ * @return array{hide: bool, name: string, description: string, author: string, author_url: string, logo: string, app_url: string}
  */
 function pirkoo_white_label_clean( array $data ) {
 	$text = static function ( $key, $max ) use ( $data ) {
@@ -58,7 +60,58 @@ function pirkoo_white_label_clean( array $data ) {
 		'author'      => $text( 'author', 100 ),
 		'author_url'  => $url( 'author_url', array( 'https', 'http' ) ),
 		'logo'        => $url( 'logo', array( 'https' ) ),
+		'app_url'     => pirkoo_white_label_app_url( isset( $data['app_url'] ) ? $data['app_url'] : '' ),
 	);
+}
+
+/**
+ * The app's address on the company's own domain, as sent by the app: an https origin (scheme and
+ * host, no path, port, user or query), or "" when it isn't one.
+ *
+ * @param mixed $value The app_url the app sent.
+ * @return string
+ */
+function pirkoo_white_label_app_url( $value ) {
+	if ( ! is_string( $value ) || '' === $value || strlen( $value ) > 300 ) {
+		return '';
+	}
+	$parts = wp_parse_url( $value );
+	if ( ! is_array( $parts ) || ! isset( $parts['scheme'], $parts['host'] ) || 'https' !== $parts['scheme'] ) {
+		return '';
+	}
+	if ( isset( $parts['port'] ) || isset( $parts['user'] ) || isset( $parts['pass'] ) || isset( $parts['query'] ) || isset( $parts['fragment'] ) || ( isset( $parts['path'] ) && '' !== $parts['path'] && '/' !== $parts['path'] ) ) {
+		return '';
+	}
+	$host = strtolower( $parts['host'] );
+	if ( ! preg_match( '/^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/', $host ) ) {
+		return '';
+	}
+	return 'https://' . $host;
+}
+
+/**
+ * Whether the white label changes how the plugin appears (any field but app_url is set).
+ *
+ * @param array<string, mixed> $label The white label (pirkoo_white_label()).
+ * @return bool
+ */
+function pirkoo_white_label_renames( array $label ) {
+	if ( array() === $label ) {
+		return false;
+	}
+	return ! empty( $label['hide'] ) || '' !== $label['name'] || '' !== $label['description'] || '' !== $label['author'] || '' !== $label['author_url'] || '' !== $label['logo'];
+}
+
+/**
+ * Where the plugin's link to the app points: the company's own domain when the app sent one,
+ * otherwise app.pirkoo.com. Only for links people open; the plugin's requests to the app always go
+ * to PIRKOO_APP_URL.
+ *
+ * @return string
+ */
+function pirkoo_app_link() {
+	$label = pirkoo_white_label();
+	return ( array() !== $label && '' !== $label['app_url'] ) ? $label['app_url'] : PIRKOO_APP_URL;
 }
 
 /**
@@ -69,7 +122,7 @@ function pirkoo_white_label_clean( array $data ) {
  */
 function pirkoo_white_label_save( $data ) {
 	$clean = is_array( $data ) ? pirkoo_white_label_clean( $data ) : array();
-	if ( array() === $clean || ( ! $clean['hide'] && '' === $clean['name'] && '' === $clean['description'] && '' === $clean['author'] && '' === $clean['author_url'] && '' === $clean['logo'] ) ) {
+	if ( array() === $clean || ( ! pirkoo_white_label_renames( $clean ) && '' === $clean['app_url'] ) ) {
 		delete_option( PIRKOO_WHITE_LABEL_OPTION );
 		return;
 	}
@@ -113,7 +166,7 @@ function pirkoo_rest_white_label( WP_REST_Request $request ) {
 function pirkoo_white_label_plugins( $plugins ) {
 	$file  = plugin_basename( PIRKOO_FILE );
 	$label = pirkoo_white_label();
-	if ( array() === $label || ! isset( $plugins[ $file ] ) || ! is_array( $plugins ) ) {
+	if ( ! pirkoo_white_label_renames( $label ) || ! isset( $plugins[ $file ] ) || ! is_array( $plugins ) ) {
 		return $plugins;
 	}
 	if ( $label['hide'] ) {
@@ -148,7 +201,7 @@ function pirkoo_white_label_plugins( $plugins ) {
  * @return string[]
  */
 function pirkoo_white_label_row_meta( $meta, $file ) {
-	if ( plugin_basename( PIRKOO_FILE ) !== $file || array() === pirkoo_white_label() ) {
+	if ( plugin_basename( PIRKOO_FILE ) !== $file || ! pirkoo_white_label_renames( pirkoo_white_label() ) ) {
 		return $meta;
 	}
 	return array_values(
@@ -169,7 +222,7 @@ function pirkoo_white_label_row_meta( $meta, $file ) {
  */
 function pirkoo_white_label_updates_screen() {
 	$label = pirkoo_white_label();
-	if ( array() === $label || ( ! $label['hide'] && '' === $label['name'] ) ) {
+	if ( ! pirkoo_white_label_renames( $label ) || ( ! $label['hide'] && '' === $label['name'] ) ) {
 		return;
 	}
 	$script = sprintf(

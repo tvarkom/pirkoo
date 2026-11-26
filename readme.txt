@@ -4,7 +4,7 @@ Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.7.1
+Stable tag: 0.8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,7 +114,7 @@ Once connected, app.pirkoo.com sends requests signed with a secret shared only w
 * **WordPress management** (once a day, and when you open those pages): WordPress's version and each installed plugin and theme with their updates, and the PHP errors of the last 7 days, with emails, IP addresses and links removed. A plugin or theme update runs only when an Owner or Admin clicks Update; WordPress itself is never updated from Pirkoo. From 0.6, an Owner or Admin can also install and activate one of the WordPress.org plugins Pirkoo recommends (only those): the plugin downloads it from WordPress.org (`https://api.wordpress.org/plugins/info/` and `https://downloads.wordpress.org/`), as Plugins → Add New does.
 * **Store records** (the last 12 months when you connect, then what changed, daily): orders with the customer's billing and shipping names, email, phone, company and addresses, the order's notes, the note written at checkout and its custom fields; registered customers; products, variations, categories and coupons. Never IP addresses, browser details, payment details or custom fields whose names suggest secrets. Pirkoo processes this data on your behalf and keeps orders 12 months; ask privacy@pirkoo.com for a data processing agreement.
 
-**White label** (from 0.7): app.pirkoo.com also sends the name, description, author, author address and logo address your company set for the plugin, or that it should be hidden, and the plugin shows itself that way on the Plugins screen and Dashboard → Updates. Nothing is sent back. Disconnecting removes it.
+**White label** (from 0.7): app.pirkoo.com also sends the name, description, author, author address and logo address your company set for the plugin, or that it should be hidden, and the plugin shows itself that way on the Plugins screen and Dashboard → Updates. From 0.8, when your company uses the app on its own domain, it also sends that domain's address, and the plugin's Open link on the Plugins screen points there. Nothing is sent back. Disconnecting removes it.
 
 In relay mode (only for a store whose firewall blocks Pirkoo, and only if an administrator accepts it), the plugin fetches the same requests from app.pirkoo.com and sends back the same answers, every 5 minutes.
 
@@ -165,6 +165,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.8.0 =
+* For agencies that use app.pirkoo.com on their own domain: the plugin's Open link on the Plugins screen points to that domain, and with a white label it takes the plugin's new name ("Open Agency Care") instead of naming Pirkoo. The address arrives only in app.pirkoo.com's signed requests; removing the domain or disconnecting points the link back to app.pirkoo.com.
 
 = 0.7.1 =
 * The plans of app.pirkoo.com from 23 November 2026: the readme says what the free plan includes and what paid plans add; the Terms of Use (version 0.4.5) shipped with the plugin describe the free plan, monthly or yearly plans with VAT included and a 60-day money-back guarantee, and the Privacy Policy what is copied and kept for a store on the free plan. No change in what the plugin does.
