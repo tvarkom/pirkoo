@@ -12,7 +12,7 @@ Manager" is its description, never its name. The repo and folder are `pirkoo`.
 ## How it works
 
 Since 0.3.0 the plugin is a connector to app.pirkoo.com, with no screen in wp-admin (the app's
-repo, `docs/PROPOSAL-0.3.0.md` 3.5, has the protocol).
+repo, `docs/archive/PROPOSAL-0.3.0.md` 3.5, has the protocol).
 
 ```
 Plugins screen: Connect to Pirkoo ──▶ admin-post pirkoo_connect: one-time code (10 min)
