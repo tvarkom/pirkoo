@@ -5,7 +5,7 @@ PUBLISHED on 24 November 2026 at the founder's request, BEFORE the founder's rev
 
 Originally: DRAFT for the founder's review, 24 November 2026. Not published, not in force, and not reviewed by a lawyer (owner decision of 23 Nov 2026: no lawyer review, the founder approves). Lines marked FOUNDER CONFIRMATION REQUIRED, LEGAL REVIEW REQUIRED or IMPLEMENTATION REQUIRED are open points, not part of the texts.
 
-What this is: the text needed before an agency's own domain goes live (app docs/PROPOSAL-CUSTOM-DOMAIN.md, "Legal"). It has three parts, written so they can be added to the Terms of Use and Privacy Policy now in force (legal/, Terms version 0.4.5 of 23 November 2026) or to the 0.5 drafts, whichever is published next:
+What this is: the text needed before an agency's own domain goes live (app docs/archive/PROPOSAL-CUSTOM-DOMAIN.md, "Legal"). It has three parts, written so they can be added to the Terms of Use and Privacy Policy now in force (legal/, Terms version 0.4.5 of 23 November 2026) or to the 0.5 drafts, whichever is published next:
 
 * Part 1: additions to the Terms of Use.
 * Part 2: additions to the Privacy Policy.
