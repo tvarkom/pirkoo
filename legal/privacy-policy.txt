@@ -3,7 +3,7 @@ Pirkoo
 
 What personal data Pirkoo handles (the app at app.pirkoo.com, the WooCommerce plugin that connects your store to it, and the website pirkoo.com), why, who processes it for us and how long we keep it. Pirkoo is made by tvarkom.
 
-Last updated: 24 November 2026
+Last updated: 26 November 2026
 
 Who we are
 ----------
@@ -15,7 +15,9 @@ For two kinds of data we are not the controller: the shoppers' data in a store's
 Your Pirkoo account
 -------------------
 
-* Logging in: you log in to app.pirkoo.com with your email address. We email you a one-time login link, which works for 15 minutes, and keep the address, the time and your IP address with the request, to limit how many links can be asked for. When you use the link, we create your account (your email address, when you joined and last logged in, and the language you use the app in: English or Brazilian Portuguese, taken from your browser at your first login and changed in the account menu) and a session, kept in one cookie (below). The app and its emails to you are in that language.
+* Signing up: to create an account for your agency at app.pirkoo.com/signup, you give your first and last name, your email address, your agency's name (it becomes your company's name) and how many client stores you look after (a range, used to suggest a plan), and accept the Terms of Use. We keep your names with your account and the agency's name and store range with its company, and record which version of the Terms you accepted and when. We use them to run your account and to suggest a plan, never for marketing.
+
+* Logging in: you log in to app.pirkoo.com with your email address. We email you a 6-digit login code, which works for 10 minutes and for 5 tries, and keep the address, the time, your IP address and a one-way hash of the code (never the code itself) with the request, to check the code and to limit how many codes can be asked for. When you enter the right code, we create your account if you don't have one (your email address, when you joined and last logged in, and the language you use the app in: English or Brazilian Portuguese, taken from your browser at your first login and changed in the account menu) and a session, kept in one cookie (below). The app and its emails to you are in that language.
 
 * Companies: an account belongs to companies, and a company holds stores. We keep each company's name, its people and their roles (Owner, Admin, Member, Viewer or Customer), the stores given to each Customer, and, for each person, which company is the first they created (the free one).
 
@@ -122,7 +124,7 @@ Disconnecting, removing and deleting
 
 * Deleting a company (its Owners) removes all its stores as above, its invitations and its people's access. People keep their own accounts.
 
-* Deleting your account (in the app's account menu) deletes your memberships, sessions and login links; usage records lose their link to you. You must first hand over or delete a company of which you're the only Owner.
+* Deleting your account (in the app's account menu) deletes your memberships, sessions and login codes, and your names and Terms acceptance with the account; usage records lose their link to you. You must first hand over or delete a company of which you're the only Owner.
 
 Paying for a plan
 -----------------
@@ -132,7 +134,7 @@ When an Owner buys a plan, the payment page is Stripe's. Link, a Stripe company 
 Emails we send
 --------------
 
-The app sends only these emails, each in the recipient's language: login links; invitations to a company; to a company's Owners and Admins, a notice when a store is disconnected from its Plugins screen, when a store stops answering the uptime checks and when it's back. We send no marketing email.
+The app sends only these emails, each in the recipient's language: login codes; invitations to a company; to a company's Owners and Admins, a notice when a store is disconnected from its Plugins screen, when a store stops answering the uptime checks and when it's back. We send no marketing email.
 
 Legal basis (Art. 6 GDPR), by purpose
 -------------------------------------
@@ -161,7 +163,7 @@ Who processes data for us
 
 * Cloudflare: DNS for pirkoo.com and network protection for the website pirkoo.com (not for the app).
 
-* Resend: sends the app's emails (login links, invitations, and the notices about a store disconnected, down and back up). For companies that use their own domain, it also sends their login and invitation emails from an address on that domain.
+* Resend: sends the app's emails (login codes, invitations, and the notices about a store disconnected, down and back up). For companies that use their own domain, it also sends their login and invitation emails from an address on that domain.
 
 * Stripe: provides the payment pages, the subscription records and the billing portal. For the payments themselves, Link (Stripe) is the merchant of record and a controller (see "Paying for a plan").
 
@@ -176,7 +178,7 @@ How long we keep it
 
 These periods are applied automatically by our software:
 
-* Login links (email address, IP address, time): 24 hours. Sessions: 30 days, or until you log out.
+* Login codes (email address, IP address, time and the code's hash): 24 hours. Your names, agency name, store range and Terms acceptance: while your account and company exist. Sessions: 30 days, or until you log out.
 
 * Invitations: 30 days after they're accepted or expire (an invitation expires after 7 days).
 
@@ -206,7 +208,7 @@ Other copies:
 
 * Database snapshots: our hosting provider takes daily snapshots of our databases, plus one before some updates, and deletes each after 5 days. Data we've deleted can remain in a snapshot until it expires. We use snapshots only to restore our service, and if we restore one, we delete again anything that had already been deleted.
 
-* Logs: our service logs record store addresses and technical identifiers, not scan contents, email addresses or login links. Our hosting provider keeps them for about 7 days.
+* Logs: our service logs record store addresses and technical identifiers, not scan contents, email addresses, login codes or login links. Our hosting provider keeps them for about 7 days.
 
 Your rights
 -----------
