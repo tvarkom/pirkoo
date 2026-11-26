@@ -152,6 +152,84 @@ class Pirkoo_White_Label_Test extends Pirkoo_Test_Case {
 		$this->assertFalse( get_option( PIRKOO_WHITE_LABEL_OPTION ) );
 	}
 
+	public function test_the_app_link_follows_the_companys_domain() {
+		$this->connect_store( self::SECRET );
+		$this->sign_in_shop_manager();
+
+		// Only the domain, no white label: the plugin shows as itself and Open goes to the domain.
+		$this->send( array( 'app_url' => 'https://app.agency.example' ) );
+		$this->assertSame( 'https://app.agency.example', pirkoo_app_link() );
+		$this->assertSame( $this->plugins(), pirkoo_white_label_plugins( $this->plugins() ) );
+		$this->assertSame( array( 'a', 'plugin-information' ), pirkoo_white_label_row_meta( array( 'a', 'plugin-information' ), plugin_basename( PIRKOO_FILE ) ) );
+		$links = implode( ' ', pirkoo_plugin_action_links( array() ) );
+		$this->assertStringContainsString( '<a href="https://app.agency.example">Open Pirkoo</a>', $links );
+		$this->assertStringContainsString( 'Disconnect from Pirkoo', $links );
+		$this->assertStringNotContainsString( 'https://app.test', $links );
+
+		// With a white label: Open takes its name and goes to the domain; nothing names Pirkoo.
+		$this->send(
+			array(
+				'name'    => 'Agency Care',
+				'app_url' => 'https://app.agency.example',
+			)
+		);
+		$links = implode( ' ', pirkoo_plugin_action_links( array() ) );
+		$this->assertStringContainsString( '<a href="https://app.agency.example">Open Agency Care</a>', $links );
+		$this->assertStringContainsString( 'action=pirkoo_disconnect', $links );
+		$this->assertStringNotContainsString( 'Pirkoo', $links );
+
+		// No name: a neutral label.
+		$this->send(
+			array(
+				'author'  => 'Agency',
+				'app_url' => 'https://app.agency.example',
+			)
+		);
+		$this->assertStringContainsString( '>Open dashboard</a>', implode( ' ', pirkoo_plugin_action_links( array() ) ) );
+
+		// The domain removed: back to app.pirkoo.com, or no Open link while white-labelled.
+		$this->send( array( 'name' => 'Agency Care' ) );
+		$this->assertSame( PIRKOO_APP_URL, pirkoo_app_link() );
+		$this->assertStringNotContainsString( 'Open', implode( ' ', pirkoo_plugin_action_links( array() ) ) );
+		$this->send( null );
+		$this->assertStringContainsString( '<a href="' . PIRKOO_APP_URL . '">Open Pirkoo</a>', implode( ' ', pirkoo_plugin_action_links( array() ) ) );
+	}
+
+	public function test_only_an_https_origin_is_taken_as_the_app_url() {
+		foreach ( array( 'https://app.agency.example', 'https://App.Agency.Example/', 'https://xn--ag-uia.example' ) as $ok ) {
+			$this->assertNotSame( '', pirkoo_white_label_app_url( $ok ), $ok );
+		}
+		$this->assertSame( 'https://app.agency.example', pirkoo_white_label_app_url( 'https://App.Agency.Example/' ) );
+		foreach (
+			array(
+				'http://app.agency.example',
+				'javascript:alert(1)',
+				'https://app.agency.example/login',
+				'https://app.agency.example?x=1',
+				'https://user@app.agency.example',
+				'https://app.agency.example:8443',
+				'https://localhost',
+				'https://app.agency.example"><script>',
+				'//app.agency.example',
+				array( 'https://app.agency.example' ),
+				'https://' . str_repeat( 'a', 300 ) . '.example',
+			) as $bad
+		) {
+			$this->assertSame( '', pirkoo_white_label_app_url( $bad ), (string) wp_json_encode( $bad ) );
+		}
+	}
+
+	public function test_the_app_url_comes_only_from_a_signed_request() {
+		$this->connect_store( self::SECRET );
+		$response = $this->rest_post( '/pirkoo/v1/white-label', '{"white_label":{"app_url":"https://evil.example"}}' );
+		$this->assertSame( 401, $response->get_status() );
+		$this->assertSame( PIRKOO_APP_URL, pirkoo_app_link() );
+		$this->rest_post( '/pirkoo/v1/collect', '{"white_label":{"app_url":"https://app.agency.example"}}', self::SECRET );
+		$this->assertSame( 'https://app.agency.example', pirkoo_app_link() );
+		$this->rest_post( '/pirkoo/v1/disconnect', '{}', self::SECRET );
+		$this->assertSame( PIRKOO_APP_URL, pirkoo_app_link() );
+	}
+
 	public function test_the_updates_screen_row() {
 		ob_start();
 		pirkoo_white_label_updates_screen();

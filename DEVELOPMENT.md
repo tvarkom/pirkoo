@@ -32,6 +32,10 @@ App "Disconnect" ──▶ POST /wp-json/pirkoo/v1/disconnect (signed) ──▶
   the app's `internal/storelink` tests share one signature vector: keep them in line.
 - One collection at a time (`pirkoo_lock()`): a second gets 409.
 - `PIRKOO_APP_URL` (default `https://app.pirkoo.com`) can be overridden in wp-config.php.
+- The white label (`includes/white-label.php`, 0.7.0) may carry `app_url` (0.8.0): the company's
+  own domain for the app, an https origin, sent only in the app's signed requests while that domain
+  is served. Only the Plugins screen's Open link uses it (`pirkoo_app_link()`); every request to
+  the app still goes to `PIRKOO_APP_URL`.
 - The Connect link also sends the plugin's REST address (`rest_url( 'pirkoo/v1' )`, 0.3.1), so
   stores with plain permalinks (`?rest_route=`) or WordPress in a subfolder connect too; the app
   accepts it only on the store's own host.

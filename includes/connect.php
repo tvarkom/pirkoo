@@ -62,7 +62,8 @@ function pirkoo_load_textdomain() {
 
 /**
  * The plugin's links on the Plugins screen: Connect to Pirkoo, or Open Pirkoo and Disconnect from
- * Pirkoo, for users who can manage WooCommerce.
+ * Pirkoo, for users who can manage WooCommerce. Open points to the company's own domain when the
+ * app sent one (0.8.0); with a white label, the links don't name Pirkoo.
  *
  * @param array<int|string, string> $links The plugin's action links.
  * @return array<int|string, string>
@@ -71,13 +72,22 @@ function pirkoo_plugin_action_links( $links ) {
 	if ( ! current_user_can( 'manage_woocommerce' ) ) {
 		return $links;
 	}
-	if ( pirkoo_is_connected() && array() !== pirkoo_white_label() ) {
-		// White-labelled: no link names Pirkoo or opens its app.
-		array_unshift( $links, '<a href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=pirkoo_disconnect' ), 'pirkoo_disconnect' ) ) . '">' . esc_html__( 'Disconnect', 'pirkoo' ) . '</a>' );
+	$label = pirkoo_white_label();
+	if ( pirkoo_is_connected() && pirkoo_white_label_renames( $label ) ) {
+		// White-labelled: no link names Pirkoo. Open goes only to the company's own domain, never to
+		// app.pirkoo.com, and takes the white label's name.
+		$disconnect = '<a href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=pirkoo_disconnect' ), 'pirkoo_disconnect' ) ) . '">' . esc_html__( 'Disconnect', 'pirkoo' ) . '</a>';
+		if ( '' !== $label['app_url'] ) {
+			/* translators: %s: the name the company managing the store gave the plugin. */
+			$open = '' !== $label['name'] ? sprintf( __( 'Open %s', 'pirkoo' ), $label['name'] ) : __( 'Open dashboard', 'pirkoo' );
+			array_unshift( $links, '<a href="' . esc_url( $label['app_url'] ) . '">' . esc_html( $open ) . '</a>', $disconnect );
+		} else {
+			array_unshift( $links, $disconnect );
+		}
 	} elseif ( pirkoo_is_connected() ) {
 		array_unshift(
 			$links,
-			'<a href="' . esc_url( PIRKOO_APP_URL ) . '">' . esc_html__( 'Open Pirkoo', 'pirkoo' ) . '</a>',
+			'<a href="' . esc_url( pirkoo_app_link() ) . '">' . esc_html__( 'Open Pirkoo', 'pirkoo' ) . '</a>',
 			'<a href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=pirkoo_disconnect' ), 'pirkoo_disconnect' ) ) . '">' . esc_html__( 'Disconnect from Pirkoo', 'pirkoo' ) . '</a>'
 		);
 	} else {
