@@ -316,10 +316,10 @@ class Pirkoo_Connect_Test extends Pirkoo_Test_Case {
 	public function test_the_app_started_connect_page() {
 		$this->assertSame( 10, has_action( 'admin_menu', 'pirkoo_connect_menu' ) );
 		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
-		update_option( 'blogname', 'The <b>Shop</b>' );
+		update_option( 'blogname', 'The Shop & Co <b>' );
 		$_GET['setup'] = 'setup-token_0123456789abcdef';
 		$page          = $this->connect_page();
-		$this->assertStringContainsString( '<strong>The Shop</strong>', $page );
+		$this->assertStringContainsString( '<strong>The Shop &amp; Co &lt;b&gt;</strong>', $page, 'The name is escaped once.' );
 		$this->assertStringContainsString( 'action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"', $page );
 		$this->assertStringContainsString( 'method="post"', $page );
 		$this->assertStringContainsString( 'name="action" value="pirkoo_connect"', $page );
