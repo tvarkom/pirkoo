@@ -168,7 +168,20 @@ function pirkoo_setup_token( $raw ) {
  * @return void
  */
 function pirkoo_connect_menu() {
-	add_submenu_page( '', __( 'Connect to Pirkoo', 'pirkoo' ), __( 'Connect to Pirkoo', 'pirkoo' ), 'activate_plugins', 'pirkoo-connect', 'pirkoo_render_connect_page' );
+	$hook = add_submenu_page( '', __( 'Connect to Pirkoo', 'pirkoo' ), __( 'Connect to Pirkoo', 'pirkoo' ), 'activate_plugins', 'pirkoo-connect', 'pirkoo_render_connect_page' );
+	if ( is_string( $hook ) ) {
+		add_action( 'load-' . $hook, 'pirkoo_connect_page_title' );
+	}
+}
+
+/**
+ * The browser tab's title on the Connect to Pirkoo page: a page without a menu entry has none.
+ *
+ * @return void
+ */
+function pirkoo_connect_page_title() {
+	global $title;
+	$title = __( 'Connect to Pirkoo', 'pirkoo' ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- The admin header reads the page's title from it.
 }
 
 /**
