@@ -1,6 +1,6 @@
 <?php
 /**
- * The connection with app.pirkoo.com (0.3.0; docs/PROPOSAL-0.3.0.md 3.5 in the app's repository).
+ * The connection with app.pirkoo.com (0.3.0; docs/archive/PROPOSAL-0.3.0.md 3.5 in the app's repository).
  *
  * The plugin has no screen. Under its name on the Plugins screen, an administrator who can manage
  * WooCommerce finds **Connect to Pirkoo** or **Disconnect from Pirkoo**:
