@@ -297,4 +297,75 @@ class Pirkoo_Connect_Test extends Pirkoo_Test_Case {
 		$this->assertStringContainsString( 'desconectada do Pirkoo', $notice );
 		$this->assertSame( 'Connect to Pirkoo', __( 'Connect to Pirkoo', 'pirkoo' ) );
 	}
+
+	/**
+	 * The Connect to Pirkoo page's output.
+	 *
+	 * @return string
+	 */
+	private function connect_page() {
+		ob_start();
+		pirkoo_render_connect_page();
+		return (string) ob_get_clean();
+	}
+
+	/**
+	 * The page the app opens (0.9.0): one button that posts with a nonce and the app's setup token;
+	 * opening it makes no code and contacts nobody.
+	 */
+	public function test_the_app_started_connect_page() {
+		$this->assertSame( 10, has_action( 'admin_menu', 'pirkoo_connect_menu' ) );
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
+		update_option( 'blogname', 'The <b>Shop</b>' );
+		$_GET['setup'] = 'setup-token_0123456789abcdef';
+		$page          = $this->connect_page();
+		$this->assertStringContainsString( '<strong>The Shop</strong>', $page );
+		$this->assertStringContainsString( 'action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"', $page );
+		$this->assertStringContainsString( 'method="post"', $page );
+		$this->assertStringContainsString( 'name="action" value="pirkoo_connect"', $page );
+		$this->assertStringContainsString( 'name="_wpnonce"', $page );
+		$this->assertStringContainsString( 'name="setup" value="setup-token_0123456789abcdef"', $page );
+		$this->assertStringContainsString( 'Connect to Pirkoo', $page );
+		$this->assertSame( '', pirkoo_settings()['code_hash'], 'Opening the page makes no code.' );
+		$this->assertSame( array(), $this->requests, 'Opening the page contacts nobody.' );
+		$this->assertFalse( pirkoo_is_connected() );
+
+		// A token that isn't one is left out.
+		$_GET['setup'] = '"><script>alert(1)</script>';
+		$page          = $this->connect_page();
+		$this->assertStringNotContainsString( 'name="setup"', $page );
+		$this->assertStringNotContainsString( '<script>', $page );
+		unset( $_GET['setup'] );
+
+		$this->connect_store();
+		$page = $this->connect_page();
+		$this->assertStringContainsString( 'already connected', $page );
+		$this->assertStringNotContainsString( '<form', $page );
+	}
+
+	public function test_the_connect_page_needs_a_user_who_can_activate_plugins() {
+		$this->sign_in_shop_manager();
+		$this->expectException( WPDieException::class );
+		$this->connect_page();
+	}
+
+	/**
+	 * The button's post sends the setup token to the app unchanged, next to the usual code; the
+	 * Plugins screen's link sends none.
+	 */
+	public function test_the_setup_token_goes_back_to_the_app() {
+		$this->sign_in_shop_manager();
+		$_REQUEST['_wpnonce'] = wp_create_nonce( 'pirkoo_connect' );
+		$_POST['setup']       = 'setup-token_0123456789abcdef';
+		parse_str( (string) wp_parse_url( $this->redirect_of( 'pirkoo_handle_connect' ), PHP_URL_QUERY ), $query );
+		$this->assertSame( 'setup-token_0123456789abcdef', $query['setup'] );
+		$this->assertSame( hash( 'sha256', (string) $query['code'] ), pirkoo_settings()['code_hash'] );
+
+		$_POST['setup'] = 'bad token';
+		parse_str( (string) wp_parse_url( $this->redirect_of( 'pirkoo_handle_connect' ), PHP_URL_QUERY ), $query );
+		$this->assertArrayNotHasKey( 'setup', $query );
+		unset( $_POST['setup'] );
+		parse_str( (string) wp_parse_url( $this->redirect_of( 'pirkoo_handle_connect' ), PHP_URL_QUERY ), $query );
+		$this->assertArrayNotHasKey( 'setup', $query );
+	}
 }

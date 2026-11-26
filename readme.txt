@@ -4,7 +4,7 @@ Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.8.0
+Stable tag: 0.9.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,13 +100,15 @@ The plugin has no settings to fill in and sends nothing until you connect. Pirko
 2. On the Plugins screen, click **Connect to Pirkoo** under its name.
 3. Log in at app.pirkoo.com with your email and confirm the connection.
 
+Or start in the app: **Add a store** at app.pirkoo.com checks the store, opens its plugin page to install Pirkoo, then its **Connect to Pirkoo** page, where you click the one button.
+
 👉 **[Open app.pirkoo.com](https://app.pirkoo.com/)**
 
 == External services ==
 
 The technical details of what the plugin sends, when and why.
 
-This plugin connects your store to Pirkoo (https://app.pirkoo.com), run by MB TVARKOM SOFTWARE (Lithuania). Nothing is sent until an administrator clicks **Connect to Pirkoo** on the Plugins screen and confirms on app.pirkoo.com, right under a list of what is collected, which accepts Pirkoo's Privacy Policy.
+This plugin connects your store to Pirkoo (https://app.pirkoo.com), run by MB TVARKOM SOFTWARE (Lithuania). Nothing is sent until an administrator clicks **Connect to Pirkoo** (on the Plugins screen, or on the plugin's Connect to Pirkoo page that app.pirkoo.com opens when the store is added there) and confirms on app.pirkoo.com, right under a list of what is collected, which accepts Pirkoo's Privacy Policy. Opening that page sends nothing; its button sends the browser to app.pirkoo.com with the one-time code and the app's setup token, unchanged.
 
 Once connected, app.pirkoo.com sends requests signed with a secret shared only with your store to the plugin's routes (`/wp-json/pirkoo/v1/`), and the plugin answers with:
 
@@ -165,6 +167,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.9.0 =
+* Add a store from app.pirkoo.com: the app can open the plugin's new Connect to Pirkoo page (for administrators who can activate plugins), which shows the store's name and one button. Opening the page connects nothing; clicking the button connects the store as Connect to Pirkoo on the Plugins screen does, and returns the app's setup token with it. The Plugins screen link works as before.
 
 = 0.8.0 =
 * For agencies that use app.pirkoo.com on their own domain: the plugin's Open link on the Plugins screen points to that domain, and with a white label it takes the plugin's new name ("Open Agency Care") instead of naming Pirkoo. The address arrives only in app.pirkoo.com's signed requests; removing the domain or disconnecting points the link back to app.pirkoo.com.

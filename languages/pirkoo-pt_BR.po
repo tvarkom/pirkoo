@@ -56,3 +56,13 @@ msgstr "Esse link de conexão expirou. Clique de novo em Conectar ao Pirkoo."
 msgid "This store could not reach app.pirkoo.com to finish the connection. Check that its server can make outgoing HTTPS requests, then click Connect to Pirkoo again."
 msgstr "Esta loja não conseguiu acessar app.pirkoo.com para concluir a conexão. Confira se o servidor dela pode fazer requisições HTTPS de saída e clique de novo em Conectar ao Pirkoo."
 
+
+msgid "This store is already connected to Pirkoo."
+msgstr "Esta loja já está conectada ao Pirkoo."
+
+msgid "Connecting a store needs a user who can manage WooCommerce."
+msgstr "Conectar uma loja exige um usuário que possa gerenciar o WooCommerce."
+
+#. translators: 1: the store's name, 2: its web address (host).
+msgid "Connect %1$s (%2$s) to Pirkoo? You finish in the Pirkoo app."
+msgstr "Conectar %1$s (%2$s) ao Pirkoo? Você conclui no app do Pirkoo."

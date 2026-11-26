@@ -11,6 +11,10 @@
  * - From then on the app's requests are signed with that secret: POST /pirkoo/v1/collect answers
  *   with the store's data for a scan, POST /pirkoo/v1/disconnect forgets the secret.
  * - Disconnect tells the app (signed, best effort) and forgets the secret.
+ * - Since 0.9.0 the app can start the connection itself (Add a store, PIRKOO-29): it opens the
+ *   Connect to Pirkoo page (admin.php?page=pirkoo-connect&setup=<token>), where an administrator
+ *   clicks the one button. That click is what connects: the page itself never does. The app's
+ *   setup token goes back to it unchanged, next to the usual one-time code.
  *
  * Nothing is collected or sent before the store is connected, and only when the app asks.
  *
@@ -127,23 +131,85 @@ function pirkoo_handle_connect() {
 			'code_expires' => time() + PIRKOO_CODE_LIFETIME,
 		)
 	);
-	$url = PIRKOO_APP_URL . '/connect?' . http_build_query(
-		array(
-			'store'  => pirkoo_store_origin(),
-			// This plugin's REST address: not <origin>/wp-json/ with plain permalinks or WordPress in a
-			// subfolder (0.3.1). The app accepts it only on the store's own host.
-			'api'    => untrailingslashit( rest_url( 'pirkoo/v1' ) ),
-			'code'   => $code,
-			// Where the app sends the administrator back when a firewall blocks its requests here
-			// (relay mode, includes/relay.php).
-			'return' => admin_url( 'admin-post.php?action=pirkoo_relay' ),
-		),
-		'',
-		'&',
-		PHP_QUERY_RFC3986
+	$query = array(
+		'store'  => pirkoo_store_origin(),
+		// This plugin's REST address: not <origin>/wp-json/ with plain permalinks or WordPress in a
+		// subfolder (0.3.1). The app accepts it only on the store's own host.
+		'api'    => untrailingslashit( rest_url( 'pirkoo/v1' ) ),
+		'code'   => $code,
+		// Where the app sends the administrator back when a firewall blocks its requests here
+		// (relay mode, includes/relay.php).
+		'return' => admin_url( 'admin-post.php?action=pirkoo_relay' ),
 	);
+	// From the Connect to Pirkoo page the app opened (0.9.0): its setup token, unchanged.
+	$setup = isset( $_POST['setup'] ) ? pirkoo_setup_token( sanitize_text_field( wp_unslash( $_POST['setup'] ) ) ) : '';
+	if ( '' !== $setup ) {
+		$query['setup'] = $setup;
+	}
+	$url = PIRKOO_APP_URL . '/connect?' . http_build_query( $query, '', '&', PHP_QUERY_RFC3986 );
 	wp_safe_redirect( $url );
 	exit;
+}
+
+/**
+ * The app's setup token as it sent it (base64url, 16 to 128 characters), or '' for anything else.
+ *
+ * @param string $raw The token from the request.
+ * @return string
+ */
+function pirkoo_setup_token( $raw ) {
+	return 1 === preg_match( '/^[A-Za-z0-9_-]{16,128}$/', $raw ) ? $raw : '';
+}
+
+/**
+ * Registers the Connect to Pirkoo page, which has no menu entry: the app opens it
+ * (admin.php?page=pirkoo-connect&setup=<token>) when someone adds the store there.
+ *
+ * @return void
+ */
+function pirkoo_connect_menu() {
+	add_submenu_page( '', __( 'Connect to Pirkoo', 'pirkoo' ), __( 'Connect to Pirkoo', 'pirkoo' ), 'activate_plugins', 'pirkoo-connect', 'pirkoo_render_connect_page' );
+}
+
+/**
+ * The Connect to Pirkoo page: the store's name and one button. Opening the page connects nothing;
+ * the button posts to admin-post.php?action=pirkoo_connect with a nonce, as the Plugins screen's
+ * link does, and carries the app's setup token.
+ *
+ * @return void
+ */
+function pirkoo_render_connect_page() {
+	if ( ! current_user_can( 'activate_plugins' ) ) {
+		wp_die( esc_html__( 'Sorry, you are not allowed to connect this store.', 'pirkoo' ), 403 );
+	}
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only carried to the form; the button's post is checked.
+	$setup = isset( $_GET['setup'] ) ? pirkoo_setup_token( sanitize_text_field( wp_unslash( $_GET['setup'] ) ) ) : '';
+	$name  = wp_strip_all_tags( get_bloginfo( 'name' ) );
+	$host  = (string) wp_parse_url( pirkoo_store_origin(), PHP_URL_HOST );
+	echo '<div class="wrap"><h1>' . esc_html__( 'Connect to Pirkoo', 'pirkoo' ) . '</h1>';
+	if ( pirkoo_is_connected() ) {
+		echo '<p>' . esc_html__( 'This store is already connected to Pirkoo.', 'pirkoo' ) . '</p>';
+		echo '<p><a class="button" href="' . esc_url( pirkoo_app_link() ) . '">' . esc_html__( 'Open Pirkoo', 'pirkoo' ) . '</a></p></div>';
+		return;
+	}
+	if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		echo '<p>' . esc_html__( 'Connecting a store needs a user who can manage WooCommerce.', 'pirkoo' ) . '</p></div>';
+		return;
+	}
+	echo '<p>' . sprintf(
+		/* translators: 1: the store's name, 2: its web address (host). */
+		esc_html__( 'Connect %1$s (%2$s) to Pirkoo? You finish in the Pirkoo app.', 'pirkoo' ),
+		'<strong>' . esc_html( '' !== $name ? $name : $host ) . '</strong>',
+		esc_html( $host )
+	) . '</p>';
+	echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
+	echo '<input type="hidden" name="action" value="pirkoo_connect">';
+	wp_nonce_field( 'pirkoo_connect' );
+	if ( '' !== $setup ) {
+		echo '<input type="hidden" name="setup" value="' . esc_attr( $setup ) . '">';
+	}
+	submit_button( __( 'Connect to Pirkoo', 'pirkoo' ), 'primary', 'submit', false );
+	echo '</form></div>';
 }
 
 /**
