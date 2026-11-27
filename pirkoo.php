@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Pirkoo
  * Description:       Manage, monitor and report on all your WooCommerce stores from one dashboard, with your team.
- * Version:           0.9.0
+ * Version:           0.10.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  woocommerce
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PIRKOO_VERSION', '0.9.0' );
+define( 'PIRKOO_VERSION', '0.10.0' );
 define( 'PIRKOO_FILE', __FILE__ );
 define( 'PIRKOO_OPTION', 'pirkoo' );
 define( 'PIRKOO_LOCK', 'pirkoo_scan_lock' );
@@ -66,6 +66,7 @@ add_action( 'admin_menu', 'pirkoo_connect_menu' ); // The Connect to Pirkoo page
 // set at app.pirkoo.com, or the plugin hidden, on the Plugins screen and Dashboard → Updates.
 add_filter( 'all_plugins', 'pirkoo_white_label_plugins' );
 add_filter( 'plugin_row_meta', 'pirkoo_white_label_row_meta', 10, 2 );
+add_filter( 'plugin_row_meta', 'pirkoo_paid_service_row_meta', 10, 2 );
 add_action( 'admin_footer-update-core.php', 'pirkoo_white_label_updates_screen' );
 
 // Relay mode (includes/relay.php), for a store whose firewall blocks the app's requests: the app's

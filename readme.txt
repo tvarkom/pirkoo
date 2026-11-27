@@ -4,7 +4,7 @@ Tags: woocommerce, multi-store, monitoring, reports, uptime
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.9.0
+Stable tag: 0.10.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Manage, monitor and report on all your WooCommerce stores from one dashboard, wi
 
 Connect your WooCommerce stores to **Pirkoo** and see every store's health, sales and upkeep in one place, with your team, and act on what needs attention.
 
-_Your first company on Pirkoo is free for 1 store, with no time limit. Paid plans add every report, email alerts, the steps to fix each problem, one-click updates and your whole team._ **[Get started at app.pirkoo.com](https://app.pirkoo.com/)**
+**Heads up:** Pirkoo is a paid service. The plugin connects your store to app.pirkoo.com, where plans start from 10 stores. You can try it free for 14 days, no credit card required. **[Start your free trial](https://app.pirkoo.com/signup)**
 
 = What is Pirkoo? =
 
@@ -32,7 +32,7 @@ Pirkoo is a Multi-Store WooCommerce Manager, made for store owners and for the a
 * ✅ Product, category and stock reports
 * ✅ Teams with roles, for agencies and their clients
 * ✅ In English and Brazilian Portuguese
-* 💥 Free for 1 store; paid plans for more (see the FAQ)
+* 💥 14-day free trial, no credit card required (see the FAQ)
 
 = 🩺 Store Health Score =
 
@@ -98,11 +98,11 @@ The plugin has no settings to fill in and sends nothing until you connect. Pirko
 
 1. Install and activate Pirkoo. Nothing is sent yet.
 2. On the Plugins screen, click **Connect to Pirkoo** under its name.
-3. Log in at app.pirkoo.com with your email and confirm the connection.
+3. Create your Pirkoo account (14-day free trial, no credit card), or log in, and confirm the connection.
 
 Or start in the app: **Add a store** at app.pirkoo.com checks the store, opens its plugin page to install Pirkoo, then its **Connect to Pirkoo** page, where you click the one button.
 
-👉 **[Open app.pirkoo.com](https://app.pirkoo.com/)**
+👉 **[Start your free trial](https://app.pirkoo.com/signup)**
 
 == External services ==
 
@@ -150,9 +150,9 @@ Once a day on its own, between 02:00 and 05:00 in your store's timezone (skipped
 
 = How much does Pirkoo cost? =
 
-The plugin is free. On app.pirkoo.com, a person's first company is free for 1 store, with no time limit. Free gives the health score, its checks and a daily scan (Scan now once a day), uptime checks every 15 minutes without email alerts, a weekly PageSpeed test, a monthly broken-link check, vulnerabilities and PHP errors, the updates waiting (run from the store's admin), and the revenue, orders and products of the last 30 days, for the company's Owner alone.
+The plugin is free; Pirkoo, the service it connects to, is paid. A person's first plan starts with a 14-day free trial, without a credit card: sign up at https://app.pirkoo.com/signup, choose a plan and connect your stores. Add a card before the trial ends to keep the plan; without one, the company is paused.
 
-Paid plans add everything else: every report for 12 months, the steps and plugins to fix each problem, uptime every 5 minutes with email alerts, daily PageSpeed, weekly broken links, one-click updates and installs, and from Growth up your whole team with roles and white label. Plans are for 1, 10, 20 or 40 stores (more on request), paid monthly or yearly, with their prices, VAT included, on the app's Billing page. Plans are for businesses and are paid through Stripe; cancel at any time from the app's Billing page. A company holding more stores than its plan allows is paused (dashboards and history stay; scans, the daily copies, updates and monitoring pause) until it removes stores or buys a larger plan.
+Plans are for 10, 20 or 40 stores (more on request), paid monthly or yearly, with their prices, VAT included, on pirkoo.com and the app's Billing page. Every plan includes all of Pirkoo: every report for 12 months, the steps and plugins to fix each problem, uptime every 5 minutes with email alerts, daily PageSpeed, weekly broken links, one-click updates and installs, your whole team with roles, and white label. Plans are for businesses and are paid through Stripe; cancel at any time from the app's Billing page. A company without a plan, or holding more stores than its plan allows, is paused (dashboards and history stay; scans, the daily copies, updates and monitoring pause) until it removes stores or buys a plan.
 
 = Does it send anything on its own? =
 
@@ -167,6 +167,9 @@ The Connect and Disconnect links are built with WordPress's own admin address (`
 Pirkoo is made by tvarkom (MB TVARKOM SOFTWARE, Lithuania), which builds diagnostic tools for WooCommerce stores. Contact: support@pirkoo.com.
 
 == Changelog ==
+
+= 0.10.0 =
+* Pirkoo is a paid service with a 14-day free trial, no credit card required: the readme says so near the top and in the FAQ, without the former free plan, and the Plugins screen shows the same short line, with a link to start the trial, while the store isn't connected. Connect to Pirkoo now opens app.pirkoo.com's signup page for people without an account, and returns to the connection after it.
 
 = 0.9.0 =
 * Add a store from app.pirkoo.com: the app can open the plugin's new Connect to Pirkoo page (for administrators who can activate plugins), which shows the store's name and one button. Opening the page connects nothing; clicking the button connects the store as Connect to Pirkoo on the Plugins screen does, and returns the app's setup token with it. The Plugins screen link works as before.

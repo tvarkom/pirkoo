@@ -66,3 +66,9 @@ msgstr "Conectar uma loja exige um usuário que possa gerenciar o WooCommerce."
 #. translators: 1: the store's name, 2: its web address (host).
 msgid "Connect %1$s (%2$s) to Pirkoo? You finish in the Pirkoo app."
 msgstr "Conectar %1$s (%2$s) ao Pirkoo? Você conclui no app do Pirkoo."
+
+msgid "Pirkoo is a paid service: try it free for 14 days, no credit card required."
+msgstr "O Pirkoo é um serviço pago: experimente grátis por 14 dias, sem cartão de crédito."
+
+msgid "Start your free trial"
+msgstr "Comece seu teste grátis"
