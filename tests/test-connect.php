@@ -22,6 +22,23 @@ class Pirkoo_Connect_Test extends Pirkoo_Test_Case {
 		return implode( ' ', pirkoo_plugin_action_links( array( 'deactivate' => '<a href="#">Deactivate</a>' ) ) );
 	}
 
+	/**
+	 * While the store isn't connected, its row says Pirkoo is a paid service with a 14-day free
+	 * trial, linking to the signup page (PIRKOO-43).
+	 */
+	public function test_paid_service_line() {
+		$file = plugin_basename( PIRKOO_FILE );
+		$this->assertSame( 10, has_filter( 'plugin_row_meta', 'pirkoo_paid_service_row_meta' ) );
+		$meta = pirkoo_paid_service_row_meta( array( 'Version 0.10.0' ), $file );
+		$this->assertCount( 2, $meta );
+		$this->assertStringContainsString( 'Pirkoo is a paid service: try it free for 14 days, no credit card required.', $meta[1] );
+		$this->assertStringContainsString( 'href="' . PIRKOO_APP_URL . '/signup"', $meta[1] );
+		$this->assertSame( array( 'a' ), pirkoo_paid_service_row_meta( array( 'a' ), 'other/other.php' ), 'Other plugins keep their row.' );
+
+		$this->connect_store();
+		$this->assertSame( array( 'a' ), pirkoo_paid_service_row_meta( array( 'a' ), $file ), 'A connected store has no notice.' );
+	}
+
 	public function test_plugins_screen_links() {
 		wp_set_current_user( self::factory()->user->create( array( 'role' => 'subscriber' ) ) );
 		$this->assertStringNotContainsString( 'Pirkoo', $this->links() );

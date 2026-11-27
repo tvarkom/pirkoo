@@ -101,6 +101,25 @@ function pirkoo_plugin_action_links( $links ) {
 }
 
 /**
+ * The paid-service line on the plugin's row (filter plugin_row_meta), while the store isn't
+ * connected: Pirkoo is a paid service with a 14-day free trial, and a link to start it (PIRKOO-43,
+ * WordPress.org's guideline on services that need payment).
+ *
+ * @param string[] $meta The links under the description.
+ * @param string   $file The plugin's file.
+ * @return string[]
+ */
+function pirkoo_paid_service_row_meta( $meta, $file ) {
+	if ( plugin_basename( PIRKOO_FILE ) !== $file || pirkoo_is_connected() ) {
+		return $meta;
+	}
+	$meta   = (array) $meta;
+	$meta[] = esc_html__( 'Pirkoo is a paid service: try it free for 14 days, no credit card required.', 'pirkoo' )
+		. ' <a href="' . esc_url( PIRKOO_APP_URL . '/signup' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Start your free trial', 'pirkoo' ) . '</a>';
+	return $meta;
+}
+
+/**
  * Lets wp_safe_redirect() send the browser to app.pirkoo.com.
  *
  * @param string[] $hosts Allowed hosts.
